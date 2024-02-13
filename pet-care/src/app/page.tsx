@@ -9,5 +9,5 @@ export default function Home() {
       <h1>PET CARE</h1>
       <Main></Main>
     </main>
-  );
+  ); 
 }
