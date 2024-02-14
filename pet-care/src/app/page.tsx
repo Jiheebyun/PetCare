@@ -1,13 +1,13 @@
 import Image from "next/image";
-import styles from "./page.module.css";
+import classes from "./page.module.css";
 import Main from "./(adaption)/layout";
+import MainNavBar from "./_components/navBar/NavBar";
 
 
 export default function Home() {
-  return (
-    <main className={styles.main}>
-      <h1>PET CARE</h1>
-      <Main></Main>
-    </main>
+    return (
+        <>
+            <h3>Content 부분입니다.</h3>
+        </>
   ); 
 }

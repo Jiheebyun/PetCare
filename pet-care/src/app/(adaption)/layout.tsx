@@ -1,3 +1,5 @@
+import MainNavBar from "../_components/navBar/NavBar";
+
 
 
 
@@ -5,7 +7,7 @@
 export default function Main(){
     return (
         <>
-            <h1>MAIN </h1>
+            <MainNavBar></MainNavBar>
         </>
     )
 }

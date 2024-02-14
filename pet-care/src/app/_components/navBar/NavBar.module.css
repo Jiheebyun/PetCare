@@ -1,0 +1,91 @@
+
+/* 나중에 padding bottom 제거 */
+.headerWrapper{
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 15px;
+}
+
+.NavContainer{
+    display: flex;
+}
+
+.logoContainer{
+    display: flex;
+    height: 80px;
+    flex-grow: 1;
+    align-items: center;
+}
+
+.navbarContainer{
+    display: flex;
+    height: 80px;
+    justify-content: center;
+    align-items: center;
+}
+
+.navMenuContainer{
+    width: 130px;
+    display: flex;
+    flex-grow: 1;
+    justify-content: space-between;
+}
+
+.navbarContainer a{
+    text-align: center;  
+    text-decoration: none; 
+    color: inherit;
+    font-weight: 800;
+    font-size: 17px;
+}
+
+.profileContainer{
+    display: flex;
+    height: 80px;
+    flex-grow: 1;
+    justify-content: right;
+    align-items: center;
+}
+
+.profileIconContainer{
+    width: 87px;
+    height: 48px;
+    margin-left: 20px;
+    border-radius: 30px;
+    border: 0.5px solid #DEDEDE;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.profileContainer span{
+    font-size: 13px;
+
+}
+
+.searchContainer{
+    display: flex;
+    justify-content: center;
+    flex-direction: center;
+}
+
+.searchBox {
+    width: 50%;
+    max-width: 550px;
+    height: 45px;
+    border-radius: 30px;
+    border: 1px solid #DEDEDE;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+}
+.searchBtnBox{
+    width: 36px;
+    height: 36px;
+    border-radius: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #64C6C4;
+    margin-right: 5px;
+}

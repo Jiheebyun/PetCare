@@ -1,5 +1,26 @@
 :root {
   box-sizing: border-box;
-  margin: 20px 50px 0px 50px;
+  padding: 0px 40px 0px 40px;
+  color: #222222;
+  min-width: 700px;
+}
+
+
+.main{
+  background-color: antiquewhite;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  background-color: #fff;
+}
+
+.navContainer{
+  /* flex-grow: 1; */
+  background-color: aqua;
+}
+
+.contentContainer{
+  /* flex-grow: 1; */
+  background-color: aquamarine;
 }
 
