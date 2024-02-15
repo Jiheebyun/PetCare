@@ -10,7 +10,6 @@ import Link from "next/link";
 
 export default function MainNavBar() {
 
-
     return (
         <>
             <div className={classes.headerWrapper}>
@@ -29,7 +28,7 @@ export default function MainNavBar() {
                     <div className={classes.navbarContainer}>
                         <div className={classes.navMenuContainer}>
                             <Link href={''}>입양</Link>
-                            <Link href={''}>커뮤니티</Link>
+                            <Link href={'../../(commu)/commu/page'}>커뮤니티</Link>
                         </div>
                     </div>
 
