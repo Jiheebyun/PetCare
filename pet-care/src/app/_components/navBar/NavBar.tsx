@@ -55,6 +55,7 @@ export default function MainNavBar() {
 
                 <div className={classes.searchContainer}>
                     <div className={classes.searchBox}>
+                        <input></input>
                         <div className={classes.searchBtnBox}>
                             <Image src={'/img/searchIcon.png'} alt="search" width={16} height={16} ></Image>
                         </div>

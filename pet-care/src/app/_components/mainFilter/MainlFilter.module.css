@@ -1,0 +1,37 @@
+
+
+
+
+
+.mainFilterWrapper{
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    padding-top: 10px;
+}
+
+
+.dogFilterContainer a{
+    display: flex;
+    flex-direction: column;
+    text-align: center;  
+    text-decoration: none; /* 링크의 밑줄 제거 */  
+    color: inherit; /* 링크의 색상 제거 */
+
+}
+.dogFilterContainer span{
+    font-weight: 700;
+}
+
+.catFilterContainer a{
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+    text-align: center;  
+    text-decoration: none; /* 링크의 밑줄 제거 */  
+    color: inherit; /* 링크의 색상 제거 */
+}
+.catFilterContainer span{
+    font-weight: 700;
+}
