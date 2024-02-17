@@ -28,6 +28,9 @@ export default function RootLayout({
                 <div className={classes.contentContainer}>
                     {children}
                 </div>
+                <div className={"FOOOOOTER"}>
+                  
+                </div>
             </main>
         </body>
     </html>
