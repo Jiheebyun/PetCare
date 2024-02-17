@@ -1,0 +1,12 @@
+
+
+
+.adaptionListsWrapper{
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(256px, 1fr)); /* 그리드 컬럼 설정 */
+    gap: 25px;
+    place-items: center;
+    grid-auto-flow: dense;
+    margin-bottom: 80px;
+}
