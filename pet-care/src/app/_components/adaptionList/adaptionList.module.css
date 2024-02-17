@@ -1,0 +1,33 @@
+
+
+
+
+.listWrapper{
+
+}
+
+.listImgContainer{
+
+}
+.petImgBox {
+    width: 256px;
+    height: 243px;
+}
+.petImgBox img{
+    width: 256px;
+    height: 243px;
+    border-radius: 10px;
+    box-sizing: border-box;
+}
+.listInfoContainer{
+    margin-top: 5px;
+    padding: 5px;
+    height: 60px;
+    display: flex;
+    flex-direction: column;
+}
+
+.petnameContainer{
+    display: flex;
+    justify-content: space-between;
+}

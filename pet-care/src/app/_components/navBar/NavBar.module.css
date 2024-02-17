@@ -4,6 +4,7 @@
     display: flex;
     flex-direction: column;
     padding-bottom: 15px;
+    border-bottom: 1px solid #EBEBEB;
 }
 
 .NavContainer{
@@ -76,8 +77,9 @@
     border-radius: 30px;
     border: 1px solid #DEDEDE;
     display: flex;
-    justify-content: right;
+    justify-content: space-between;
     align-items: center;
+    position: relative;
 }
 .searchBtnBox{
     width: 36px;
@@ -87,5 +89,18 @@
     justify-content: center;
     align-items: center;
     background-color: #64C6C4;
-    margin-right: 5px;
+    position: absolute;
+    right: 10px;
+}
+
+.searchBox input{
+    height: 30px;
+    width: 77%;
+    left: 20px;
+    position: absolute;
+    font-size: 18px;
+    border: none;
+}
+.searchBox input:focus{
+    outline:none;
 }
