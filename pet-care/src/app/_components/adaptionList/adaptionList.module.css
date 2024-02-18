@@ -31,3 +31,13 @@
     display: flex;
     justify-content: space-between;
 }
+
+.listInfoContainer a{
+    text-decoration: none; 
+    color: inherit;
+}
+.petnameContainer a{
+    text-align: center;  
+    text-decoration: none; 
+    color: inherit;
+}
