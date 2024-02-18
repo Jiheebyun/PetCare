@@ -1,0 +1,34 @@
+
+
+
+.listDatailWrapper{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.listDatailHeaderContainer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.listDatailHeaderContainer h2{
+    margin: 0;
+}
+
+
+.heartContainer{
+    width: 63px;
+    height: 33px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+}
+.heartContainer span{
+    margin-left: 10px;
+}
+.heartContainer:hover{
+    background-color: rgb(246, 246, 246);
+}

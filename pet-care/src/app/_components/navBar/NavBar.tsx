@@ -18,12 +18,15 @@ export default function MainNavBar() {
                 <div className={classes.NavContainer}>
                     <div className={classes.logoContainer}>
                         <div>
-                            <Image 
-                                src={"/img/petCareLogo.png"}
-                                alt={"logo"}
-                                width={55} 
-                                height={55}
-                            ></Image>
+                            <Link href={"/"}>
+                                <Image 
+                                    src={"/img/petCareLogo.png"}
+                                    alt={"logo"}
+                                    width={55} 
+                                    height={55}
+                                ></Image>
+                            </Link>
+
                         </div>
                     </div>
 
