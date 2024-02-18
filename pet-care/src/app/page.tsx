@@ -9,13 +9,16 @@ import MainAdaptionLists from "./_components/mainAdaptionLists/mainAdaptionLists
 
 
 export default function Home() {
+
+
+
     return (
         <>
             <div>
                 <MainFilter></MainFilter>
             </div>
 
-                <MainAdaptionLists></MainAdaptionLists>
+            <MainAdaptionLists></MainAdaptionLists>
         </>
   ); 
 }
