@@ -1,3 +1,7 @@
+
+
+
+import classes from './layout.module.css';
 import MainNavBar from "../_components/navBar/NavBar";
 
 
@@ -11,7 +15,16 @@ export default function MainLayout({
   }>) {
     return (
         <>
-            {children}
+            <div className={classes.adaptWrapper}>
+                <div className={classes.adaptContainer}>
+                    <MainNavBar></MainNavBar>
+
+                    <div>
+                    {children}
+                    </div>
+                </div>
+            </div>
+            
         </>
         
     );

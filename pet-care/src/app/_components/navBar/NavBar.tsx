@@ -1,5 +1,5 @@
 
-
+"use client"
 import React from "react";
 
 
@@ -8,13 +8,21 @@ import Image from "next/image";
 import Link from "next/link";
 import page from "../../(commu)/commu/page";
 
-import { useRouter } from 'next/navigation'
+import { useRouter, useSelectedLayoutSegments } from 'next/navigation'
 
 export default function MainNavBar() {
+    const segment = useSelectedLayoutSegments();
+    const isAdaptionDetail = segment[1] === "adapt" ? true : false;
+    console.log(segment)
+
+
+
+
     
     return (
         <>
-            <div className={classes.headerWrapper}>
+            {isAdaptionDetail ? null :
+            (<div className={classes.headerWrapper}>
                 <div className={classes.NavContainer}>
                     <div className={classes.logoContainer}>
                         <div>
@@ -68,7 +76,7 @@ export default function MainNavBar() {
                     </div>
                 </div>
             </div>
-        
+        )}
         </>
     )
 }
