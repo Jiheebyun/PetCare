@@ -32,3 +32,23 @@
 .heartContainer:hover{
     background-color: rgb(246, 246, 246);
 }
+
+.imageWrapper{
+    height: 400px;
+    background-color: aliceblue;
+    display: flex;
+
+}
+.leftImgContainer{
+    flex-grow: 1.5;
+    background-color: antiquewhite;
+}
+.midImgContainer{
+    flex-grow: 1;
+    background-color: rgb(159, 114, 56);
+}
+.rightImgContainer{    
+    flex-grow: 1;
+    background-color: rgb(157, 134, 104);
+
+}
