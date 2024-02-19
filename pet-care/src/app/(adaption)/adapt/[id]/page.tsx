@@ -25,7 +25,6 @@ export default function listDatail({params}:any){
                 </div>
 
                 <div>
-
                     <div> <h1> 이미지 부분</h1></div>
                 </div>
            </div>
