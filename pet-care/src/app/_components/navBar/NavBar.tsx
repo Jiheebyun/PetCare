@@ -16,6 +16,9 @@ export default function MainNavBar() {
     console.log(segment)
 
 
+
+
+    
     return (
         <>
             {isAdaptionDetail ? null :
