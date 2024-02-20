@@ -14,7 +14,7 @@ import Image from "next/image";
 export default function listDatail({ params }: { params: string }){
     const KEY = params;
     console.log(KEY);
-
+    //https://mycodings.fly.dev/blog/2022-09-08-all-about-nextjs-image-component :: 이미지태그 
     return (
         <>
            <div className={classes.listDatailWrapper}>
@@ -32,12 +32,33 @@ export default function listDatail({ params }: { params: string }){
                 </div>
                 <div className={classes.imageWrapper}>
                     <div className={classes.leftImgContainer}>
+                        <Image
+                            src={'/img/listDetail/dog1.png'}
+                            alt="dog"
+                            layout="fill"
+                            objectFit="cover"
+                            objectPosition="center"
+                        ></Image>
                         
                     </div>
                     <div className={classes.midImgContainer}>
+                        <Image
+                            src={'/img/listDetail/dog2.png'}
+                            alt="dog"
+                            layout="fill"
+                            objectFit="cover"
+                            objectPosition="center"
+                        ></Image>
 
                     </div>
                     <div className={classes.rightImgContainer}>
+                        <Image
+                            src={'/img/listDetail/dog3.png'}
+                            alt="dog"
+                            layout="fill"
+                            objectFit="cover"
+                            objectPosition="center"
+                        ></Image>
 
                     </div>
                 </div>
