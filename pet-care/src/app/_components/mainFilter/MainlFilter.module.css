@@ -19,6 +19,8 @@
 .dogFilterContainer a{
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     text-align: center;  
     text-decoration: none; /* 링크의 밑줄 제거 */  
     color: inherit; /* 링크의 색상 제거 */
@@ -31,6 +33,8 @@
 .catFilterContainer a{
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     margin-left: 20px;
     text-align: center;  
     text-decoration: none; /* 링크의 밑줄 제거 */  

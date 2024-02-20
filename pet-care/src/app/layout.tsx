@@ -6,6 +6,7 @@ import classes from "./page.module.css"
 import MainNavBar from "./_components/navBar/NavBar";
 import { useRouter } from "next/router";
 import { useSelectedLayoutSegment } from "next/navigation";
+import Footer from "./_components/footer/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -33,8 +34,8 @@ export default function RootLayout({
                 <div className={classes.contentContainer}>
                     {children}
                 </div>
-                <div className={"FOOOOOTER"}>
-                  
+                <div className={classes.footerContainer}>
+                    <Footer></Footer>
                 </div>
             </main>
         </body>

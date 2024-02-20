@@ -3,7 +3,7 @@
 
 .listDatailWrapper{
     margin-top: 20px;
-    margin-bottom: 20px;
+    margin-bottom: 40px;
 }
 
 .listDatailHeaderContainer{
@@ -28,27 +28,49 @@
 }
 .heartContainer span{
     margin-left: 10px;
+    font-weight: 700;
 }
 .heartContainer:hover{
     background-color: rgb(246, 246, 246);
 }
 
 .imageWrapper{
-    height: 400px;
-    background-color: aliceblue;
+    margin: 20px 0 20px 0;
+    height: 50vh;
     display: flex;
+    justify-content: space-between;
 
 }
 .leftImgContainer{
     flex-grow: 1.5;
-    background-color: antiquewhite;
+    max-width: 100%;
+    height: auto;
+    overflow: hidden;
+    position: relative;
+
+    border-radius: 20px 0 0 20px;
+}
+.leftImgContainer img{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 .midImgContainer{
     flex-grow: 1;
-    background-color: rgb(159, 114, 56);
+    max-width: 100%;
+    height: auto;
+    overflow: hidden;
+    position: relative;
 }
 .rightImgContainer{    
     flex-grow: 1;
-    background-color: rgb(157, 134, 104);
+    max-width: 100%;
+    height: auto;
+    overflow: hidden;
+    position: relative;
 
+    border-radius: 0px 20px 20px 0px;
 }
