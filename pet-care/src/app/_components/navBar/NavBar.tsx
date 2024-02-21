@@ -6,7 +6,6 @@ import React from "react";
 import classes from "./NavBar.module.css";
 import Image from "next/image";
 import Link from "next/link";
-import page from "../../(commu)/commu/page";
 
 import { useRouter, useSelectedLayoutSegments } from 'next/navigation'
 
@@ -41,7 +40,7 @@ export default function MainNavBar() {
                     <div className={classes.navbarContainer}>
                         <div className={classes.navMenuContainer}>
                             <Link href={''}>입양</Link>
-                            <Link href={'../../(commu)/commu/page'}>커뮤니티</Link> 
+                            <Link href={`/commu/`}>커뮤니티</Link> 
 
                         </div>
                     </div>
