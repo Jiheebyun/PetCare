@@ -20,7 +20,7 @@ export default function MainLayout({
                     <MainNavBar></MainNavBar>
 
                     <div>
-                    {children}
+                      {children}
                     </div>
                 </div>
             </div>

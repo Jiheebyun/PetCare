@@ -1,6 +1,5 @@
 
 
-
 .listDatailWrapper{
     margin-top: 20px;
     margin-bottom: 40px;
@@ -15,8 +14,6 @@
 .listDatailHeaderContainer h2{
     margin: 0;
 }
-
-
 .heartContainer{
     width: 63px;
     height: 33px;
@@ -34,43 +31,128 @@
     background-color: rgb(246, 246, 246);
 }
 
-.imageWrapper{
-    margin: 20px 0 20px 0;
-    height: 50vh;
-    display: flex;
-    justify-content: space-between;
 
-}
-.leftImgContainer{
-    flex-grow: 1.5;
-    max-width: 100%;
-    height: auto;
-    overflow: hidden;
-    position: relative;
 
-    border-radius: 20px 0 0 20px;
-}
-.leftImgContainer img{
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
+
+
+.detailInfoWrapper{
     height: 100%;
-    object-fit: cover;
+    display: flex;
 }
-.midImgContainer{
-    flex-grow: 1;
-    max-width: 100%;
-    height: auto;
-    overflow: hidden;
-    position: relative;
+.detailInfoContainer{
+    height: 100%;
+    flex: 7.5;
 }
-.rightImgContainer{    
-    flex-grow: 1;
-    max-width: 100%;
-    height: auto;
-    overflow: hidden;
-    position: relative;
 
-    border-radius: 0px 20px 20px 0px;
+.detailContainer{
+    padding: 10px;
+    width: 90%;
+    height: 30%;
+    border-bottom: 1px solid rgb(221, 221, 221);
+    padding-bottom: 30px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+}
+.detailInfoGroup{
+    display: flex;
+    flex-direction: column;
+
+}
+
+
+
+
+.eachInfo{
+    width: 100%;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+.info{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.info label {
+    margin-left: 10px;
+    font-weight: 700;
+    color: #575757;
+}
+
+
+
+
+
+
+
+
+
+.contactContainer{
+    height: 100%;
+    flex-grow: 1;
+    position: sticky;
+    top: 10px;
+    
+}
+.contactInfoContainer{
+    width: 75%;
+    height: 200px;
+    border: 1px solid rgb(221, 221, 221);
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.contactInfoContainer h3 {
+    margin-top: 0;
+}
+
+.contactBtnContainer{
+    width: 100%;
+    height: 20%;
+    display: flex;
+    justify-content: center;
+}
+.contactBtnContainer button{
+    width: 70%;
+    height: 100%;
+    border-radius: 10px;
+    font-weight: 800;
+    border: none;
+    background-color: #64C6C4;
+}
+.adviceContainer p{
+    font-size: 12px;
+    color: red;
+}
+
+
+
+
+
+.detailIntroContainer{
+    width: 90%;
+    border-bottom: 1px solid rgb(221, 221, 221);
+    padding: 10px 0px;
+}
+
+.IntroContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.intro{
+    width: 90%;
+}
+.intro p {
+    font-size: 15px;
+    line-height: 3.1;
 }
