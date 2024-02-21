@@ -1,0 +1,119 @@
+.imageWrapper{
+    margin: 20px 0 20px 0;
+    height: 50vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+.leftImgContainer{
+    /* flex-grow: 1.5;
+    max-width: 100%;
+    height: auto;
+    overflow: hidden;
+    position: relative;
+    border-radius: 20px 0 0 20px; */
+}
+
+.imageLeftSideContainer{
+    height: 100%;
+    flex-grow: 2;
+    position: relative;
+}
+
+.imageRightSideContainer{
+    height: 100%;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    margin-left: 5px;
+    position: relative;
+}
+
+.leftImgContainer{
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+    border-radius: 20px 0px 0px 20px;
+    background-color: bisque;
+}
+.rightTopImgContainer{
+    flex-grow: 1;
+    max-width: 100%;
+    height: auto;
+    overflow: hidden;
+    position: relative;
+    border-radius: 0px 20px 0px 0px;
+}
+.rightBottomImgContainer{    
+    flex-grow: 1;
+    max-width: 100%;
+    height: auto;
+    overflow: hidden;
+    position: relative;
+    border-radius: 0px 0px 20px 0px;
+    margin-top: 5px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media screen and (max-width: 950px) {
+    .imageWrapper {
+        height: 80vh;
+        display: flex;
+        flex-direction: column; 
+        justify-content: space-between; 
+        align-items: center; 
+    }
+    .imageLeftSideContainer{
+        width: 100%; 
+        height: 100%; 
+        border-radius: 20px;
+        margin-bottom: 5px;
+    }
+    .imageRightSideContainer
+    {
+        flex-grow: 1;
+        width: 100%; 
+        height: 100%; 
+        display: flex;
+        flex-direction: row;
+    }
+    .leftImgContainer{
+        border-radius: 20px;
+    }
+    .rightTopImgContainer{
+        flex-grow: 1;
+        width: 100%; 
+        height: 100%; 
+        border-radius: 20px 0 0 20px;
+    }
+    .rightBottomImgContainer {
+        flex-grow: 1;
+        overflow: hidden;
+        margin-top: 0px;
+        width: 100%; 
+        height: 100%; 
+        border-radius: 0px 20px 20px 0px; 
+    }
+}
