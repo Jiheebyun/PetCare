@@ -1,39 +1,76 @@
 .community {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-    padding: 20px;
+    margin: 20px;
 }
 
-.freeBoard,
-.news {
-    background-color: #fff;
+.freeBoard {
     padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.freeBoard h2,
-.news h2 {
+.freeBoard h2 {
+    height: 45px;
+    line-height: 43px;
+    color: #333;
+    font-size: 24px;
     margin-bottom: 10px;
+    border-bottom:1px solid #eee;
+    border-bottom-width: 2px;
+    font-size: 18px;
 }
-
-.freeBoard ul,
-.news ul {
-    padding: 0;
-    list-style-type: none;
+/* 더보기 */
+.freeBoard h2 a:nth-child(3){
+    float:right;
+    top: -2px;
+    right: 0;
+    padding-right: 16px;
+    color: #222;
+    font-size: 12px;
+    font-weight:400;
 }
-
-.freeBoard li,
-.news li {
-    margin-bottom: 10px;
+.freeBoard a {
+    color: inherit;
 }
-
-.link {
-    color: #007bff;
+.freeBoardTable {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top:15px;
+    font-size:14px;
+}
+.freeBoardTable svg{
+    color:#94969b;
+}
+/* 글 타이틀 */
+.freeBoardTable a:nth-child(1){
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+/* 좋아요,싫어요 숫자 */
+.freeBoardTable a:nth-child(3),.freeBoardTable a:nth-child(2){
+    color:#94969b;
+}
+.good, .bad{
+    float:right;
+    margin-right:5px;
+}
+.good svg,.bad svg{
+    width:16px;
+    margin:0px 3px -7px 0;
+}
+.boardLink {
+    color: #0070f3;
     text-decoration: none;
 }
 
-.link:hover {
+.boardLink:hover {
     text-decoration: underline;
+}
+
+.boardId {
+    width: 10%;
+}
+
+.boardTitle {
+    width: 90%;
 }
