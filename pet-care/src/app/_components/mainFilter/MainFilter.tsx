@@ -12,7 +12,7 @@ export default function MainFilter () {
         <>
         <div className={classes.mainFilterWrapper}>
             <div className={classes.dogFilterContainer}>
-                <Link href={''}>
+                <Link className={classes.dogFilterStyle} href={''}>
                     <Image src={'/img/dogIcon.png'} width={35} height={35} alt="dog"></Image>
                     <span>댕댕이</span>
                 </Link>

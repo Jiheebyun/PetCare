@@ -1,52 +1,15 @@
 
 
-"use client"
-
-
-""
 import React from "react";
-import { useRouter } from "next/router";
-import { useSearchParams, useSelectedLayoutSegment } from "next/navigation";
 
-import classes from "./page.module.css";
 import Image from "next/image";
-import DetailListIMG from "./_components/detailListIMG/DetailListIMG";
-
-export default function listDatail({ params }: { params: string }){
-    const KEY = params;
-    console.log(KEY);
-    //https://mycodings.fly.dev/blog/2022-09-08-all-about-nextjs-image-component :: 이미지태그 
+import classes from "./DetailContent.module.css";
 
 
-    const extractLocationHandler = () =>{
-        const example =  "무화(마포센터-임시보호중)";
 
-        const firstIndex = example.indexOf('(');
-        const lastIndex = example.indexOf(')');
-        const resultLocation = example.substring(firstIndex, lastIndex);
-
-        return resultLocation
-    };
-
+export default function DetailContent (){
     return (
         <>
-           <div className={classes.listDatailWrapper}>
-                <div className={classes.listDatailHeaderContainer}>
-                    <h2>활발하고 사람들에게 순한 코코</h2>
-                    <div className={classes.heartContainer}>
-                        <Image
-                            src={"/img/listDetail/emptyHeart.png"}
-                            width={17}
-                            height={17}
-                            alt="heart"
-                        ></Image>
-                        <span>저장</span>
-                    </div>
-                </div>
-                <div>
-                    <DetailListIMG></DetailListIMG>
-                </div>
-                <div className={classes.detailInfoWrapper}>
                     <div className={classes.detailInfoContainer}>
                         <div className={classes.detailContainer}>
                                 <div className={classes.eachInfo}>
@@ -153,29 +116,8 @@ export default function listDatail({ params }: { params: string }){
                                 </section>
                             </div>
                         </div>
-
-
-
                     </div>
-
-
-
-                    <div className={classes.contactContainer}>
-                        <div className={classes.contactInfoContainer}>
-                                <h4> 서울동물복지지원센터 </h4> 
-                                {/* "nm":"무화(마포센터-임시보호중)"}, */}
-                            <div className={classes.contactBtnContainer}>
-                                <button type="button" >입양절차 알아보기</button>
-                            </div>
-                            <div className={classes.adviceContainer}> 
-                                <p> 입양은 신중하게 !</p>
-                                <p> 책임은 끝까지 !</p>
-                            </div>
-                        
-                        </div>
-                    </div>
-                </div>
-           </div>
+        
         </>
     )
 }

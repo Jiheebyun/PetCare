@@ -1,21 +1,24 @@
 
 "use client"
-import React from "react";
+import React, { useState } from "react";
 
 
 import classes from "./NavBar.module.css";
 import Image from "next/image";
 import Link from "next/link";
-import page from "../../(commu)/commu/page";
 
 import { useRouter, useSelectedLayoutSegments } from 'next/navigation'
+import ProfileBtnModal from "../profileModal/ProfileBtnModal";
 
 export default function MainNavBar() {
+    const [ isProfileModal, setIsProfileModal ] = useState(false);
     const segment = useSelectedLayoutSegments();
     const isAdaptionDetail = segment[1] === "adapt" ? true : false;
     console.log(segment)
 
-
+    const profileModalHandler = (): void => {
+        setIsProfileModal((prev)=>!prev);
+    }
 
 
     
@@ -40,8 +43,8 @@ export default function MainNavBar() {
 
                     <div className={classes.navbarContainer}>
                         <div className={classes.navMenuContainer}>
-                            <Link href={''}>입양</Link>
-                            <Link href={'../../(commu)/commu/page'}>커뮤니티</Link> 
+                            <Link href={'/'}>입양</Link>
+                            <Link href={`/commu/`}>커뮤니티</Link> 
 
                         </div>
                     </div>
@@ -50,7 +53,10 @@ export default function MainNavBar() {
                         <div className={classes.textContainer}>
                             <span>사지말고 펫케어에서 입양하세요</span>
                         </div>
-                        <div className={classes.profileIconContainer}>
+                        <div 
+                            className={classes.profileIconContainer} 
+                            onClick={ profileModalHandler} 
+                        >
                             <Image
                                 src={'/img/profileLines.png'}
                                 alt="lines"
@@ -75,6 +81,13 @@ export default function MainNavBar() {
                         </div>
                     </div>
                 </div>
+
+                {isProfileModal ? 
+                    <ProfileBtnModal 
+                        setIsProfileModal={setIsProfileModal}
+                        isProfileModal={isProfileModal}
+                    ></ProfileBtnModal>
+                    : null}
             </div>
         )}
         </>

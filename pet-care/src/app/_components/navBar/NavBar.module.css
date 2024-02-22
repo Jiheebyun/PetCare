@@ -57,6 +57,10 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
+    cursor: pointer;
+}
+.profileIconContainer:hover{
+    box-shadow: 0 5px 5px -6px;
 }
 
 .profileContainer span{
@@ -103,4 +107,12 @@
 }
 .searchBox input:focus{
     outline:none;
+}
+
+
+
+@media screen and (max-width: 720px) { 
+    .profileIconContainer {
+        display: none; 
+    }
 }
