@@ -21,19 +21,18 @@ export default function ProfileBtnModal ({setIsProfileModal, isProfileModal}: Pr
     const useOnClickOutside = (ref: any, handler:any) => {
 
         useEffect(() => {
-          const listener = (e: Event): void => {
-            if (!ref.current || ref.current.contains(e.target)) {
-                return
-            };
-            handler();
-          };
-          document.addEventListener("mousedown", listener);
-      
-          return () => {
-            document.removeEventListener("mousedown", listener);
-          };
+                const listener = (e: Event): void => {
+                    if (!ref.current || ref.current.contains(e.target)) {
+                        return
+                    };
+                    handler(false);
+                  };
+                  document.addEventListener("click", listener);
+                  return () => {
+                    document.removeEventListener("click", listener);
+                  };
         }, [ref, handler]);
-    }
+    };
 
     useOnClickOutside(modalRef, () => { setIsProfileModal(false)});
 
