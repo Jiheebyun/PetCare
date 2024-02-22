@@ -18,3 +18,36 @@
 
 
 
+
+/* not-fount.tsx 페이지 */
+
+.notFoundWrapper {
+    width: 100%;
+    height: 90vh;
+}
+
+.notFoundContentContainer{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px 0px;
+}
+
+.notFoundLeftContent{
+    height: 100%;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+.notFoundLeftContent h1{
+    font-size: 50px;
+}
+.warningIconContainer{
+    width: 300px; 
+    height:300px;
+
+}
+
