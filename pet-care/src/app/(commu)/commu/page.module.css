@@ -1,0 +1,39 @@
+.community {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    padding: 20px;
+}
+
+.freeBoard,
+.news {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.freeBoard h2,
+.news h2 {
+    margin-bottom: 10px;
+}
+
+.freeBoard ul,
+.news ul {
+    padding: 0;
+    list-style-type: none;
+}
+
+.freeBoard li,
+.news li {
+    margin-bottom: 10px;
+}
+
+.link {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.link:hover {
+    text-decoration: underline;
+}
