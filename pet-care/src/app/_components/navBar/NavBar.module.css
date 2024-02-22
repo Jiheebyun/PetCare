@@ -108,3 +108,11 @@
 .searchBox input:focus{
     outline:none;
 }
+
+
+
+@media screen and (max-width: 720px) { 
+    .profileIconContainer {
+        display: none; 
+    }
+}

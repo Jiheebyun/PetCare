@@ -82,7 +82,12 @@ export default function MainNavBar() {
                     </div>
                 </div>
 
-                {isProfileModal ? <ProfileBtnModal></ProfileBtnModal>: null}
+                {isProfileModal ? 
+                    <ProfileBtnModal 
+                        setIsProfileModal={setIsProfileModal}
+                        isProfileModal={isProfileModal}
+                    ></ProfileBtnModal>
+                    : null}
             </div>
         )}
         </>
