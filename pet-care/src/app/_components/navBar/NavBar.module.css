@@ -57,6 +57,10 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
+    cursor: pointer;
+}
+.profileIconContainer:hover{
+    box-shadow: 0 5px 5px -6px;
 }
 
 .profileContainer span{
