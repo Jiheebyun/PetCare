@@ -11,6 +11,7 @@
     border: 1px solid #EBEBEB;
     top: 80px;
     right: 48px;
+    z-index: 5;
 }
 
 .modalList{
@@ -54,9 +55,9 @@
 
 
 
-@media screen and (max-width: 720px) { /* Change 600 to desired screen size */
+@media screen and (max-width: 720px) { 
     .profileModalWrapper {
-        display: none; /* Hide modal */
+        display: none; 
     }
 }
 
