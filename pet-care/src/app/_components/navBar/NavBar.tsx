@@ -14,13 +14,10 @@ export default function MainNavBar() {
     const [ isProfileModal, setIsProfileModal ] = useState(false);
     const segment = useSelectedLayoutSegments();
     const isAdaptionDetail = segment[1] === "adapt" ? true : false;
-    console.log(segment)
 
     const profileModalHandler = (): void => {
-        setIsProfileModal((prev)=>!prev);
-    }
-
-
+        setIsProfileModal((prev: boolean)=>!prev);
+    };
     
     return (
         <>
@@ -55,7 +52,7 @@ export default function MainNavBar() {
                         </div>
                         <div 
                             className={classes.profileIconContainer} 
-                            onClick={ profileModalHandler} 
+                            onClick={()=>profileModalHandler()} 
                         >
                             <Image
                                 src={'/img/profileLines.png'}
