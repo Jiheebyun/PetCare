@@ -42,10 +42,8 @@ export default function MainNavBar() {
                         <div className={classes.navMenuContainer}>
                             <Link href={'/'}>입양</Link>
                             <Link href={`/commu/`}>커뮤니티</Link> 
-
                         </div>
                     </div>
-
                     <div className={classes.profileContainer}>
                         <div className={classes.textContainer}>
                             <span>사지말고 펫케어에서 입양하세요</span>
