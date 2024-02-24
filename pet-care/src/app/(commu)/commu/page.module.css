@@ -74,3 +74,45 @@
 .boardTitle {
     width: 90%;
 }
+
+/* 자유게시판 */
+.news{
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0;
+}
+.newsList{
+    margin-bottom: 20px;
+    width: calc(50% - 10px);
+}
+.newsList:nth-child(2n) {
+    margin-left: 20px;
+}
+.newsList a{
+    align-items: center;
+    border: 1px solid #eee;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    min-height: 120px;
+    padding: 19px;
+    text-decoration: none;
+    width: 100%;
+}
+.newsList a div span{
+    padding-right: 11px;
+}
+.newsListDate{
+    align-items: center;
+    color: #959595;
+    display: flex;
+    font-size: 12px;
+    line-height: 20px;
+    margin-top: 9px;
+    /* width: 330px; */
+}
+.newListImg{
+    height: 80px;
+    margin-left: 20px;
+    width: 80px;
+}
