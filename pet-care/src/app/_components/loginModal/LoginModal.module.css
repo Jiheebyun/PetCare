@@ -1,0 +1,26 @@
+
+
+
+.loginContainer{
+    width: 40vw;
+    min-width: 340px;
+    max-width: 500px;
+    height: 600px;
+    background-color: rgb(233, 211, 211);
+    border-radius: 20px;
+    position: absolute;
+    padding: 25px;
+    right: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+
+.loginHeaderContainer{
+
+
+}
+
+

@@ -16,12 +16,15 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({
+  modal,
   children,
 }: Readonly<{
+  modal: React.ReactNode,
   children: React.ReactNode;
 }>) {
 
 
+  console.log(modal)
 
   return (
     <html lang="en">
@@ -37,6 +40,7 @@ export default function RootLayout({
                 <div className={classes.footerContainer}>
                     <Footer></Footer>
                 </div>
+                {modal}
             </main>
         </body>
     </html>
