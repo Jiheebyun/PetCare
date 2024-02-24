@@ -18,7 +18,8 @@ export default function MainNavBar() {
     const profileModalHandler = (): void => {
         setIsProfileModal((prev: boolean)=>!prev);
     };
-    
+
+
     return (
         <>
             {isAdaptionDetail ? null :

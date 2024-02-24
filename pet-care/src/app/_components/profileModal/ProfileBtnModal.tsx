@@ -47,7 +47,7 @@ export default function ProfileBtnModal ({setIsProfileModal, isProfileModal}: Pr
 
                     </li>
                     <li>
-                        <Link href={'/'} className={classes.LinkStyle}>로그인</Link>
+                        <Link href={'/login'} className={classes.LinkStyle}>로그인</Link>
                     </li>
                     <li>
                     <Link href={'/'} className={classes.LinkStyle}>도움말 센터</Link>
