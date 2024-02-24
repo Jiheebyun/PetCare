@@ -27,3 +27,6 @@ a {
   text-decoration: none;
   cursor: pointer;
 }
+dl, li, menu, ol, ul {
+  list-style: none;
+}
