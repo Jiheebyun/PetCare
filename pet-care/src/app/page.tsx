@@ -9,9 +9,6 @@ import MainAdaptionLists from "./_components/mainAdaptionLists/mainAdaptionLists
 
 
 export default function Home() {
-
-
-
     return (
         <>
             <div>
