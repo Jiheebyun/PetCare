@@ -36,6 +36,10 @@ export default function ProfileBtnModal ({setIsProfileModal, isProfileModal}: Pr
 
     useOnClickOutside(modalRef, () => { setIsProfileModal(false)});
 
+    const offModal = () =>{
+        setIsProfileModal(false);
+    };
+
     return (
         <>
             <div className={classes.profileModalWrapper}>
@@ -43,11 +47,10 @@ export default function ProfileBtnModal ({setIsProfileModal, isProfileModal}: Pr
                     ref={modalRef} 
                 >
                     <li>
-                        <Link href={'/'} className={classes.LinkStyle}>회원가입</Link>
-
+                        <Link href={'/'} className={classes.LinkStyle} onClick={offModal}>회원가입</Link>
                     </li>
                     <li>
-                        <Link href={'/login'} className={classes.LinkStyle}>로그인</Link>
+                        <Link href={'/login'} className={classes.LinkStyle} onClick={offModal}>로그인</Link>
                     </li>
                     <li>
                     <Link href={'/'} className={classes.LinkStyle}>도움말 센터</Link>
