@@ -1,0 +1,26 @@
+
+
+
+
+
+
+.googleBtnContainer{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.googleBtnContainer button{
+    width: 100%;
+    height: 40px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+    border: 1px solid #222222;
+}
+.googleBtnContainer button:hover{
+    background-color: #f5f5f5;
+}
+.googleIcon{
+    position: absolute;
+    left: 50px;
+}
