@@ -1,4 +1,5 @@
 import React from 'react';
+import tempData from '../ tempData.json';
 
 interface FreeBoardItem {
     id: number;
