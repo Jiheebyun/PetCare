@@ -39,8 +39,10 @@
     margin: 0px;
 }
 .cancelIconContainer{
+    height: 20px;
     position:absolute;
     left: 25px;
+    cursor: pointer;
 }
 
 
