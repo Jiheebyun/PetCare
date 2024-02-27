@@ -7,6 +7,7 @@ import classes from "./ProfileBtnModal.module.css";
 import Link from "next/link";
 import { useSelectedLayoutSegments } from "next/navigation";
 import { BloomFilter } from "next/dist/shared/lib/bloom-filter";
+import { useOnClickOutside } from "@/hooks/useOnClickOutside";
 
 interface Props {
     isProfileModal: boolean
@@ -17,24 +18,9 @@ export default function ProfileBtnModal ({setIsProfileModal, isProfileModal}: Pr
 
     const modalRef = useRef(null);
 
-    //Hooks - Hooks 폴더를 따로 만들어 hooks만 관리할 예정입니다.
-    const useOnClickOutside = (ref: any, handler:any) => {
-
-        useEffect(() => {
-                const listener = (e: Event): void => {
-                    if (!ref.current || ref.current.contains(e.target)) {
-                        return
-                    };
-                    handler(false);
-                  };
-                  document.addEventListener("click", listener);
-                  return () => {
-                    document.removeEventListener("click", listener);
-                  };
-        }, [ref, handler]);
-    };
-
     useOnClickOutside(modalRef, () => { setIsProfileModal(false)});
+
+    const offModal = () =>{ setIsProfileModal(false) };
 
     return (
         <>
@@ -43,11 +29,10 @@ export default function ProfileBtnModal ({setIsProfileModal, isProfileModal}: Pr
                     ref={modalRef} 
                 >
                     <li>
-                        <Link href={'/'} className={classes.LinkStyle}>회원가입</Link>
-
+                        <Link href={'/'} className={classes.LinkStyle} onClick={offModal}>회원가입</Link>
                     </li>
                     <li>
-                        <Link href={'/'} className={classes.LinkStyle}>로그인</Link>
+                        <Link href={'/login'} className={classes.LinkStyle} onClick={offModal}>로그인</Link>
                     </li>
                     <li>
                     <Link href={'/'} className={classes.LinkStyle}>도움말 센터</Link>
