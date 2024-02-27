@@ -1,5 +1,4 @@
 import React from 'react';
-import tempData from '../ tempData.json';
 
 interface FreeBoardItem {
     id: number;
@@ -27,7 +26,7 @@ const freeBoardItems: FreeBoardItem[] = [
     // 추가적인 게시글 데이터 추가
 ];
 
-const FreeBoardPage: React.FC = () => {
+export default function DetailContent() {
     return (
         <div>
             <h1>자유게시판</h1>
@@ -41,7 +40,7 @@ const FreeBoardPage: React.FC = () => {
                         <th>작성일</th>
                     </tr>
                 </thead>
-                <tbody>
+                {/* <tbody>
                     {freeBoardItems.map(item => (
                         <tr key={item.id}>
                             <td>{item.id}</td>
@@ -51,10 +50,9 @@ const FreeBoardPage: React.FC = () => {
                             <td>{item.createdAt}</td>
                         </tr>
                     ))}
-                </tbody>
+                </tbody> */}
             </table>
         </div>
     );
 }
 
-export default FreeBoardPage;

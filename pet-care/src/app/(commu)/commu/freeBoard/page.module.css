@@ -1,0 +1,226 @@
+.freeBoard {
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.freeBoard h2 {
+    height: 45px;
+    line-height: 43px;
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 10px;
+    border-bottom:1px solid #eee;
+    border-bottom-width: 2px;
+    font-size: 18px;
+}
+.articleList{
+    overflow: hidden;
+    display: flex;
+    -ms-display: flexbox;
+    flex-wrap: wrap;
+}
+
+.articleList .articleListPre h3 {
+    margin-top: 2px;
+}
+.articleList .articleListPre .preTxt {
+    margin-top: 8px;
+}
+.articleList .articleListPre {
+    position: relative;
+    width: 100%;
+    margin: 0 20px;
+    padding: 24px 0;
+    border-bottom: 1px solid #eee;
+}
+.articleList .articleListPre h3 a {
+    display: -webkit-box;
+    overflow: hidden;
+    line-height: 1.25em;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    word-wrap: break-word;
+    box-sizing: border-box;
+    max-height: 40px;
+    font-weight: bold;
+    line-height: 1.25em;
+    word-break: break-word;
+}
+.articleList .articleListPre .preTxt a {
+    display: -webkit-box;
+    overflow: hidden;
+    line-height: 1.33em;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    word-wrap: break-word;
+    box-sizing: border-box;
+    max-height: 40px;
+    font-size: 14px;
+    line-height: 1.43em;
+    word-break: break-word;
+}
+.articleList .articleListPre .attach-img-pre .tit {
+    min-height: 80px;
+}
+.articleList .articleListPre .tit {
+    position: relative;
+}
+.attachImg {
+    position: relative;
+    display: inline-block;
+    margin-top: 24px;
+}
+.articleList .articleListPre .attachImg img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.articleList .articleListPre .attachImg {
+    position: absolute;
+    top: 0;
+    right: 0;
+    overflow: hidden;
+    display: block;
+    width: 80px;
+    height: 80px;
+    background-color: #e7e7e7;
+}
+.articleList .articleListPre .tit .attachImg {
+    margin-top: 0;
+}
+.name {
+    display: flex;
+    align-items: center;
+    margin-top: 16px;
+    font-size: 12px;
+    line-height: 16px;
+}
+.wrapInfo {
+    position: relative;
+    margin-top: 8px;
+    font-size: 12px;
+}
+.name a {
+    margin-right: 4px;
+}
+.wrapInfo span, .wrapInfo a {
+    margin-right: 14px;
+    color: #94969b;
+    vertical-align: top;
+}
+.wrapInfo span, .wrapInfo a {
+    margin-right: 14px;
+    color: #94969b;
+    vertical-align: top;
+}
+.wrapInfo .date {
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 12px;
+}
+.create{
+    background-color: white;
+    color: #92c14c;
+    font-size: 15px;
+    border-radius: 10px;
+    border: 2px solid #92c14c;
+    padding: 0;
+    cursor: pointer;
+    width: 80px;
+    height: 33px;
+    float: right;
+    font-weight: 600;
+}
+.create:hover{
+    background-color: #92c14c;
+    color:white;
+    border:2px solid #92c14c;
+}
+@media screen and (min-width: 1100px){
+    .articleList .articleListPre:nth-child(1n) {
+        width: 50%;
+        padding-right: 20px;
+        border-right: 1px solid #eee;
+    }
+    .articleList .articleListPre:nth-child(1n+1) {
+        padding-left: 20px;
+    }
+    .articleList .articleListPre {
+        width: 50%;
+        margin: 0;
+        box-sizing: border-box;
+        padding-top: 39px;
+        padding-bottom: 79px;
+    }
+    .articleList .articleListPre .sub {
+        position: absolute;
+        bottom: 24px;
+        width: 100%;
+        min-height: 40px;
+        padding-right: 27px;/*임의*/
+        box-sizing: border-box;
+    }
+    .articleList .articleListPre h3 {
+        margin-top: 0;
+    }
+    .articleList .articleListPre .preTxt {
+        margin-top: 4px;
+    }
+    .articleList .articleListPre h3 a {
+        height: 52px;
+        max-height: 52px;
+        margin-top: 1px;
+        font-size: 18px;
+        line-height: 1.4em;
+    }
+    .articleList .articleListPre .preTxt a {
+        height: 43px;
+        max-height: 43px;
+        margin-top: 4px;
+        font-size: 14px;
+        line-height: 1.5em;
+    }
+    /* .articleList .articleListPre .sub {
+        position: absolute;
+        bottom: 24px;
+        width: 100%;
+        min-height: 40px;
+        padding-right: 20px;
+        box-sizing: border-box;
+    } */
+    .attachImg {
+        max-width: 364px;
+        margin-top: 46px;
+    }
+    .articleList .articleListPre .attachImg{
+        top: 0;
+    }
+    /* .articleList .articleListPre .sub {
+        position: absolute;
+        bottom: 24px;
+        width: 100%;
+        min-height: 40px;
+        padding-right: 20px;
+        box-sizing: border-box;
+    } */
+    .articleList .articleListPre .name {
+        font-size: 12px;
+    }
+    .name {
+        font-size: 14px;
+    }
+    .articleList .articleListPre .wrapInfo {
+        margin-top: 8px;
+    }
+    .wrapInfo {
+        margin-top: 15px;
+    }
+} 

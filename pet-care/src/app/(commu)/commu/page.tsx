@@ -16,7 +16,7 @@ export default function Community({ freeBoardItems }: CommunityProps) {
     return (
         <div className={styles.community}>
             <section className={styles.freeBoard}>
-                <h2><PetsIcon/><Link href="">자유게시판</Link><a>더보기 {'>'}</a></h2>
+                <h2><PetsIcon/><Link href="/commu/freeBoard">자유게시판</Link><Link href="/commu/freeBoard">더보기 {'>'}</Link></h2>
                 <div className={styles.freeBoardTable}>
                     <a>뿡빵이 자랑해요</a>
                     <a className={styles.bad}><ChatBubbleOutlineIcon />3</a>
@@ -49,7 +49,7 @@ export default function Community({ freeBoardItems }: CommunityProps) {
                 </div>
             </section>
             <section className={styles.freeBoard}>
-                <h2><LibraryBooksIcon/><Link href="">펫케어 뉴스</Link><a>더보기 {'>'}</a></h2>
+                <h2><LibraryBooksIcon/><Link href="/commu/news">펫케어 뉴스</Link><Link href="/commu/news">더보기 {'>'}</Link></h2>
                 <ul className={styles.news}>
                     <li className={styles.newsList}>
                         <a>
