@@ -29,13 +29,19 @@ export default function ProfileBtnModal ({setIsProfileModal, isProfileModal}: Pr
                     ref={modalRef} 
                 >
                     <li>
-                        <Link href={'/'} className={classes.LinkStyle} onClick={offModal}>회원가입</Link>
+                        <Link href={'/login'} className={classes.LinkStyle} onClick={offModal}>
+                            <span>회원가입</span>
+                        </Link>
                     </li>
                     <li>
-                        <Link href={'/login'} className={classes.LinkStyle} onClick={offModal}>로그인</Link>
+                        <Link href={'/login'} className={classes.LinkStyle} onClick={offModal}>
+                            <span>로그인</span>
+                        </Link>
                     </li>
                     <li>
-                    <Link href={'/'} className={classes.LinkStyle}>도움말 센터</Link>
+                        <Link href={'/'} className={classes.LinkStyle}>
+                            <span>도움말 센터</span>
+                        </Link>
                     </li>
                 </ul>
 
