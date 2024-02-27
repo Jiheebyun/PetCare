@@ -24,8 +24,9 @@
 }
 
 a {
-  text-decoration: none;
-  cursor: pointer;
+    text-decoration: none;
+    color: #222;
+    cursor: pointer;
 }
 dl, li, menu, ol, ul {
   list-style: none;
