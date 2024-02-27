@@ -1,13 +1,13 @@
 
 import Link from "next/link";
-import PetsIcon from '@mui/icons-material/Pets';
 import styles from "./page.module.css";
 import Image from "next/image";
+import LibraryBooksIcon from '@mui/icons-material/LibraryBooks';
 export default function FreeBoard() {
     return (
        <div>
         <section className={styles.freeBoard}>
-        <h2><PetsIcon/>자유게시판<button  className={styles.create}>글쓰기</button></h2>
+        <h2><LibraryBooksIcon/>펫케어 뉴스</h2>
         <div className={styles.articleList}>
             <div className={styles.articleListPre} >
                 <div className={styles.tit}>
