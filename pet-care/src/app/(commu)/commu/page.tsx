@@ -16,7 +16,7 @@ export default function Community({ freeBoardItems }: CommunityProps) {
     return (
         <div className={styles.community}>
             <section className={styles.freeBoard}>
-                <h2><PetsIcon/><Link href="">자유게시판</Link><a>더보기 {'>'}</a></h2>
+                <h2><PetsIcon/><Link href="/commu/freeBoard">자유게시판</Link><a>더보기 {'>'}</a></h2>
                 <div className={styles.freeBoardTable}>
                     <a>뿡빵이 자랑해요</a>
                     <a className={styles.bad}><ChatBubbleOutlineIcon />3</a>

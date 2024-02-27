@@ -41,7 +41,7 @@ const FreeBoardPage: React.FC = () => {
                         <th>작성일</th>
                     </tr>
                 </thead>
-                <tbody>
+                {/* <tbody>
                     {freeBoardItems.map(item => (
                         <tr key={item.id}>
                             <td>{item.id}</td>
@@ -51,7 +51,7 @@ const FreeBoardPage: React.FC = () => {
                             <td>{item.createdAt}</td>
                         </tr>
                     ))}
-                </tbody>
+                </tbody> */}
             </table>
         </div>
     );
