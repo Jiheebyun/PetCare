@@ -3,7 +3,21 @@ import Link from "next/link";
 import PetsIcon from '@mui/icons-material/Pets';
 import styles from "./page.module.css";
 import Image from "next/image";
+import {useEffect, useState } from "react";
 export default function FreeBoard() {
+    const [freeBoardList, setFreeBoardList] =useState([]);
+   useEffect(() => {
+    fetch("https://jsonplaceholder.typicode.com/posts")
+        .then(res => res.json())
+        .then(json => {
+            setFreeBoardList(json); // 여기서 json을 setFreeBoardList 함수에 전달
+        })
+        .catch(error => {
+            console.error('Error fetching data:', error);
+        });
+}, []);
+
+    
     return (
        <div>
         <section className={styles.freeBoard}>
