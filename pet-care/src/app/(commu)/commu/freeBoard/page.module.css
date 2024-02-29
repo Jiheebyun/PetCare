@@ -62,8 +62,14 @@
     line-height: 1.43em;
     word-break: break-word;
 }
-.articleList .articleListPre .attach-img-pre .tit {
+.articleList .articleListPre .tit {
     min-height: 80px;
+}
+.articleList .articleListPre .preTxt{
+    padding-right: 90px;
+}
+.articleList .articleListPre h3{
+    padding-right: 90px;
 }
 .articleList .articleListPre .tit {
     position: relative;
@@ -173,6 +179,12 @@
     }
     .articleList .articleListPre .preTxt {
         margin-top: 4px;
+    }
+    .articleList .articleListPre .preTxt{
+        padding-right: 105px;
+    }
+    .articleList .articleListPre h3{
+        padding-right: 105px;
     }
     .articleList .articleListPre h3 a {
         height: 52px;
