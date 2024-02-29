@@ -10,7 +10,7 @@ import Link from "next/link";
 export default function AdaptionList( { oneData } :any){
     const {nm, age, sexdstn, entrnc_date, key } = oneData;
 
-    
+    console.log(oneData)
     return(
         <>
             <div className={classes.listWrapper}>
