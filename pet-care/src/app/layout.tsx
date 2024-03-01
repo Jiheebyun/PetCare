@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import { SessionProvider } from "next-auth/react";
 import "./globals.css";
 import classes from "./page.module.css"
 
@@ -16,13 +17,12 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({
-  modal,
   children,
+  modal
 }: Readonly<{
+  children: React.ReactNode,
   modal: React.ReactNode,
-  children: React.ReactNode;
 }>) {
-
 
   console.log(modal)
 
