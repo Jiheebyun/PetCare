@@ -19,3 +19,14 @@ const User = [
 
 const Posts = [];
 
+export const handlers = [
+  http.post('/api/login', () => {
+    console.log('로그인');
+    return HttpResponse.json(User[0], {
+      headers: {
+        'Set-Cookie': 'connect.sid=msw-cookie;HttpOnly;Path=/'
+      }
+    })
+  }),
+];
+
