@@ -34,9 +34,6 @@ export const {
         console.log('user', user);
         return {
           email: user.id,
-          name: user.nickname,
-          image: user.image,
-          ...user,
         }
       },
     }),
