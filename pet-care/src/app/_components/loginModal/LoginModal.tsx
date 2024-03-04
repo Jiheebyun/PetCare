@@ -24,15 +24,12 @@ export default function LoginModal (){
                 router.back();
             };
         };
-
         window.addEventListener("keydown", keyDown);
 
         return () => window.removeEventListener("keydown", keyDown);
       }, []);
 
-    
     useOnClickOutside(loginModalRef, () =>{ router.back() });
-   
     const offLoginModalHandler = () =>{ router.back(); };
 
 
@@ -45,12 +42,13 @@ export default function LoginModal (){
         console.log(password)
 
         try{
-            await signIn('credentials', {id: "Jihee", password: "123123"})
+            await signIn('credentials', {id: "Jihee", password: "123123", redirect: false})
+            router.replace('/')
             console.log('good')
         } catch(err) {
             console.error(err);
         }
-    }
+    };
 
     return(
         <> 
