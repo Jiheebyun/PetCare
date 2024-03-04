@@ -33,7 +33,7 @@ export default function LoginModal (){
     const offLoginModalHandler = () =>{ router.back(); };
 
 
-    const testFunc: FormEventHandler<HTMLFormElement> = async (e) => {
+    const onSubmit: FormEventHandler<HTMLFormElement> = async (e) => {
         e.preventDefault();
         const formData = new FormData(e.currentTarget);
         const email = formData.get('email') as string; // 이메일 입력란의 값
@@ -42,9 +42,10 @@ export default function LoginModal (){
         console.log(password)
 
         try{
-            await signIn('credentials', {id: "Jihee", password: "123123", redirect: false})
+            const response = await signIn('credentials', {email: email, password: password, redirect: false})
             router.replace('/')
             console.log('good')
+            console.log(response)
         } catch(err) {
             console.error(err);
         }
@@ -69,9 +70,9 @@ export default function LoginModal (){
                     <h2>펫케어에 오신 것을 환영합니다.</h2>
 
                     <div  className={classes.loginInputWrapper}>
-                        <form onSubmit={testFunc} className={classes.loginInputContainer}>
-                            <input id={'email'} name="email" placeholder="이메일"></input>
-                            <input id={'password'} name="password" placeholder="비밀번호"></input>
+                        <form onSubmit={onSubmit} className={classes.loginInputContainer}>
+                            <input id={'email'} name="email" placeholder="이메일" type="email"></input>
+                            <input id={'password'} name="password" placeholder="비밀번호" type="password"></input>
                             <button  
                                 className={classes.loginInputBtn} 
                                 type="submit"    
