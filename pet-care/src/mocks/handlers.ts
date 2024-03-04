@@ -20,6 +20,7 @@ const User = [
 const Posts = [];
 
 export const handlers = [
+  //로그인할때, 응답을줌
   http.post('/api/login', () => {
     console.log('로그인');
     return HttpResponse.json(User[0], {

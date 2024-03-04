@@ -8,6 +8,9 @@ import MainNavBar from "./_components/navBar/NavBar";
 import { useRouter } from "next/router";
 import { useSelectedLayoutSegment } from "next/navigation";
 import Footer from "./_components/footer/Footer";
+import { MSWComponent } from "./_components/MSWComponent";
+
+
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,10 +21,12 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-  modal
+  modal,
+  pageProps
 }: Readonly<{
   children: React.ReactNode,
   modal: React.ReactNode,
+  pageProps: any
 }>) {
 
   console.log(modal)
@@ -29,6 +34,7 @@ export default function RootLayout({
   return (
     <html lang="en">
         <body className={inter.className}>
+          <MSWComponent/>
             <main className={classes.main}>
                 <div className={classes.navContainer}>
                     <MainNavBar></MainNavBar>
