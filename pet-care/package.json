@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "mock": "npx tsx watch ./src/mocks/http.ts"
   },
   "dependencies": {
     "@auth/core": "^0.27.0",
@@ -29,12 +30,14 @@
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "cors": "^2.8.5",
     "eslint": "^8",
     "eslint-config-next": "14.1.0",
+    "express": "^4.18.3",
     "msw": "^2.2.2",
     "typescript": "^5"
   },
-  "msw":{
+  "msw": {
     "workerDirectory": "public"
   }
 }
