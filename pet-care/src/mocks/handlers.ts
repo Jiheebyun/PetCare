@@ -12,7 +12,7 @@ function generateDate() {
   });
 };
 
-const User = [
+const UserResponse = [
   {id: 'jihee', nickname: 'JH', password: "123123"},
   {id: 'jihye', nickname: 'JH', password: "123123"},
 ];
@@ -23,11 +23,11 @@ export const handlers = [
   //로그인할때, 응답을줌
   http.post('/api/login', () => {
     console.log('로그인');
-    return HttpResponse.json(User[0], {
+    return HttpResponse.json([UserResponse[0], {
       headers: {
         'Set-Cookie': 'connect.sid=msw-cookie;HttpOnly;Path=/'
-      }
-    })
+      },
+    }])
   }),
 ];
 
