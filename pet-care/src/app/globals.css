@@ -24,10 +24,16 @@
 }
 
 a {
-    text-decoration: none;
-    color: #222;
-    cursor: pointer;
+  text-decoration: none;
+  color: #222;
+  cursor: pointer;
 }
 dl, li, menu, ol, ul {
-  list-style: none;
+list-style: none;
+}
+button {
+overflow: visible;
+border: 0;
+background-color: transparent;
+cursor: pointer;
 }
