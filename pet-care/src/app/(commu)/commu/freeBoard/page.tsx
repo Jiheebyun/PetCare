@@ -18,7 +18,7 @@ const topics = await resp.json();
         <h2><PetsIcon/>자유게시판<button  className={styles.create}>글쓰기</button></h2>
         <div className={styles.articleList}>
 
-        {topics.map((topic:any)=>{
+        {topics.map((topic:any)=>{ 
             return(
        
             <div key={topic.id} className={styles.articleListPre} >
