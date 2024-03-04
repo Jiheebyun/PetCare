@@ -1,4 +1,3 @@
-
 import Link from "next/link";
 import PetsIcon from '@mui/icons-material/Pets';
 import styles from "./page.module.css";
