@@ -1,0 +1,119 @@
+.community {
+    margin: 20px;
+}
+
+.freeBoard {
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-top:20px;
+}
+
+.freeBoard h2 {
+    height: 45px;
+    line-height: 43px;
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 10px;
+    border-bottom:1px solid #eee;
+    border-bottom-width: 2px;
+    font-size: 18px;
+}
+/* 더보기 */
+.freeBoard h2 a:nth-child(3){
+    float:right;
+    top: -2px;
+    right: 0;
+    padding-right: 16px;
+    color: #222;
+    font-size: 12px;
+    font-weight:400;
+}
+.freeBoard a {
+    color: inherit;
+}
+.freeBoardTable {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top:15px;
+    font-size:14px;
+}
+.freeBoardTable svg{
+    color:#94969b;
+}
+/* 글 타이틀 */
+.freeBoardTable a:nth-child(1){
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+/* 좋아요,싫어요 숫자 */
+.freeBoardTable a:nth-child(3),.freeBoardTable a:nth-child(2){
+    color:#94969b;
+}
+.good, .bad{
+    float:right;
+    margin-right:5px;
+}
+.good svg,.bad svg{
+    width:16px;
+    margin:0px 3px -7px 0;
+}
+.boardLink {
+    color: #0070f3;
+    text-decoration: none;
+}
+
+.boardLink:hover {
+    text-decoration: underline;
+}
+
+.boardId {
+    width: 10%;
+}
+
+.boardTitle {
+    width: 90%;
+}
+
+/* 자유게시판 */
+.news{
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0;
+}
+.newsList{
+    margin-bottom: 20px;
+    width: calc(50% - 10px);
+}
+.newsList:nth-child(2n) {
+    margin-left: 20px;
+}
+.newsList a{
+    align-items: center;
+    border: 1px solid #eee;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    min-height: 120px;
+    padding: 19px;
+    text-decoration: none;
+    width: 100%;
+}
+.newsList a div span{
+    padding-right: 11px;
+}
+.newsListDate{
+    align-items: center;
+    color: #959595;
+    display: flex;
+    font-size: 12px;
+    line-height: 20px;
+    margin-top: 9px;
+    /* width: 330px; */
+}
+.newListImg{
+    height: 80px;
+    margin-left: 20px;
+    width: 80px;
+}

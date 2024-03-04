@@ -1,0 +1,144 @@
+
+.loginModalBackground {
+    width: 100vw;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.4);
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.loginContainer{
+    width: 40vw;
+    min-width: 340px;
+    max-width: 500px;
+    height: 600px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 20px;
+    position: absolute;
+    padding: 25px;
+    right: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.loginHeaderContainer{ 
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    border-bottom: 1px solid rgb(221, 221, 221);
+}
+.loginHeaderContainer h4{
+    margin: 0px;
+}
+.cancelIconContainer{
+    height: 20px;
+    position:absolute;
+    left: 25px;
+    cursor: pointer;
+}
+
+
+.loginInputWrapper{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.loginInputContainer{
+    width: 95%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.loginInputContainer input{
+    width: 100%;
+    height: 25px;
+    border-radius: 10px;
+    padding: 10px;
+    border: 1px solid rgb(204, 204, 204);
+    font-size: 16px;
+}
+.loginInputContainer input:focus{
+    outline: 2px solid #d50000;
+    outline: none;
+}
+.loginInputContainer input:nth-child(1){
+    border-bottom: 0px;
+    border-radius: 10px 10px 0px 0px;
+}
+.loginInputContainer input:nth-child(2){
+    border-radius: 0px 0px 10px 10px;
+}
+.loginInputBtn{
+    background-color: #A4CB6A;
+    color: #ffffff;
+    font-size: 15px;
+    margin-top: 20px;
+    width: 105.5%;
+    height: 40px;
+    border-radius: 10px;
+    border: 0px;
+    cursor: pointer;
+    padding: 0;
+    
+}
+.loginInputBtn:hover{
+    background-color: #92c14c;
+}
+
+
+
+
+.orLine {
+    position: relative;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  .orLine::before, .orLine::after {
+    content: "";
+    display: inline-block;
+    width: 93%;
+    height: 1px;
+    background-color: #ccc;
+    position: absolute;
+    top: 50%;
+  }
+  .orLine::before {
+    right: 5%;
+    margin-right: 10px;
+  }
+  .orLine::after {
+    left: 5%;
+    margin-left: 10px;
+  }
+  .orText {
+    display: inline-block;
+    background-color: #fff;
+    font-size: 13px;
+    color: #ccc;
+    padding: 0 10px;
+    position: relative;
+    z-index: 1;
+  }
+
+
+
+
+
+@media (max-width: 720px) {
+    .loginContainer {
+        left: 352px; 
+        top: 50%;
+    }
+}
