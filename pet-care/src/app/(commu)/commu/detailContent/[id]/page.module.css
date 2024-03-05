@@ -58,6 +58,21 @@
     top: 0;
     right: 0;
 }
+.date svg, .pv svg, .cmt svg{
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    margin: -1px 3px 1px 0;
+    vertical-align: middle;
+    content: '';
+}
+.info .like svg, .info .cmp svg{
+    width:16px;
+    margin:0px 3px -7px 0;
+}
+.like{
+    padding-left:0!important;
+}
 /* 퍼가기/링크복사 */
 .articleViewHead .wrapInfo .mark {
     margin-right: 10px;
