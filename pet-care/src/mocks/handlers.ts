@@ -25,8 +25,12 @@ export const handlers = [
     console.log('로그인');
     return HttpResponse.json([UserResponse[0], {
       headers: {
-        'Set-Cookie': 'connect.sid=msw-cookie;HttpOnly;Path=/'
+        'Set-Cookie': 'connect.sid=msw-cookie;HttpOnly;Path=/',
       },
+      user: {
+        email: "ass",
+        password: "asdf"
+      }
     }])
   }),
 ];

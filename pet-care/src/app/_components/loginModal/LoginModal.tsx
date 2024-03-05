@@ -9,13 +9,20 @@ import GoogleAuthBtn from "../googleAuthBtn/GoogleAuthBtn";
 import { useOnClickOutside } from "@/hooks/useOnClickOutside";
 import { clearScreenDown } from "readline";
 
-import {signIn} from "next-auth/react";
+import {signIn, useSession} from "next-auth/react";
 
 
 
 export default function LoginModal (){
     const loginModalRef = useRef(null);
+    const [ message, setMessage ] = useState('');
+    const {data: session, status} = useSession();
     const router = useRouter();
+
+
+
+    console.log(session)
+ 
 
     useEffect(() => {
         const keyDown = (event: KeyboardEvent) => {
@@ -38,18 +45,17 @@ export default function LoginModal (){
         const formData = new FormData(e.currentTarget);
         const email = formData.get('email') as string; // 이메일 입력란의 값
         const password = formData.get('password') as string; // 비밀번호 입력란의 값
-        console.log(email)
-        console.log(password)
 
         try{
-            const response = await signIn('credentials', {email: email, password: password, redirect: false})
+            await signIn('credentials', {email: email, password: password, redirect: false})
             router.replace('/')
             console.log('good')
-            console.log(response)
         } catch(err) {
             console.error(err);
+            setMessage('아이디 또는 비밀번호가 일치하지 않습니다.')
         }
     };
+
 
     return(
         <> 
@@ -71,8 +77,8 @@ export default function LoginModal (){
 
                     <div  className={classes.loginInputWrapper}>
                         <form onSubmit={onSubmit} className={classes.loginInputContainer}>
-                            <input id={'email'} name="email" placeholder="이메일" type="email"></input>
-                            <input id={'password'} name="password" placeholder="비밀번호" type="password"></input>
+                            <input id={'email'} name="email" placeholder="이메일" type="email" autoComplete="on"></input>
+                            <input id={'password'} name="password" placeholder="비밀번호" type="password" autoComplete="on"></input>
                             <button  
                                 className={classes.loginInputBtn} 
                                 type="submit"    
