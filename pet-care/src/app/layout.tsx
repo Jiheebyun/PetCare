@@ -1,14 +1,13 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import { SessionProvider } from "next-auth/react";
 import "./globals.css";
 import classes from "./page.module.css"
 
 import MainNavBar from "./_components/navBar/NavBar";
-import { useRouter } from "next/router";
-import { useSelectedLayoutSegment } from "next/navigation";
 import Footer from "./_components/footer/Footer";
 import { MSWComponent } from "./_components/MSWComponent";
+import Provider from "@/app/_components/sessionProvider"
+// import Provider from "@/app/lib/sessionProvider";
 
 
 
@@ -22,11 +21,11 @@ export const metadata: Metadata = {
 export default function RootLayout({
   children,
   modal,
-  pageProps
+  pageProps,
 }: Readonly<{
   children: React.ReactNode,
   modal: React.ReactNode,
-  pageProps: any
+  pageProps: any,
 }>) {
 
   console.log(modal)
@@ -35,11 +34,11 @@ export default function RootLayout({
     <html lang="en">
         <body className={inter.className}>
           <MSWComponent/>
+          <Provider>
             <main className={classes.main}>
                 <div className={classes.navContainer}>
                     <MainNavBar></MainNavBar>
                 </div>
-
                 <div className={classes.contentContainer}>
                     {children}
                 </div>
@@ -48,6 +47,7 @@ export default function RootLayout({
                 </div>
                 {modal}
             </main>
+          </Provider>
         </body>
     </html>
   );
