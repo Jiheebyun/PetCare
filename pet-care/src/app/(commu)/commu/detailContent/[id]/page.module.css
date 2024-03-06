@@ -30,7 +30,7 @@
     font-weight: bold;
     line-height: 28px;
 }
-.name {
+.name {  
     display: flex;
     align-items: center;
     margin-top: 16px;
