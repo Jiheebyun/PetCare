@@ -1,6 +1,11 @@
 
 import React from 'react';
 import styles from "./page.module.css";
+import AccessTimeIcon from '@mui/icons-material/AccessTime';
+import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
+import ChatBubbleIcon from '@mui/icons-material/ChatBubble';
+import ThumbUpOffAltIcon from '@mui/icons-material/ThumbUpOffAlt';
+
 
 export default function DetailContent() {
     return (
@@ -13,9 +18,9 @@ export default function DetailContent() {
                 <h2>강아지자랑</h2>
                 <div className={styles.name} ><span>뽀삐 </span></div>
                 <div className={styles.wrapInfo} >
-                    <span className={styles.date} >2024.01.01</span>
-                    <span className={styles.pv} >257</span>
-                    <span className={styles.cmt} >5</span>
+                    <span className={styles.date} ><AccessTimeIcon/>2024.01.01</span>
+                    <span className={styles.pv} ><RemoveRedEyeIcon/>257</span>
+                    <span className={styles.cmt} ><ChatBubbleIcon/>5</span>
                     <div className={styles.info_fnc} >
                         <a className={styles.mark}></a>
                         <div className={styles.moreWp}>
@@ -38,8 +43,8 @@ export default function DetailContent() {
                 <div className={styles.articleInfo} >
                     <div className={styles.article_info}>
                      <div className={styles.info}>
-                        <a className={styles.like}>23</a>
-                        <a className={styles.cmt}>5</a>
+                        <a className={styles.like}><ThumbUpOffAltIcon/>23</a>
+                        <a className={styles.cmt}><ChatBubbleIcon/>5</a>
                      </div>
                        
                     </div>
