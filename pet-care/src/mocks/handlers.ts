@@ -20,17 +20,12 @@ const UserResponse = [
 const Posts = [];
 
 export const handlers = [
-  //로그인할때, 응답을줌
+  //요청을 가로채서 응답을줌
   http.post('/api/login', () => {
-    console.log('로그인');
-    return HttpResponse.json([UserResponse[0], {
+    return HttpResponse.json([{name:"jihee", test:"test"}, {
       headers: {
         'Set-Cookie': 'connect.sid=msw-cookie;HttpOnly;Path=/',
       },
-      user: {
-        email: "ass",
-        password: "asdf"
-      }
     }])
   }),
 ];

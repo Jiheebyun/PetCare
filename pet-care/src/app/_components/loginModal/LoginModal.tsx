@@ -47,9 +47,18 @@ export default function LoginModal (){
         const password = formData.get('password') as string; // 비밀번호 입력란의 값
 
         try{
-            await signIn('credentials', {email: email, password: password, redirect: false})
-            router.replace('/')
-            console.log('good')
+            const response = await signIn('credentials', {email: email, password: password, redirect: false})
+            console.log(response)
+            if(response?.ok){
+                router.back();
+                alert("로그인 완료")
+
+                return
+            };
+            if(!response?.ok){
+                console.log('ddd')
+                return
+            };
         } catch(err) {
             console.error(err);
             setMessage('아이디 또는 비밀번호가 일치하지 않습니다.')
