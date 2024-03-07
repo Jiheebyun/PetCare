@@ -4,6 +4,11 @@ import CredentialsProvider from "next-auth/providers/credentials";
 
 
 
+interface User {
+    id: number;
+    name: string;
+    email: string;
+}
 
 export const {
   handlers: { GET, POST },
@@ -16,7 +21,7 @@ export const {
   },
   providers: [
     CredentialsProvider({
-      async authorize(credentials) {
+      async authorize(credentials: Partial<Record<string, unknown>>, request: Request):  Promise<User | any> {
         console.log("auth.ts", credentials)
 
         const authResponse = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/login`, {
@@ -26,24 +31,17 @@ export const {
           },
           body: JSON.stringify({
             email: credentials.email,
-            password: credentials.password,
+            pwd: credentials.password,
           }),
         });
-        // const user = await authResponse.json(); // handlers에서 보낸응답.
-
 
         if (authResponse.ok) {
-          const user = await authResponse.json();
-          console.log("authResponse OK")
-          return {
-            user: {  // 수정된 부분: 사용자 정보는 user 속성에 할당되어야 함
-              id: user.id, // 사용자의 ID
-              name: user.name, // 사용자의 이름
-              email: user.email, // 사용자의 이메일
-            },
-          };
+          const user = await authResponse.json();// handlers에서 보낸응답.
+
+          return user
+
         } else {
-          // 실패했을 때는 null 또는 빈 객체를 반환
+
           return null;
         }
       },
@@ -53,17 +51,19 @@ export const {
     jwt: true,
     maxAge: 600, // 세션 만료 기간 설정 // 10분동안 세션 유지 
   },
-  callbacks: {
+  callbacks: { // 데이터를 프론트쪽에 보내기 위해서 콜백을 사용하여 보내야한다. 
     async session({ session, token }:{session: any , token: any}) {
       if (token) {
         session.user = token.user;
-      }
+      };
+      
       return session;
     },
     async jwt({ token, user }: {token: any, user: any}) {
       if (user) {
         token.user = user;
-      }
+      };
+
       return token;
     },
   },
