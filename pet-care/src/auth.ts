@@ -22,8 +22,6 @@ export const {
   providers: [
     CredentialsProvider({
       async authorize(credentials: Partial<Record<string, unknown>>, request: Request):  Promise<User | any> {
-        console.log("auth.ts", credentials)
-
         const authResponse = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/login`, {
           method: "POST",
           headers: {
@@ -35,15 +33,19 @@ export const {
           }),
         });
 
+
         if (authResponse.ok) {
           const user = await authResponse.json();// handlers에서 보낸응답.
+          const email = await user.email;
+          const loginStatus = await user.loginStatus;
+          console.log("BBBBBBBBBBBBBBB");
+          console.log(user)
 
-          return user
-
+          return user[0]
         } else {
 
           return null;
-        }
+        };
       },
     }),
   ],
@@ -53,11 +55,21 @@ export const {
   },
   callbacks: { // 데이터를 프론트쪽에 보내기 위해서 콜백을 사용하여 보내야한다. 
     async session({ session, token }:{session: any , token: any}) {
-      if (token) {
-        session.user = token.user;
+      const checkLoginStatus = token.user.loginStatus === "Y" ? true : false;
+      console.log("THIS IS TOKEN BELOW")
+      console.log(token)
+      console.log("THIS IS SESSION BELOW")
+      console.log(session);
+      if (token && checkLoginStatus) {
+              
+        return session.user;
       };
-      
-      return session;
+      if (token && !checkLoginStatus){
+        return {
+          email: token.user.email,
+          loginStatus: "N"
+        }
+      }
     },
     async jwt({ token, user }: {token: any, user: any}) {
       if (user) {
