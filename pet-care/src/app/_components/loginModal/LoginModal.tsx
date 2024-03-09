@@ -13,15 +13,27 @@ import {signIn, useSession} from "next-auth/react";
 
 
 
+ interface ResponseType {
+    error: string | null | undefined;
+    ok: boolean | null | undefined;
+    status: number | null | undefined;
+    url: string | null | undefined;
+    
+ }
+
+
+
+
 export default function LoginModal (){
     const loginModalRef = useRef(null);
     const [ message, setMessage ] = useState('');
-    const {data: session, status} = useSession();
+    const { data:session, status } = useSession();
     const router = useRouter();
 
 
 
     console.log(session)
+    console.log(status)
  
 
     useEffect(() => {
@@ -45,20 +57,25 @@ export default function LoginModal (){
         const formData = new FormData(e.currentTarget);
         const email = formData.get('email') as string; // 이메일 입력란의 값
         const password = formData.get('password') as string; // 비밀번호 입력란의 값
-
+        
         try{
-            const response = await signIn('credentials', {email: email, password: password, redirect: false})
-            console.log(response)
-            if(response?.ok){
-                router.back();
-                alert("로그인 완료")
+            //{error: null, status: 200, ok: true, url: 'http://localhost:3000/login'}
+            const response: ResponseType | undefined = await signIn('credentials', {email: email, password: password, redirect: false})
+            const loginStatus = await session?.user;
 
-                return
-            };
-            if(!response?.ok){
-                console.log('ddd')
-                return
-            };
+            console.log(loginStatus?.name)
+
+            // if(loginStatus === "Y"){
+            //     router.back();
+            //     alert("로그인 완료")
+
+            //     return
+            // };
+            // if(!response?.ok){
+            //     console.log('ddd')
+
+            //     return
+            // };
         } catch(err) {
             console.error(err);
             setMessage('아이디 또는 비밀번호가 일치하지 않습니다.')
@@ -101,6 +118,10 @@ export default function LoginModal (){
 
                     <div>
                         <GoogleAuthBtn></GoogleAuthBtn>
+                    </div>
+
+                    <div className={classes.loginErrorMessageContainer}>
+                        <span> 이메일 또는 비밀번호가 일치하지 않습니다.</span>
                     </div>
                 </div>
             </div>

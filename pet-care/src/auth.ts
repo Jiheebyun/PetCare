@@ -6,7 +6,7 @@ import CredentialsProvider from "next-auth/providers/credentials";
 
 interface User {
     id: number;
-    name: string;
+    loginStatus: string;
     email: string;
 }
 
@@ -33,15 +33,12 @@ export const {
           }),
         });
 
-
         if (authResponse.ok) {
           const user = await authResponse.json();// handlers에서 보낸응답.
-          const email = await user.email;
-          const loginStatus = await user.loginStatus;
           console.log("BBBBBBBBBBBBBBB");
-          console.log(user)
+          console.log(user[0])
 
-          return user[0]
+          return user
         } else {
 
           return null;
@@ -60,18 +57,24 @@ export const {
       console.log(token)
       console.log("THIS IS SESSION BELOW")
       console.log(session);
-      if (token && checkLoginStatus) {
+
+      return session 
+      // if (token && checkLoginStatus) {
               
-        return session.user;
-      };
-      if (token && !checkLoginStatus){
-        return {
-          email: token.user.email,
-          loginStatus: "N"
-        }
-      }
+      //   return token;
+      // };
+      // if (token && !checkLoginStatus){
+      //   return {
+      //     email: token.user.email,
+      //     loginStatus: "N",
+      //     id: token.user.id
+      //   }
+      // }
     },
     async jwt({ token, user }: {token: any, user: any}) {
+      console.log("TOTOTOTOTO")
+      console.log(user)
+      console.log(token)
       if (user) {
         token.user = user;
       };
@@ -80,3 +83,8 @@ export const {
     },
   },
 });
+//무언가 데이터를 넘겨주고 싶으면 jwt 토큰에 데이터를 유지하고 session 에서 처리해주면 된다
+//과정
+//1.providers 내부의 async authorize 에 인증을 실행
+//2.callbacks의 jwt 함수가 실행
+//3.callbacks의 session 함수가 실행
