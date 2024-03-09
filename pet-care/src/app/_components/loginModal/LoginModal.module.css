@@ -132,7 +132,19 @@
     z-index: 1;
   }
 
+.loginErrorMessageContainer{
+    height: 30px;
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
+}
+.loginErrorMessageContainer{
+    font-size: 13px;
+    color: #d50000;
+    font-family: 700;
+}
 
 
 
