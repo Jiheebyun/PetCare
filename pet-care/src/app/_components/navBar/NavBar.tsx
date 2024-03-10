@@ -9,11 +9,15 @@ import Link from "next/link";
 
 import { useRouter, useSelectedLayoutSegments } from 'next/navigation'
 import ProfileBtnModal from "../profileModal/ProfileBtnModal";
+import { useSession } from "next-auth/react";
 
 export default function MainNavBar() {
     const [ isProfileModal, setIsProfileModal ] = useState(false);
     const segment = useSelectedLayoutSegments();
     const isAdaptionDetail = segment[1] === "adapt" ? true : false;
+    const {data: session, status}: any = useSession();
+    const firstLetterOfId: string | undefined = session?.user?.id.substr(0,1);
+
 
     const profileModalHandler = (): void => {
         setIsProfileModal((prev: boolean)=>!prev);
@@ -59,12 +63,13 @@ export default function MainNavBar() {
                                 width={16}
                                 height={16}
                             ></Image>
-                            <Image 
+                            {session ? (<h2 className={classes.userProfileBtn}>{firstLetterOfId}</h2>):
+                            (<Image 
                                 src={'/img/profileIcon.png'} 
                                 alt="profile" 
                                 width={30} 
                                 height={30}
-                            ></Image>
+                            ></Image>)}
                         </div>
                     </div>
                 </div>

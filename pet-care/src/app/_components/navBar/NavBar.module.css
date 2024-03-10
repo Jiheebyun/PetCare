@@ -108,6 +108,13 @@
 .searchBox input:focus{
     outline:none;
 }
+.userProfileBtn{
+    padding: 3px;
+    width: 30px;
+    background-color: rgb(225, 225, 225);
+    border-radius: 50px;
+    text-align: center;
+}
 
 
 

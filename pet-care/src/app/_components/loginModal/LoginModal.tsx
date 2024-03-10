@@ -9,7 +9,7 @@ import GoogleAuthBtn from "../googleAuthBtn/GoogleAuthBtn";
 import { useOnClickOutside } from "@/hooks/useOnClickOutside";
 import { clearScreenDown } from "readline";
 
-import {signIn, useSession} from "next-auth/react";
+import {signIn, useSession, getSession} from "next-auth/react";
 
 
 
@@ -26,15 +26,11 @@ import {signIn, useSession} from "next-auth/react";
 
 export default function LoginModal (){
     const loginModalRef = useRef(null);
-    const [ message, setMessage ] = useState('');
-    const { data:session, status } = useSession();
+    const [ loginErrorMessage, setLoginErrorMessage ] = useState('');
+    const { data: session, status }: any = useSession();
     const router = useRouter();
 
 
-
-    console.log(session)
-    console.log(status)
- 
 
     useEffect(() => {
         const keyDown = (event: KeyboardEvent) => {
@@ -55,30 +51,30 @@ export default function LoginModal (){
     const onSubmit: FormEventHandler<HTMLFormElement> = async (e) => {
         e.preventDefault();
         const formData = new FormData(e.currentTarget);
-        const email = formData.get('email') as string; // 이메일 입력란의 값
-        const password = formData.get('password') as string; // 비밀번호 입력란의 값
+        const email = formData.get('email') as string;
+        const password = formData.get('password') as string;
         
-        try{
-            //{error: null, status: 200, ok: true, url: 'http://localhost:3000/login'}
-            const response: ResponseType | undefined = await signIn('credentials', {email: email, password: password, redirect: false})
-            const loginStatus = await session?.user;
-
-            console.log(loginStatus?.name)
-
-            // if(loginStatus === "Y"){
-            //     router.back();
-            //     alert("로그인 완료")
-
-            //     return
-            // };
-            // if(!response?.ok){
-            //     console.log('ddd')
-
-            //     return
-            // };
+        try {
+            const response: ResponseType | undefined = await signIn('credentials', { email, password, redirect: false });
+            const session: any = await getSession();
+            const loginStatus = session?.user?.loginStatus;
+            const authStatus = session ? "authenticated" : "unauthenticated";
+            
+            if (loginStatus === "Y") {
+                setLoginErrorMessage('');
+                router.back();
+                alert("로그인 완료");
+            };
+            if (authStatus === "unauthenticated") {
+                setLoginErrorMessage('아이디 또는 비밀번호가 일치하지 않습니다.');
+                console.log("N 실행");
+            };
+            if (!response?.ok) {
+                console.log('ddd');
+            };
         } catch(err) {
             console.error(err);
-            setMessage('아이디 또는 비밀번호가 일치하지 않습니다.')
+            setLoginErrorMessage('아이디 또는 비밀번호가 일치하지 않습니다.');
         }
     };
 
@@ -121,7 +117,7 @@ export default function LoginModal (){
                     </div>
 
                     <div className={classes.loginErrorMessageContainer}>
-                        <span> 이메일 또는 비밀번호가 일치하지 않습니다.</span>
+                        <span> { loginErrorMessage }</span>
                     </div>
                 </div>
             </div>
