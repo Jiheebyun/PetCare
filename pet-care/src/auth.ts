@@ -33,15 +33,14 @@ export const {
           }),
         });
 
+        const user = (await authResponse.json())[0];// handlers에서 보낸응답.
+        console.log(user.loginStatus)
         if (authResponse.ok) {
-          const user = await authResponse.json();// handlers에서 보낸응답.
-          console.log("BBBBBBBBBBBBBBB");
-          console.log(user[0])
 
           return user
         } else {
 
-          return null;
+          return null
         };
       },
     }),
@@ -52,29 +51,16 @@ export const {
   },
   callbacks: { // 데이터를 프론트쪽에 보내기 위해서 콜백을 사용하여 보내야한다. 
     async session({ session, token }:{session: any , token: any}) {
-      const checkLoginStatus = token.user.loginStatus === "Y" ? true : false;
-      console.log("THIS IS TOKEN BELOW")
-      console.log(token)
-      console.log("THIS IS SESSION BELOW")
-      console.log(session);
+      session.user = token.user;
 
-      return session 
-      // if (token && checkLoginStatus) {
-              
-      //   return token;
-      // };
-      // if (token && !checkLoginStatus){
-      //   return {
-      //     email: token.user.email,
-      //     loginStatus: "N",
-      //     id: token.user.id
-      //   }
-      // }
+      if (token.user.loginStatus === "Y") {
+        return session
+      }
+      if (token.user.loginStatus === "N"){
+        return null
+      }
     },
     async jwt({ token, user }: {token: any, user: any}) {
-      console.log("TOTOTOTOTO")
-      console.log(user)
-      console.log(token)
       if (user) {
         token.user = user;
       };
@@ -88,3 +74,4 @@ export const {
 //1.providers 내부의 async authorize 에 인증을 실행
 //2.callbacks의 jwt 함수가 실행
 //3.callbacks의 session 함수가 실행
+//참고: https://velog.io/@dosomething/Next-auth-%EB%A5%BC-%EC%9D%B4%EC%9A%A9%ED%95%9C-%EB%A1%9C%EA%B7%B8%EC%9D%B8-%EA%B5%AC%ED%98%84
