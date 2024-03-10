@@ -8,6 +8,7 @@ import Link from "next/link";
 import { useSelectedLayoutSegments } from "next/navigation";
 import { BloomFilter } from "next/dist/shared/lib/bloom-filter";
 import { useOnClickOutside } from "@/hooks/useOnClickOutside";
+import { getSession } from "next-auth/react";
 
 interface Props {
     isProfileModal: boolean
