@@ -40,7 +40,7 @@ export default function listDatail({ params }: { params: string }){
                             height={17}
                             alt="heart"
                         ></Image>
-                        <span>저장</span>
+                        <span>관심</span>
                     </div>
                 </div>
                 <div>
