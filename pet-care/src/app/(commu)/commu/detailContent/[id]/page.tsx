@@ -1,46 +1,28 @@
-
-import React from 'react';
+"use client"
+import React, { useEffect } from 'react';
 import styles from "./page.module.css";
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
 import ChatBubbleIcon from '@mui/icons-material/ChatBubble';
 import ThumbUpOffAltIcon from '@mui/icons-material/ThumbUpOffAlt';
-// import { useRouter } from 'next/router';
-import {
-    usePathname,
-    useRouter,
-    useSearchParams,
-    useSelectedLayoutSegment,
-    useSelectedLayoutSegments,
-    redirect,  
-    notFound,
-  } from 'next/navigation';
-import { GetStaticProps, GetStaticPropsContext } from 'next';
+import { useSearchParams } from "next/navigation";
 
-interface Topic {
-    id: number;
-    title: string;
-    author: string;
-    date: string;
-    views: number;
-    comments: number;
-  }
-  
-  interface Props {
-    topics: Topic;
-    // topics: Topic[];
-  }
-  
-export default function DetailContent({ topics }: Props) {
+export default function DetailContent() {
     // const router = useRouter();
-  
+    const params = useSearchParams();
+    const limitParam = params.get('id');
+    console.log(params);
     // if (!topics) {
     //   return <div>Loading...</div>;
     // }
-  
+
+    // const resp = await fetch('http://localhost:3000/commu/detailContent/1');
+    // const topics = await resp.json();
     
     return (
     <section className={styles.container} >
+        {/* <div>{props.param.id}</div> */}
+        {/* <p>Post: {router.query.slug}</p> */}
         <div className={styles.wrapperd} >
             <div className={styles.content} >
            
