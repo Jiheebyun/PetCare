@@ -8,10 +8,18 @@ import Link from "next/link";
 export default function MainFilter () {
 
 
+    const dogFilterHandler = () => {
+        alert('DOG FILTER');
+    };
+
+    const catFilterHandler = () => {
+        alert("CAT FILTER");
+    }
+
     return (
         <>
         <div className={classes.mainFilterWrapper}>
-            <div className={classes.dogFilterContainer}>
+            <div className={classes.dogFilterContainer} >
                 <Link className={classes.dogFilterStyle} href={''}>
                     <Image src={'/img/dogIcon.png'} width={35} height={35} alt="dog"></Image>
                     <span>댕댕이</span>
