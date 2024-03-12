@@ -8,7 +8,7 @@ import Link from "next/link";
 import { useSelectedLayoutSegments } from "next/navigation";
 import { BloomFilter } from "next/dist/shared/lib/bloom-filter";
 import { useOnClickOutside } from "@/hooks/useOnClickOutside";
-import { getSession } from "next-auth/react";
+import { getSession, signOut } from "next-auth/react";
 
 import { useSession } from "next-auth/react";
 
@@ -64,7 +64,7 @@ export default function ProfileBtnModal ({setIsProfileModal, isProfileModal}: Pr
                     <li>
                         {isLoggedIn ? 
                         (<Link href={'/login'} className={classes.LinkStyle} onClick={logoutHandler}>
-                            <span>로그아웃</span>
+                            <span onClick={()=>{signOut()}}>로그아웃</span>
                         </Link>)
                         :
                         (<Link href={'/login'} className={classes.LinkStyle} onClick={offModal}>
