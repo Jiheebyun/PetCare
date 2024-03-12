@@ -2,6 +2,8 @@ import Link from "next/link";
 import PetsIcon from '@mui/icons-material/Pets';
 import styles from "./page.module.css";
 import Image from "next/image";
+import imageInsert from "../../../_components/imageInsert"
+import{CORE_CONCEPTS} from '../../../_components/testdata.tsx';
 // import { setupServer } from 'msw/node'
 // import { handlers } from './handlers'
 // export const server = setupServer(...handlers)
@@ -27,6 +29,8 @@ const topics = await resp.json();
                     <p className={styles.preTxt}><Link href="">{topic.body}</Link> </p>
                     <span className={styles.attachImg}>
                         <Link href="">
+                        {/* <imageInsert title={CORE_CONCEPTS[0].title} alt={CORE_CONCEPTS[0].title} description={CORE_CONCEPTS[0].title}
+                        src={CORE_CONCEPTS[0].title}/> */}
                     <Image 
                                 src={'/img/dog.png'} 
                                 width={80} 
