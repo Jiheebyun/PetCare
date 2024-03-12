@@ -2,12 +2,20 @@ import Link from "next/link";
 import PetsIcon from '@mui/icons-material/Pets';
 import styles from "./page.module.css";
 import Image from "next/image";
-import imageInsert from "../../../_components/imageInsert"
-import{CORE_CONCEPTS} from '../../../_components/testdata.tsx';
+import petImg from "/img/dog.png";
+import ImageInsert from "../../../_components/imageInsert"
 // import { setupServer } from 'msw/node'
 // import { handlers } from './handlers'
 // export const server = setupServer(...handlers)
-
+function ImageInsert1(props: any) {
+    return (
+      <div>
+        <img src={props.image} alt={props.title} width={80} height={80} />
+        <div>title : {props.title}</div>
+        <div>description : {props.description}</div>
+      </div>
+    );
+  }
 export default async function FreeBoard() {
 const resp = await fetch('https://jsonplaceholder.typicode.com/posts');
 const topics = await resp.json();
@@ -15,11 +23,12 @@ const topics = await resp.json();
     
     return (
        <div>
-       
+       {/* <ImageInsert {...CORE_CONCEPTS[0]}/>
+       <ImageInsert {...CORE_CONCEPTS[1]}/> */}
         <section className={styles.freeBoard}>
         <h2><PetsIcon/>자유게시판<button  className={styles.create}>글쓰기</button></h2>
         <div className={styles.articleList}>
-
+        
         {topics.map((topic:any)=>{
             return(
        
@@ -29,15 +38,15 @@ const topics = await resp.json();
                     <p className={styles.preTxt}><Link href="">{topic.body}</Link> </p>
                     <span className={styles.attachImg}>
                         <Link href="">
-                        {/* <imageInsert title={CORE_CONCEPTS[0].title} alt={CORE_CONCEPTS[0].title} description={CORE_CONCEPTS[0].title}
-                        src={CORE_CONCEPTS[0].title}/> */}
-                    <Image 
+                   
+                    <ImageInsert src={"/img/dog.png"} alt="pet" width={80} height={80}/>
+                    {/* <Image 
                                 src={'/img/dog.png'} 
                                 width={80} 
                                 height={80} 
                                 alt="pet"
                                 property=""
-                            ></Image>
+                            ></Image> */}
                         </Link></span>
                 </div>
                 <div className={styles.sub}>
