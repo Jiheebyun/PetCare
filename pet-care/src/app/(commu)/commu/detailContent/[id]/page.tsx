@@ -1,28 +1,45 @@
 "use client"
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from "./page.module.css";
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
 import ChatBubbleIcon from '@mui/icons-material/ChatBubble';
 import ThumbUpOffAltIcon from '@mui/icons-material/ThumbUpOffAlt';
-import { useSearchParams } from "next/navigation";
 
-export default function DetailContent() {
-    // const router = useRouter();
-    const params = useSearchParams();
-    const limitParam = params.get('id');
-    console.log(params);
-    // if (!topics) {
-    //   return <div>Loading...</div>;
-    // }
 
-    // const resp = await fetch('http://localhost:3000/commu/detailContent/1');
-    // const topics = await resp.json();
-    
+// async function getPosts(id:any) {
+//     const response = await fetch(`http://localhost:3000/commu/detailContent/id=${id}`);
+//     // const response = await fetch('https://jsonplaceholder.typicode.com/posts');
+//     const data = await response.json();
+//     console.log("id2:", `${id}`);
+//     return data
+// }
+function getPosts(id:any) {
+    return fetch(`http://localhost:3000/commu/detailContent/id=${id}`)
+        .then(response => response.json())
+        .catch(error => {
+            console.error('Error fetching data:', error);
+            return null;
+        });
+}
+export default function DetailContent(props:any) {
+    const [data, setData] = useState(null);
+
+    useEffect(() => {
+        const fetchData = () => {
+            getPosts(props.id)
+                .then(result => {
+                    setData(result);
+                });
+        };
+        console.log("id2:", props.id);
+        fetchData();
+    }, [props.id]);
+    // console.log(props);
+    // return posts.map((posts:any) => <div>{posts.id}</div>)
     return (
     <section className={styles.container} >
-        {/* <div>{props.param.id}</div> */}
-        {/* <p>Post: {router.query.slug}</p> */}
+        <div>dd{props.id2}</div>
         <div className={styles.wrapperd} >
             <div className={styles.content} >
            
@@ -72,45 +89,8 @@ export default function DetailContent() {
                 </div>
             </div>
            </div>
-
-
-
-
            </div>
         </div>
     </section>
     );
 }
-
-// export async function generateStaticParams() {
-//     // API를 호출하여 postId 목록을 가져옵니다.
-//     const resp = await fetch('https://jsonplaceholder.typicode.com/posts');
-//     const topics: Topic[] = await resp.json();
-  
-//     // postId 목록에서 params 객체의 배열을 생성합니다.
-//     const paths = topics.map((topic) => ({
-//       params: { postId: String(topic.id) }, // params로 사용할 수 있도록 String으로 변환합니다.
-//     }));
-  
-//     return {
-//       paths,
-//       fallback: false,
-//     };
-//   }
-
-// export async function generateMetadata({ params }: any) {
-//   // params에는 동적으로 전달된 postId가 포함됩니다.
-//   // params의 타입은 { [key: string]: string } 형태입니다.
-//   const postId = params?.postId;
-
-//   // postId에 해당하는 데이터를 가져오는 로직을 구현합니다.
-//   // 여기서는 API를 통해 해당 id와 일치하는 데이터를 가져오도록 합니다.
-//   const resp = await fetch(`https://jsonplaceholder.typicode.com/posts/${postId}`);
-//   const topic: Topic = await resp.json();
-
-//   return {
-//     props: {
-//       topic,
-//     },
-//   };
-// }

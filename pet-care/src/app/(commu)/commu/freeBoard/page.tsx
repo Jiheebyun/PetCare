@@ -1,9 +1,11 @@
+"use client"
 import Link from "next/link";
 import PetsIcon from '@mui/icons-material/Pets';
 import styles from "./page.module.css";
 import Image from "next/image";
 import petImg from "/img/dog.png";
 import ImageInsert from "../../../_components/imageInsert"
+// import process from "next/dist/build/webpack/loaders/resolve-url-loader/lib/postcss";
 // import { setupServer } from 'msw/node'
 // import { handlers } from './handlers'
 // export const server = setupServer(...handlers)
@@ -16,11 +18,15 @@ function ImageInsert1(props: any) {
       </div>
     );
   }
+  
 export default async function FreeBoard() {
 const resp = await fetch('https://jsonplaceholder.typicode.com/posts');
 const topics = await resp.json();
 
-    
+    function handleClink(props:any){
+        // const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+        console.log("props다:"+props)
+    }
     return (
        <div>
        {/* <ImageInsert {...CORE_CONCEPTS[0]}/>
@@ -31,10 +37,9 @@ const topics = await resp.json();
         
         {topics.map((topic:any)=>{
             return(
-       
             <div key={topic.id} className={styles.articleListPre} >
                 <div className={styles.tit}>
-                    <h3><Link href={`/commu/detailContent/${topic.id}`}>{topic.title}</Link></h3>
+                    <h3><Link onClick={() =>handleClink(`${topic.id}`)} href={`/commu/detailContent/${topic.id}`}>{topic.title}</Link></h3>
                     <p className={styles.preTxt}><Link href="">{topic.body}</Link> </p>
                     <span className={styles.attachImg}>
                         <Link href="">
