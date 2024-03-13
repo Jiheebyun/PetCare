@@ -116,10 +116,34 @@
     text-align: center;
 }
 
-
+.profileMenuMobileWrapper{
+    position: fixed;
+    height: 55px;
+    min-width: 700px;
+    background-color: #f7f7f7;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    padding-left: 0px;
+    z-index: 10;
+}
+.profileMenu{
+    display: flex;
+    text-align: center;
+    justify-content: space-around;
+    padding-left: 0px;
+}
+.profileMenu > li {
+    color: #222222;
+}
 
 @media screen and (max-width: 720px) { 
     .profileIconContainer {
         display: none; 
     }
 }
+@media screen and (min-width: 721px) {
+    .profileMenuMobileWrapper {
+      display: none;
+    }
+  }

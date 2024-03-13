@@ -33,9 +33,11 @@ export default function ProfileBtnModal ({setIsProfileModal, isProfileModal}: Pr
 
     const offModal = () =>{ setIsProfileModal(false) };
 
-    const logoutHandler = () =>{
-        console.log("LOGOUT");
+
+    const handler = () =>{
+        
     }
+
 
     return (
         <>
@@ -45,7 +47,7 @@ export default function ProfileBtnModal ({setIsProfileModal, isProfileModal}: Pr
                 >
                     <li>
                         {isLoggedIn ? 
-                        (<Link href={'/login'} className={classes.LinkStyle} onClick={logoutHandler}>
+                        (<Link href={'/login'} className={classes.LinkStyle} onClick={handler}>
                             <span>알림</span>
                         </Link>)
                         :
@@ -55,7 +57,7 @@ export default function ProfileBtnModal ({setIsProfileModal, isProfileModal}: Pr
                     </li>
                     {isLoggedIn ? 
                     (<li>
-                        <Link href={'/login'} className={classes.LinkStyle} onClick={logoutHandler}>
+                        <Link href={'/login'} className={classes.LinkStyle} onClick={handler}>
                         <span>관심리스트</span>
                         </Link>
                     </li>)
@@ -63,8 +65,8 @@ export default function ProfileBtnModal ({setIsProfileModal, isProfileModal}: Pr
                     (null)}
                     <li>
                         {isLoggedIn ? 
-                        (<Link href={'/login'} className={classes.LinkStyle} onClick={logoutHandler}>
-                            <span onClick={()=>{signOut()}}>로그아웃</span>
+                        (<Link href={'/login'} className={classes.LinkStyle} onClick={()=>{signOut()}}>
+                            <span>로그아웃</span>
                         </Link>)
                         :
                         (<Link href={'/login'} className={classes.LinkStyle} onClick={offModal}>
