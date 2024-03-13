@@ -1,6 +1,6 @@
 
 "use client"
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 
 import classes from "./NavBar.module.css";
@@ -83,6 +83,24 @@ export default function MainNavBar() {
                     </div>
                 </div>
 
+                <div className={classes.profileMenuMobileWrapper}>
+                    <div className={classes.profileMenuMobileContainer}>
+                        <ul className={classes.profileMenu}>
+                            <li>
+                                <span>알림</span>
+                            </li>
+                            <li>
+                                <span>관신리스트</span>
+                            </li>
+                            <li>
+                                <span>로그아웃</span>
+                            </li>
+                            <li>
+                                <span>도움말센터</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
                 {isProfileModal ? 
                     <ProfileBtnModal 
                         setIsProfileModal={setIsProfileModal}
