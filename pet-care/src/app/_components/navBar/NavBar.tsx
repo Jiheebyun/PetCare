@@ -9,12 +9,13 @@ import Link from "next/link";
 
 import { useRouter, useSelectedLayoutSegments } from 'next/navigation'
 import ProfileBtnModal from "../profileModal/ProfileBtnModal";
-import { useSession } from "next-auth/react";
+import { useSession, getSession, signOut } from "next-auth/react";
 
 export default function MainNavBar() {
     const [ isProfileModal, setIsProfileModal ] = useState(false);
     const segment = useSelectedLayoutSegments();
     const isAdaptionDetail = segment[1] === "adapt" ? true : false;
+    const [ isBottomProfileBtn, setIsBottomProfileBtn ] = useState(false);
     const {data: session, status}: any = useSession();
     const firstLetterOfId: string | undefined = session?.user?.id.substr(0,1);
 
@@ -22,6 +23,16 @@ export default function MainNavBar() {
     const profileModalHandler = (): void => {
         setIsProfileModal((prev: boolean)=>!prev);
     };
+
+    useEffect(()=>{
+        async function checkSession() {
+            const session = await getSession();
+            if(session){
+                setIsBottomProfileBtn(true);
+            };
+        };
+        checkSession();
+    }, [status]);
 
 
     return (
@@ -82,25 +93,27 @@ export default function MainNavBar() {
                         </div>
                     </div>
                 </div>
-
-                <div className={classes.profileMenuMobileWrapper}>
-                    <div className={classes.profileMenuMobileContainer}>
-                        <ul className={classes.profileMenu}>
-                            <li>
-                                <span>알림</span>
-                            </li>
-                            <li>
-                                <span>관신리스트</span>
-                            </li>
-                            <li>
-                                <span>로그아웃</span>
-                            </li>
-                            <li>
-                                <span>도움말센터</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+                {isBottomProfileBtn ? 
+                    (<div className={classes.profileMenuMobileWrapper}>
+                        <div className={classes.profileMenuMobileContainer}>
+                            <ul className={classes.profileMenu}>
+                                <li>
+                                    <span>프로필</span>
+                                </li>
+                                <li>
+                                    <span>관신리스트</span>
+                                </li>
+                                <li>
+                                    <span onClick={()=>{signOut()}}>로그아웃</span>
+                                </li>
+                                <li>
+                                    <span>도움말센터</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>)
+                    :
+                    null}
                 {isProfileModal ? 
                     <ProfileBtnModal 
                         setIsProfileModal={setIsProfileModal}
