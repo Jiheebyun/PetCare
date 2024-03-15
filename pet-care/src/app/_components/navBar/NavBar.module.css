@@ -135,6 +135,7 @@
 }
 .profileMenu > li {
     color: #222222;
+    cursor: pointer;
 }
 
 @media screen and (max-width: 720px) { 
