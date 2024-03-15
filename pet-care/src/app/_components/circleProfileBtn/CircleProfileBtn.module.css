@@ -1,0 +1,35 @@
+
+
+
+
+ 
+
+
+ .circleProfileBtnWrapper{
+    position: fixed;
+    height: 50px;
+    width: 50px;
+    right: 30px;
+    bottom: 30px;
+    padding-left: 0px;
+    z-index: 10;
+ }
+ .circleProfileBtnContainer{
+    width: 60px;
+    height: 60px;
+    background-color: #64C6C4;
+    border-radius: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+ }
+ .circleProfileBtnContainer:hover{
+    background-color: #6cdad8;
+ }
+
+ @media screen and (min-width: 720px) { 
+    .circleProfileBtnWrapper {
+        display: none; 
+    }
+}
