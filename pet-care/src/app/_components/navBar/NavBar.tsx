@@ -34,7 +34,6 @@ export default function MainNavBar() {
         checkSession();
     }, [status]);
 
-
     return (
         <>
             {isAdaptionDetail ? null :
