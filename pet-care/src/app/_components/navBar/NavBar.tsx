@@ -10,6 +10,7 @@ import Link from "next/link";
 import { useRouter, useSelectedLayoutSegments } from 'next/navigation'
 import ProfileBtnModal from "../profileModal/ProfileBtnModal";
 import { useSession, getSession, signOut } from "next-auth/react";
+import CircleProfileBtn from "../circleProfileBtn/CircleProfileBtn";
 
 export default function MainNavBar() {
     const [ isProfileModal, setIsProfileModal ] = useState(false);
@@ -33,6 +34,8 @@ export default function MainNavBar() {
         };
         checkSession();
     }, [status]);
+
+    console.log(isBottomProfileBtn)
 
     return (
         <>
@@ -112,7 +115,7 @@ export default function MainNavBar() {
                         </div>
                     </div>)
                     :
-                    null}
+                    (<CircleProfileBtn></CircleProfileBtn>)}
                 {isProfileModal ? 
                     <ProfileBtnModal 
                         setIsProfileModal={setIsProfileModal}
