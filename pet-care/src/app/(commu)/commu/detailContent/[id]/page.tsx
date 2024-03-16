@@ -5,7 +5,7 @@ import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
 import ChatBubbleIcon from '@mui/icons-material/ChatBubble';
 import ThumbUpOffAltIcon from '@mui/icons-material/ThumbUpOffAlt';
-
+// import axios from 'axios'
 
 // async function getPosts(id:any) {
 //     const response = await fetch(`http://localhost:3000/commu/detailContent/id=${id}`);
@@ -14,29 +14,40 @@ import ThumbUpOffAltIcon from '@mui/icons-material/ThumbUpOffAlt';
 //     console.log("id2:", `${id}`);
 //     return data
 // }
-function getPosts(id:any) {
-    return fetch(`http://localhost:3000/commu/detailContent/id=${id}`)
-        .then(response => response.json())
-        .catch(error => {
-            console.error('Error fetching data:', error);
-            return null;
-        });
-}
+// function getPosts(id:any) {
+//     return fetch(`http://localhost:3000/commu/detailContent/id=${id}`)
+//         .then(response => response.json())
+//         .catch(error => {
+//             console.error('Error fetching data:', error);
+//             return null;
+//         });
+// }
 export default function DetailContent(props:any) {
     const [data, setData] = useState(null);
+  // state
+  const [detailBoardData, setDetailBoardData] = useState<any>([])
+//   useEffect(() => {
+//     fetch(`http://localhost:3000/commu/detailContent/id=${id}`)
+//       .then((response:any) => {
+//         setDetailBoardData(response.data)
+//       })
 
-    useEffect(() => {
-        const fetchData = () => {
-            getPosts(props.id)
-                .then(result => {
-                    setData(result);
-                });
-        };
-        console.log("id2:", props.id);
-        fetchData();
-    }, [props.id]);
-    // console.log(props);
+//       .catch(function(error:any) {
+//         console.log( error)
+//       })
+//   }, [])
+
+    // useEffect(() => {
+    //     const fetchData = () => {
+    //         getPosts(props.id)
+    //             .then(result => {
+    //                 setData(result);
+    //             });
+    //     };
+    // }, []);
     // return posts.map((posts:any) => <div>{posts.id}</div>)
+
+
     return (
     <section className={styles.container} >
         <div>dd{props.id2}</div>
