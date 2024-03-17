@@ -46,7 +46,7 @@ export default async function DetailContent(props:any) {
                             </span>
                         </div>
                     </div>
-                </div> 
+                </div>  
            </div>
            <div className={styles.articleViewContents} >
                 <p className={styles.contentsTxt} >{post.body}</p>
