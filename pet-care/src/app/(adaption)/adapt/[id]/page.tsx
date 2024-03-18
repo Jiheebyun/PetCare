@@ -153,13 +153,7 @@ export default function listDatail({ params }: { params: string }){
                                 </section>
                             </div>
                         </div>
-
-
-
                     </div>
-
-
-
                     <div className={classes.contactContainer}>
                         <div className={classes.contactInfoContainer}>
                                 <h4> 서울동물복지지원센터 </h4> 
