@@ -26,7 +26,7 @@ const topics = await resp.json();
        <div>
      
         <section className={styles.freeBoard}>
-        <h2><PetsIcon/>자유게시판<button  className={styles.create}>글쓰기</button></h2>
+        <h2><PetsIcon/>자유게시판<Link href="/commu/boardCreate/"><button  className={styles.create}>글쓰기</button></Link></h2>
         <div className={styles.articleList}>
         
         {topics.map((topic:any)=>{
