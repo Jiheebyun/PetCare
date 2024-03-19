@@ -1,6 +1,6 @@
 "use client"
 import React, { useEffect, useState } from 'react';
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/navigation'
 import axios from 'axios';
 import styles from './page.module.css';
 import dynamic from 'next/dynamic'; // 다이나믹 임포트
@@ -11,20 +11,31 @@ const ReactQuill = dynamic(() => import('react-quill'), {
   });
 
 export default  function BoardCreate(props:any) {
-    // const router = useRouter();
+  const router = useRouter();
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
-
+  console.log("title:"+title)//ok
+  console.log("content:"+content)//ok
+  console.log("props:"+JSON.stringify(props))//ok //props:{"params":{},"searchParams":{}}
+  
   const handleSubmit = async (event:any) => {
     event.preventDefault();
-    // try {
-    //   const response = await axios.post('/api/boards', { title, content });
-    //   console.log('게시글이 성공적으로 생성되었습니다.', response.data);
-    //   // 게시글 생성 후 게시판 목록 페이지로 이동
-    //   router.push('/boards');
-    // } catch (error) {
-    //   console.error('게시글 생성 중 오류가 발생했습니다:', error);
-    // }
+    console.log("handleSubmit함수 실행")//ok
+
+    try {
+      // 제목과 내용을 서버에 전송
+      const response = await axios.post('/api/boardCreate', { title, content });
+      console.log("response:"+response)
+      console.log("response.status:"+response.status)
+
+      // 서버로부터의 응답을 확인하고 성공했을 때만 페이지 이동
+      if (response.status === 200) { //x //404
+        console.error('response.status === 200');
+        router.push('/boardDetail/'); // 클라이언트 사이드 라우팅을 통한 페이지 이동
+      }
+    } catch (error) {
+      console.error('Error:', error);
+    }
   };
 
   return (
@@ -60,8 +71,8 @@ export default  function BoardCreate(props:any) {
             }}
           />
         </div>
+        <button type="submit" className={styles.button} >작성 완료</button>
       </form>
-      <button type="submit" className={styles.button}>작성 완료</button>
     </div>
   );
 };
