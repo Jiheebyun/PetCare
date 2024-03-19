@@ -1,0 +1,16 @@
+
+
+.userGlobalWrapper{
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.userGlobalContainer{
+        width: 98%; /* 원하는 너비 */
+        max-width: 1200px; /* 최대 너비 설정 */
+}
+
+

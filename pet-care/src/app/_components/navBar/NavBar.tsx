@@ -15,11 +15,13 @@ import CircleProfileBtn from "../circleProfileBtn/CircleProfileBtn";
 export default function MainNavBar() {
     const [ isProfileModal, setIsProfileModal ] = useState(false);
     const segment = useSelectedLayoutSegments();
-    const isAdaptionDetail = segment[1] === "adapt" ? true : false;
+    const isAdaptionDetail = segment[1] === "adapt" || segment[1] === "profile" ? true : false;
     const [ isBottomProfileBtn, setIsBottomProfileBtn ] = useState(false);
     const {data: session, status}: any = useSession();
     const firstLetterOfId: string | undefined = session?.user?.id.substr(0,1);
 
+    console.log(segment[1])
+    console.log(isAdaptionDetail)
 
     const profileModalHandler = (): void => {
         setIsProfileModal((prev: boolean)=>!prev);
@@ -35,7 +37,7 @@ export default function MainNavBar() {
         checkSession();
     }, [status]);
 
-    console.log(isBottomProfileBtn)
+
 
     return (
         <>
