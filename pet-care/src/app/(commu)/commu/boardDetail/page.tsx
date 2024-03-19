@@ -10,14 +10,11 @@ import ThumbUpOffAltIcon from '@mui/icons-material/ThumbUpOffAlt';
 export default async function DetailContent(props:any) {
     // console.log("Props:", props); // props 객체 전체를 콘솔에 출력하여 확인
     const { params } = props;
-    const id = params.id; // props에서 id 속성 가져오기
-    console.log("ID:", id); // id 출력
-    const response = await fetch('https://jsonplaceholder.typicode.com/posts/');
-    const posts = await response.json();
-    const post = posts.find((p: any) => p.id === parseInt(id));
+    // const id = params.id; // props에서 id 속성 가져오기
+    // const response = await fetch('https://jsonplaceholder.typicode.com/posts/');
+    // const posts = await response.json();
+    // const post = posts.find((p: any) => p.id === parseInt(id));
 
-    console.log("post:"+JSON.stringify(post))
-    console.log("?"+post.title)
     return (
     <section className={styles.container} >
         <div className={styles.wrapperd} >
@@ -25,8 +22,10 @@ export default async function DetailContent(props:any) {
            
             <div className={styles.articleViewHead} >
                 <h1>자유게시판</h1>
-                <h2>{post.title}</h2>
-                <div className={styles.name} ><span>{id} </span></div>
+                {/* <h2>{post.title}</h2>  */}
+                <div className={styles.name} >
+                    {/* <span>{id} </span> */}
+                </div>
                 <div className={styles.wrapInfo} >
                     <span className={styles.date} ><AccessTimeIcon/>2024.01.01</span>
                     <span className={styles.pv} ><RemoveRedEyeIcon/>257</span>
@@ -49,7 +48,7 @@ export default async function DetailContent(props:any) {
                 </div>  
            </div> 
            <div className={styles.articleViewContents} >
-                <p className={styles.contentsTxt} >{post.body}</p>
+                {/* <p className={styles.contentsTxt} >{post.body}</p> */}
                 <div className={styles.articleInfo} >
                     <div className={styles.article_info}>
                      <div className={styles.info}>
