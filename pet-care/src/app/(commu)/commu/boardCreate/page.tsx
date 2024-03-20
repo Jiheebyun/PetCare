@@ -14,14 +14,14 @@ export default  function BoardCreate(props:any) {
   const router = useRouter();
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
-  console.log("title:"+title)//ok
-  console.log("content:"+content)//ok
-  console.log("props:"+JSON.stringify(props))//ok //props:{"params":{},"searchParams":{}}
+
   
   const handleSubmit = async (event:any) => {
     event.preventDefault();
     console.log("handleSubmit함수 실행")//ok
-
+    console.log("title:"+title)//ok
+    console.log("content:"+content)//ok
+    console.log("props:"+JSON.stringify(props))//ok //props:{"params":{},"searchParams":{}}
     try {
       // 제목과 내용을 서버에 전송
       const response = await axios.post('/api/boardCreate', { title, content });
