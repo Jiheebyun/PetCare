@@ -16,14 +16,23 @@ export default function UserProfile (){
                         </div>
                         <div className={classes.userNameContainer}>
                             <span>User Name</span>
+
                         </div>
                     </div>
 
                     <div className={classes.userSignedInWrapper}>
                         <h2>1</h2>
+                        <span>가입한지</span>
                     </div>
                 </div>
                 <div className={classes.profileDefailWrapper}>
+                    <h2>User님, 소개</h2>
+                    <button className={classes.userInfoEditBtn}>프로필 수정하기</button>
+                    <div className={classes.userIntroduceContainer}>
+                        <span>반려견 경험:</span>
+                        <span>반려견과 같이 있을수 하루 시간:</span>
+                        <span>하루에 반려견과 산책할수 있는 시간:</span>
+                    </div>
 
                 </div>
             </div>
