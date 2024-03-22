@@ -48,8 +48,17 @@
     white-space: nowrap;
 }
 /* 좋아요,싫어요 숫자 */
-.freeBoardTable a:nth-child(3),.freeBoardTable a:nth-child(2){
+.freeBoardTable {
     color:#94969b;
+}
+.freeBoardTable a:nth-child(1){
+    color:black;
+}
+.freeBoardTable a:nth-child(4) div{
+    margin-top:5px;
+    font-size:11px;
+    color:#94969bb3;
+    margin-right:25px;
 }
 .good, .bad{
     float:right;
