@@ -3,21 +3,29 @@ import Link from "next/link";
 import PetsIcon from '@mui/icons-material/Pets';
 import styles from "./page.module.css";
 import ImageInsert from "../../../_components/imageInsert"
-
-function ImageInsert1(props: any) {
-    return (
-      <div>
-        <img src={props.image} alt={props.title} width={80} height={80} />
-        <div>title : {props.title}</div>
-        <div>description : {props.description}</div>
-      </div>
-    );
-  }
-  
+import postDataJson from '../../../_components/tempDataCommu.json';
+// function ImageInsert1(props: any) {
+//     return (
+//       <div>
+//         <img src={props.image} alt={props.title} width={80} height={80} />
+//         <div>title : {props.title}</div>
+//         <div>description : {props.description}</div>
+//       </div>
+//     );
+//   }
+ interface postDataType {
+  // id : number; //오류. json파일엔 id값이 없기때문
+  title : string;
+  content : string;
+  date : string;
+  read:number;
+  cmt:number;
+  like:number;
+ }
 export default async function FreeBoard() {
-const resp = await fetch('https://jsonplaceholder.typicode.com/posts');
-const topics = await resp.json();
-
+// const resp = await fetch('https://jsonplaceholder.typicode.com/posts');
+// const topics = await resp.json();
+const postData:postDataType[] = postDataJson;
     // function handleClick(props:any){
       
     //     console.log("props다:"+props)
@@ -29,9 +37,11 @@ const topics = await resp.json();
         <h2><PetsIcon/>자유게시판<Link href="/commu/boardCreate/"><button  className={styles.create}>글쓰기</button></Link></h2>
         <div className={styles.articleList}>
         
-        {topics.map((topic:any)=>{
+        {postData.map((postData:any,index)=>{ //postData필수. 안그럼 오류. map()사용할땐 각 배열 요소에 접근할 방법이 필요하기 때문
+        // {topics.map((topic:any)=>{
             return(
-            <div key={topic.id} className={styles.articleListPre} >
+            <div key={index+1} className={styles.articleListPre} >
+            {/* <div key={topic.id} className={styles.articleListPre} > */}
                 <div className={styles.tit}>
                     <h3><Link 
                     // onClick={() =>handleClick(`${topic.id}`)} 
@@ -39,13 +49,16 @@ const topics = await resp.json();
                     //     `/commu/detailContent/${topic.id}`
                     // }
                     href={{
-                        pathname: `/commu/detailContent/${topic.id}`,
-                        query: { id: `${topic.id}` },
+                        pathname: `/commu/detailContent/${index+1}`,
+                        query: { id: `${index+1}` },
                       }}
-
-                      
-                    >{topic.title}</Link></h3>
-                    <p className={styles.preTxt}><Link href="">{topic.body}</Link> </p>
+                    // href={{
+                    //     pathname: `/commu/detailContent/${topic.id}`,
+                    //     query: { id: `${topic.id}` },
+                    //   }}
+                    >{postData.title}</Link></h3>
+                    {/* >{topic.title}</Link></h3> */}
+                    <p className={styles.preTxt}><Link href="">{postData.content}</Link> </p>
                     <span className={styles.attachImg}>
                         <Link href="">
                    
@@ -62,10 +75,10 @@ const topics = await resp.json();
                 <div className={styles.sub}>
                     <p className={styles.name}></p>
                     <div className={styles.wrapInfo}>
-                       <Link href="">조회수</Link>
-                       <Link href="">좋아요</Link>
-                      <Link href="">댓글</Link>
-                       <Link href="" className={styles.date}>2024.02.12</Link>
+                       <Link href="">조회수 {postData.read}</Link>
+                       <Link href="">좋아요 {postData.like}</Link>
+                      <Link href="">댓글 {postData.cmt}</Link>
+                       <Link href="" className={styles.date}>{postData.date}</Link>
                     </div>
                 </div>
             </div>)
