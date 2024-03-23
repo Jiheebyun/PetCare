@@ -5,7 +5,7 @@ import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
 import ChatBubbleIcon from '@mui/icons-material/ChatBubble';
 import ThumbUpOffAltIcon from '@mui/icons-material/ThumbUpOffAlt';
-
+import { useRouter } from 'next/navigation';
 
 export default async function DetailContent(props:any) {
     // console.log("Props:", props); // props 객체 전체를 콘솔에 출력하여 확인
