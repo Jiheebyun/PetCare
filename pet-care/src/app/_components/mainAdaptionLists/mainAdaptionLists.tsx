@@ -2,7 +2,6 @@
 
 
 import React from "react";
-import type { InferGetStaticPropsType, GetStaticProps } from 'next'
 import classes from "./mainAdaptionsLists.module.css";
 import AdaptionList from "../adaptionList/adaptionList";
 
@@ -52,7 +51,7 @@ interface Root {
 
 type AdaptionType = typeof tempData
 
-export default function MainAdaptionLists (props: InferGetStaticPropsType<typeof getStaticProps>) {
+export default function MainAdaptionLists (props: any) {
     const { lists } = props;
     console.log(lists)
     const mockupData: Data[] = tempData.DATA;
@@ -75,30 +74,42 @@ export default function MainAdaptionLists (props: InferGetStaticPropsType<typeof
 };
 
 
-export async function getStaticProps() {
+export async function generateStaticParams() {
     const URL = `http://openapi.seoul.go.kr:8088/6e61476b4f63303036364e454a7441/json/TbAdpWaitAnimalView/1/15/`;
-
-    try {
-        const res = await fetch(URL);
-        if (!res.ok) {
-            throw new Error('Failed to fetch data');
-        }
-
-        const adaptionLists = await res.json();
+    try{
+        const res = await axios.get(URL);
+        const listsData = res.data;
+        const adaptionLists = listsData.map((building: any) => ({
+            params: {
+              id: building.id.toString(),
+            },
+          }));
         console.log(adaptionLists);
-        console.log("실행됨?");
+        console.log("실행됨?")
 
-        return {
-            props: {
-                lists: { adaptionLists },
-                revalidate: 1
+        if(adaptionLists){
+
+            return {
+                props: {
+                    lists: { adaptionLists },
+                    revalidate: 1
+                }
             }
         };
-    } catch (error) {
-        console.error(error);
-        return {
-            notFound: true
+        if (!adaptionLists) {
+
+            return { notFound: true }
         };
+
+    } catch(err){
+        console.log(err)
     }
 };
 
+
+
+
+// getStaticProps 와  getServerSideProps, getInitialProps 차이 공부
+// nextjs14에서는 위에 있는 것들을 지원하지 않음 .. ufck..
+// 참고: https://stackoverflow.com/questions/75679649/cant-use-getstaticprop-in-next-js-13
+// nextJs 14 -> generateStaticParams
