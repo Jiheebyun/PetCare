@@ -14,8 +14,8 @@ interface BoardListRequestBody {
   body?: string; // 응답 본문
 
 }
-
-export const handlers = [
+console.log("boardListHandlers 실행")
+export const boardListHandlers = [
   //요청을 가로채서 응답을줌
   http.get('/api/boardList', async({ request} )=> {
     // { request }란 : ctx 객체 안에 있는 request 속성. 
