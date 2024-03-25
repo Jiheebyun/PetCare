@@ -20,9 +20,6 @@ export default function MainNavBar() {
     const {data: session, status}: any = useSession();
     const firstLetterOfId: string | undefined = session?.user?.id.substr(0,1);
 
-    console.log(segment[1])
-    console.log(isAdaptionDetail)
-
     const profileModalHandler = (): void => {
         setIsProfileModal((prev: boolean)=>!prev);
     };
