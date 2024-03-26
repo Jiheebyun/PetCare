@@ -4,17 +4,8 @@ import PetsIcon from '@mui/icons-material/Pets';
 import styles from "./page.module.css";
 import ImageInsert from "../../../_components/imageInsert"
 import postDataJson from '../../../_components/tempDataCommu.json';
-// function ImageInsert1(props: any) {
-//     return (
-//       <div>
-//         <img src={props.image} alt={props.title} width={80} height={80} />
-//         <div>title : {props.title}</div>
-//         <div>description : {props.description}</div>
-//       </div>
-//     );
-//   }
  interface postDataType {
-  // id : number; //오류. json파일엔 id값이 없기때문
+  id : number; //오류. json파일엔 id값이 없기때문
   title : string;
   content : string;
   date : string;
@@ -23,13 +14,8 @@ import postDataJson from '../../../_components/tempDataCommu.json';
   like:number;
  }
 export default async function FreeBoard() {
-// const resp = await fetch('https://jsonplaceholder.typicode.com/posts');
-// const topics = await resp.json();
+
 const postData:postDataType[] = postDataJson;
-    // function handleClick(props:any){
-      
-    //     console.log("props다:"+props)
-    // }
     return (
        <div>
      
@@ -37,10 +23,10 @@ const postData:postDataType[] = postDataJson;
         <h2><PetsIcon/>자유게시판<Link href="/commu/boardCreate/"><button  className={styles.create}>글쓰기</button></Link></h2>
         <div className={styles.articleList}>
         
-        {postData.map((postData:any,index)=>{ //postData필수. 안그럼 오류. map()사용할땐 각 배열 요소에 접근할 방법이 필요하기 때문
+        {postData.map((postData:any)=>{ //postData필수. 안그럼 오류. map()사용할땐 각 배열 요소에 접근할 방법이 필요하기 때문
         // {topics.map((topic:any)=>{
             return(
-            <div key={index+1} className={styles.articleListPre} >
+            <div key={postData.id} className={styles.articleListPre} >
             {/* <div key={topic.id} className={styles.articleListPre} > */}
                 <div className={styles.tit}>
                     <h3><Link 
@@ -49,8 +35,8 @@ const postData:postDataType[] = postDataJson;
                     //     `/commu/detailContent/${topic.id}`
                     // }
                     href={{
-                        pathname: `/commu/detailContent/${index+1}`,
-                        query: { id: `${index+1}` },
+                        pathname: `/commu/detailContent/${postData.id}`,
+                        query: { id: `${postData.id}` },
                       }}
                     // href={{
                     //     pathname: `/commu/detailContent/${topic.id}`,
