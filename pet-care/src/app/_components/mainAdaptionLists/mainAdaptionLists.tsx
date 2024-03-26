@@ -1,7 +1,7 @@
 
+"use client"
 
-
-import React from "react";
+import React,{ useEffect, useState } from "react";
 import classes from "./mainAdaptionsLists.module.css";
 import AdaptionList from "../adaptionList/adaptionList";
 
@@ -32,41 +32,41 @@ interface Root {
  interface Data {
     tmpr_prtc_cn: string
     spcs: string
-    age: string
-    entrnc_date: string
+    AGE: string
+    ENTRNC_DATE: string
     bdwgh: number
-    animal_no: number
+    ANIMAL_NO: number
     intrcn_mvp_url: string
     adp_sttus: string
     breeds: string
     intrcn_cn: string
     tmpr_prtc_sttus: string
-    sexdstn: string
-    nm: string
+    SEXDSTN: string
+    NM: string
   }
-  interface Props{
-    body: string;
-    
-  }
-
-type AdaptionType = typeof tempData
 
 export default function MainAdaptionLists (props: any) {
-    const { lists } = props;
-    console.log(lists)
-    const mockupData: Data[] = tempData.DATA;
-
+    const [adaptionData, setAdaptionData] = useState<Data[]>([]);
     const specsFilter = (): [] => {
         return []
     };// context API 사용할지 상위 컴포넌트에서 필터를 해야할지 고려
 
-    console.log("dd")
-    
+    const mockupData: Data[] = tempData.DATA;
+
+    // useEffect(() => {
+    //     async function fetchData() {
+    //       const data = await fetchAdaptionLists();
+    //       setAdaptionData(data);
+    //     }
+    //     fetchData();
+    //   }, []);
+
     return(
         <>
             <div className={classes.adaptionListsWrapper}>
-                {mockupData.map((el,idx)=>{
-                    return <AdaptionList oneData={{...el, key: idx}}></AdaptionList>
+                {mockupData.map((el: Data, idx: number)=>{
+                    console.log(el)
+                    return <AdaptionList lists={{...el, key: idx}}></AdaptionList>
                 })}
             </div>
         </>
@@ -74,37 +74,17 @@ export default function MainAdaptionLists (props: any) {
 };
 
 
-export async function generateStaticParams() {
-    const URL = `http://openapi.seoul.go.kr:8088/6e61476b4f63303036364e454a7441/json/TbAdpWaitAnimalView/1/15/`;
-    try{
-        const res = await axios.get(URL);
-        const listsData = res.data;
-        const adaptionLists = listsData.map((building: any) => ({
-            params: {
-              id: building.id.toString(),
-            },
-          }));
-        console.log(adaptionLists);
-        console.log("실행됨?")
-
-        if(adaptionLists){
-
-            return {
-                props: {
-                    lists: { adaptionLists },
-                    revalidate: 1
-                }
-            }
-        };
-        if (!adaptionLists) {
-
-            return { notFound: true }
-        };
-
-    } catch(err){
-        console.log(err)
+async function fetchAdaptionLists() {
+    const URL = `http://localhost:3000/api/adaptionlists`;
+    try {
+      const response = await axios.get(URL);
+      return response.data.data.TbAdpWaitAnimalView.row;
+    } catch (err) {
+      console.error(err);
+      return [];
     }
-};
+  }
+
 
 
 

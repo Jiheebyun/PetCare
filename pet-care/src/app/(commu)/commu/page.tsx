@@ -10,7 +10,8 @@ import Image from "next/image";
 import postDataJson from '../../_components/tempDataCommu.json';
 
 interface postDataType {
-    // id : number; //오류. json파일엔 id값이 없기때문
+    id : number; //오류. json파일엔 id값이 없기때문
+    writer:string;
     title : string;
     content : string;
     date : string;
@@ -40,18 +41,18 @@ export default function FreeBoard() {
                 {postData
                 .sort((a, b) => Date.parse(b.date) - Date.parse(a.date)) // 날짜 내림차순 정렬
                 .slice(0, 10) // 상위 10개 항목만 선택
-                .map((postData, index) => (
-                    <div key={index} className={styles.freeBoardTable}>
+                .map((postData) => (
+                    <div key={postData.id} className={styles.freeBoardTable}>
                         <Link 
                         href={{
-                            pathname: `/commu/detailContent/${index+1}`,
-                            query: { id: `${index+1}` },
+                            pathname: `/commu/detailContent/${postData.id}`,
+                            query: { id: `${postData.id}` },
                         }}
                        >{postData.title}</Link>
                       <Link 
                         href={{
-                            pathname: `/commu/detailContent/${index+1}`,
-                            query: { id: `${index+1}` },
+                            pathname: `/commu/detailContent/${postData.id}`,
+                            query: { id: `${postData.id}` },
                         }}
                         ><div className={styles.bad}>
                             <ChatBubbleOutlineIcon />{postData.cmt}
@@ -60,8 +61,8 @@ export default function FreeBoard() {
                         
                        <Link 
                         href={{
-                            pathname: `/commu/detailContent/${index+1}`,
-                            query: { id: `${index+1}` },
+                            pathname: `/commu/detailContent/${postData.id}`,
+                            query: { id: `${postData.id}` },
                         }}
                         ><div className={styles.good}>
                             <ChatBubbleOutlineIcon />{postData.like}
@@ -70,8 +71,8 @@ export default function FreeBoard() {
 
                        <Link 
                         href={{
-                            pathname: `/commu/detailContent/${index+1}`,
-                            query: { id: `${index+1}` },
+                            pathname: `/commu/detailContent/${postData.id}`,
+                            query: { id: `${postData.id}` },
                         }}
                         ><div className={styles.good}>
                           {postData.date}
