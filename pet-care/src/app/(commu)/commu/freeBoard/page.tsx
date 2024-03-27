@@ -36,7 +36,7 @@ const postData:postDataType[] = postDataJson;
                     // }
                     href={{
                         pathname: `/commu/detailContent/${postData.id}`,
-                        query: { id: `${postData.id}` },
+                        // query: { id: `${postData.id}` },
                       }}
                     // href={{
                     //     pathname: `/commu/detailContent/${topic.id}`,

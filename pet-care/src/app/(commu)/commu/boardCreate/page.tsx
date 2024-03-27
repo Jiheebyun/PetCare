@@ -40,16 +40,23 @@ export default  function BoardCreate(props:any) {
 
       // 서버로부터 응답 받은 후, 성공했을 때만 페이지 이동
       if (response.status === 200) {//ok
-        const name = response.data.name; // 서버로부터 받은 값
-        router.push(`/commu/detailContent/${id}?name=${encodeURIComponent(name)}`);
+          // Local Storage에 저장
+  localStorage.setItem('recentPost', JSON.stringify(response.data));
+  // 상세 페이지로 이동
+  router.push(`/commu/detailContent/${response.data.id}`);
+        // const query = new URLSearchParams(response.data).toString();
+        // router.push(`/commu/detailContent/${response.data.id}?${query}`);
+
+        // const name = response.data.name; // 서버로부터 받은 값
+        // router.push(`/commu/detailContent/${id}?name=${encodeURIComponent(name)}`);
+        
         //'next/navigation'에서는 아래 pathname, query 지원 아직은 안하는듯
         // router.push({
         //   pathname: `/commu/detailContent/${id}`,
         //   query: { id: id },
         // })
-        console.log("name:"+name);
-        console.log("response.id:"+response.data.id);
-       
+        console.log("response:"+JSON.stringify(response));
+       //response:{"data":{"title":"ㅇ","content":"<p>ㅇ</p>","id":12,"date":"2024-03-27","read":1,"cmt":1,"like":1},"status":200,
       }
     } catch (error) {
       console.error('Error:', error);
