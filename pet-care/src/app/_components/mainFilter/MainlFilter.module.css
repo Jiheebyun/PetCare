@@ -26,9 +26,28 @@
     color: inherit; /* 링크의 색상 제거 */
 
 }
-.dogFilterContainer span{
+
+.dogFilterOff{
     font-weight: 700;
 }
+
+.catFilterOff{
+    font-weight: 700;
+}
+
+.dogFilterOn{
+    color: #64C6C4;
+    font-weight: 700;
+}
+
+.catFilterOn{
+    color: #64C6C4;
+    font-weight: 700;
+}
+.colored{
+	filter: opacity(0.4) drop-shadow(0 0 0 #00fffb);
+}
+
 
 .catFilterContainer a{
     display: flex;
@@ -39,7 +58,4 @@
     text-align: center;  
     text-decoration: none; /* 링크의 밑줄 제거 */  
     color: inherit; /* 링크의 색상 제거 */
-}
-.catFilterContainer span{
-    font-weight: 700;
 }
