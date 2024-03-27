@@ -22,7 +22,7 @@ export const boardCreateHandlers = [
     const read = 1
     const cmt =1
     const like =1
-    console.log("?"+date); // 출력: "2024-03-28"
+    // console.log("?"+date); // 출력: "2024-03-28"
 
 
 
