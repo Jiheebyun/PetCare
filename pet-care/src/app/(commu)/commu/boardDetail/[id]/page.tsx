@@ -1,15 +1,14 @@
 "use client"
 import React, { useEffect, useState } from 'react';
-import styles from "./detailContent.module.css";
+import styles from "./boardDetail.module.css";
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
 import ChatBubbleIcon from '@mui/icons-material/ChatBubble';
 import ThumbUpOffAltIcon from '@mui/icons-material/ThumbUpOffAlt';
 import postDataJson from '../../../../_components/tempDataCommu.json';
 import { useSearchParams,useParams } from "next/navigation";
-import { useRouter } from 'next/router';
-
-export default function DetailContent(props:any) {
+import Cmt from '../cmt/cmt'
+export default function boardDetail(props:any) {
     
     const params = useSearchParams();
     const id =  props.params.id;
@@ -82,10 +81,12 @@ export default function DetailContent(props:any) {
                             </div>
                     </div>
                     <div className={styles.articleComments} >
-                        <h3></h3>
+                        {/* <h3></h3> */}
                         <div className={styles.write_area} >
                             <div id={styles.btn_add_comment}>
-                                <div className={styles.btn_reply} >댓글을 남겨주세요</div>
+                                <div className={styles.btn_reply} >
+                                    <Cmt/>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -150,10 +151,11 @@ export default function DetailContent(props:any) {
                             </div>
                     </div>
                     <div className={styles.articleComments} >
-                        <h3></h3>
+                        {/* <h3></h3> */}
                         <div className={styles.write_area} >
                             <div id={styles.btn_add_comment}>
-                                <div className={styles.btn_reply} >댓글을 남겨주세요</div>
+                                {/* <div className={styles.btn_reply} >댓글을 남겨주세요</div> */}
+                                <Cmt/>
                             </div>
                         </div>
                     </div>

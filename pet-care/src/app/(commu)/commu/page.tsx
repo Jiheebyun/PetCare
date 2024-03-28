@@ -45,13 +45,13 @@ export default function FreeBoard() {
                     <div key={postData.id} className={styles.freeBoardTable}>
                         <Link 
                         href={{
-                            pathname: `/commu/detailContent/${postData.id}`,
+                            pathname: `/commu/boardDetail/${postData.id}`,
                             query: { id: `${postData.id}` },
                         }}
                        >{postData.title}</Link>
                       <Link 
                         href={{
-                            pathname: `/commu/detailContent/${postData.id}`,
+                            pathname: `/commu/boardDetail/${postData.id}`,
                             query: { id: `${postData.id}` },
                         }}
                         ><div className={styles.bad}>
@@ -61,7 +61,7 @@ export default function FreeBoard() {
                         
                        <Link 
                         href={{
-                            pathname: `/commu/detailContent/${postData.id}`,
+                            pathname: `/commu/boardDetail/${postData.id}`,
                             query: { id: `${postData.id}` },
                         }}
                         ><div className={styles.good}>
@@ -71,7 +71,7 @@ export default function FreeBoard() {
 
                        <Link 
                         href={{
-                            pathname: `/commu/detailContent/${postData.id}`,
+                            pathname: `/commu/boardDetail/${postData.id}`,
                             query: { id: `${postData.id}` },
                         }}
                         ><div className={styles.good}>

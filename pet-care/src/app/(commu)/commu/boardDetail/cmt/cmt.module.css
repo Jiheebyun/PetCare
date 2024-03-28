@@ -1,0 +1,155 @@
+
+@media screen and (min-width: 1100px){
+    .articleComments {
+        margin-top: 40px;
+        padding: 26px 0 0;
+    }
+    .articleComments h3 {
+        padding: 0;
+        font-size: 16px;
+    }
+    .articleComments .replyArea {
+        /* border: 1px solid #d4d4d4; */
+        margin-top: 21px;
+        padding: 0;
+    }
+    .articleComments .replyIng {
+        padding: 18px 20px 17px;
+        border: 0;
+    }
+    .articleComments .replyIng .attachFile {
+        top: 19px;
+        left: 23px;
+    }
+    .articleComments .replyIng .attachFile label {
+        width: 30px;
+        height: 24px;
+        /* background: url(https://static.teamblind.com/img/www_kr/sp-kr.png?time=nov2023) no-repeat; */
+        background-size: 600px 900px;
+        background-position: -10px -384px;
+    }
+    .articleComments .replyIng .txtara {
+        margin-left: 36px;
+        font-size: 0;
+    }
+    .articleComments .replyIng .txtara textarea {
+        min-height: 96px;
+        padding: 0 4px;
+        font-size: 16px;
+        line-height: 1.5em;
+    }
+    .articleComments .replyIng .fncUx {
+        margin-top: 20px;
+    }
+    .articleComments .replyIng .fncUx .btnGroup {
+        margin-top: 0;
+    }
+    .articleComments .replyIng .fncUx .btnCncl, .articleComments .replyIng .fncUx .btnPost {
+        margin-left: 6px;
+        font-size: 16px;
+        border-radius: 0;
+    }
+    .articleComments .replyIng .fncUx .btnCncl, .articleComments .replyIng .fncUx .btnPost {
+        margin-left: 6px;
+        font-size: 16px;
+        border-radius: 0;
+    }
+}
+.articleComments {
+    margin: 0 0 -1px;
+    padding: 23px 0 24px;
+    /* border-top: 1px solid #eee; */
+}
+.articleComments h3 {
+    padding: 0 20px;
+    font-size: 14px;
+    font-weight: bold;
+}
+.articleComments .replyArea {
+    position: relative;
+    margin-top: 19px;
+    padding: 0 20px;
+}
+.articleComments .replyIng {
+    position: relative;
+    padding: 17px 14px 14px;
+    background-color: #fff;
+    border: 1px solid #d4d4d4;
+}
+.articleComments .replyIng .attachFile {
+    overflow: hidden;
+    position: absolute;
+    top: 17px;
+    left: 17px;
+}
+.articleComments .replyIng .attachFile label {
+    display: inline-block;
+    width: 30px;
+    height: 20px;
+    /* background: url(https://static.teamblind.com/img/www_kr/sp-kr.png?time=nov2023) no-repeat; */
+    background-size: 504px 756px;
+    background-position: -8.4px -322.56px;
+    cursor: pointer;
+}
+.articleComments .replyIng .txtara {
+    margin-left: 29px;
+    font-size: 0;
+}
+.articleComments .replyIng .txtara textarea {
+    overflow: hidden;
+    width: 100%;
+    min-height: 80px;
+    padding: 0 4px;
+    border: 0;
+    font-size: 14px;
+    line-height: 1.5em;
+    box-sizing: border-box;
+    resize: none;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+.articleComments .replyIng .fncUx {
+    position: relative;
+    margin-top: 16px;
+    text-align: right;
+}
+.articleComments .replyIng .fncUx .btnGroup {
+    margin-top: 16px;
+}
+.articleComments .replyIng .fncUx .btnCncl, .articleComments .replyIng .fncUx .btnPost {
+    margin-left: 9px;
+    padding: 6px 16px;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 4px;
+}
+.articleComments .replyIng .fncUx .btnCncl {
+    color: #bbc0c5;
+}
+.articleComments .replyIng .fncUx .btnPost:disabled {
+    background-color: #bbc0c5;
+}
+.articleComments .replyIng .fncUx .btnPost {
+    color: #fff;
+    background-color: #da3238;
+}
+.articleComments .replyIng .fncUx .btnCncl, .articleComments .replyIng .fncUx .btnPost {
+    margin-left: 9px;
+    padding: 6px 16px;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 4px;
+}
+.blind {
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1px;
+    height: 1px;
+    font-size: 1px;
+    line-height: 100px;
+    white-space: nowrap;
+}
+.articleComments .replyIng .attachFile input {
+    display: none;
+}
