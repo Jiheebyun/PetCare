@@ -1,7 +1,7 @@
 // Cmt.tsx
 import React from 'react';
 import styles from './cmt.module.css';
-
+import CameraAltIcon from '@mui/icons-material/CameraAlt';
 export default function Cmt() {
   return (
     <div className={styles.articleComments}>
@@ -20,6 +20,7 @@ export default function Cmt() {
                   <span className={styles.attachFile}>
                     <label htmlFor="inpfile">
                       <i className={styles.blind}>파일 첨부하기</i>
+                      <CameraAltIcon/>
                     </label>
                     <input id="inpfile" type="file" name="file" accept="image/gif, image/jpeg, image/png" />
                   </span>
