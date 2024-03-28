@@ -5,10 +5,9 @@ import Image from "next/image";
 import classes from "./MainlFilter.module.css";
 import Link from "next/link";
 
-export default function MainFilter () {
-    const [ isDogFilterOn, setIsDogFilterOn ] = useState(false);
-    const [ isCatFilterOn, setIsCatFilterOn ] = useState(false);
-
+export default function MainFilter (props: any) {
+    const { isDogFilterOn, setIsDogFilterOn, isCatFilterOn, setIsCatFilterOn } = props;
+    
     const dogFilterHandler = () => {
         setIsDogFilterOn(!isDogFilterOn)
     };
