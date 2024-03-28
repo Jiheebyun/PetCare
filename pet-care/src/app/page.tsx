@@ -32,14 +32,14 @@ export default function Home() {
     const filteredDog = adaptionData?.filter(data => data?.SPCS === "DOG");
     const filteredCat = adaptionData?.filter(data => data?.SPCS === "CAT");
 
-    useEffect(() => {
-        async function fetchData() {
-            const data = await fetchAdaptionLists();
-            setAdaptionData(data);
-            setOriginalAdaptionData(data);
-        }
-        fetchData();
-    }, []);
+    // useEffect(() => {
+    //     async function fetchData() {
+    //         const data = await fetchAdaptionLists();
+    //         setAdaptionData(data);
+    //         setOriginalAdaptionData(data);
+    //     }
+    //     fetchData();
+    // }, []);
 
     useEffect(()=>{
         if(isDogFilterOn === true){
