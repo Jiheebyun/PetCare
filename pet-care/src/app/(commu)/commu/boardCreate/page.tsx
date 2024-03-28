@@ -43,7 +43,7 @@ export default  function BoardCreate(props:any) {
           // Local Storage에 저장
   localStorage.setItem('recentPost', JSON.stringify(response.data));
   // 상세 페이지로 이동
-  router.push(`/commu/detailContent/${response.data.id}`);
+  router.push(`/commu/boardDetail/${response.data.id}`);
         // const query = new URLSearchParams(response.data).toString();
         // router.push(`/commu/detailContent/${response.data.id}?${query}`);
 

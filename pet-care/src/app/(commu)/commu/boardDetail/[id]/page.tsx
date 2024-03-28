@@ -1,6 +1,6 @@
 "use client"
 import React, { useEffect, useState } from 'react';
-import styles from "./detailContent.module.css";
+import styles from "./boardDetail.module.css";
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
 import ChatBubbleIcon from '@mui/icons-material/ChatBubble';
@@ -8,7 +8,7 @@ import ThumbUpOffAltIcon from '@mui/icons-material/ThumbUpOffAlt';
 import postDataJson from '../../../../_components/tempDataCommu.json';
 import { useSearchParams,useParams } from "next/navigation";
 import Cmt from '../cmt/cmt'
-export default function DetailContent(props:any) {
+export default function boardDetail(props:any) {
     
     const params = useSearchParams();
     const id =  props.params.id;
