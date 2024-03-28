@@ -7,8 +7,7 @@ import ChatBubbleIcon from '@mui/icons-material/ChatBubble';
 import ThumbUpOffAltIcon from '@mui/icons-material/ThumbUpOffAlt';
 import postDataJson from '../../../../_components/tempDataCommu.json';
 import { useSearchParams,useParams } from "next/navigation";
-import { useRouter } from 'next/router';
-
+import Cmt from '../cmt/cmt'
 export default function DetailContent(props:any) {
     
     const params = useSearchParams();
@@ -85,7 +84,9 @@ export default function DetailContent(props:any) {
                         <h3></h3>
                         <div className={styles.write_area} >
                             <div id={styles.btn_add_comment}>
-                                <div className={styles.btn_reply} >댓글을 남겨주세요</div>
+                                <div className={styles.btn_reply} >
+                                    <Cmt/>
+                                </div>
                             </div>
                         </div>
                     </div>
