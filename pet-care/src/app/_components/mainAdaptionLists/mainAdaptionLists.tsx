@@ -1,7 +1,6 @@
 
-"use client"
 
-import React,{ useEffect, useState } from "react";
+
 import classes from "./mainAdaptionsLists.module.css";
 import AdaptionList from "../adaptionList/adaptionList";
 
@@ -46,44 +45,20 @@ interface Root {
   }
 
 export default function MainAdaptionLists (props: any) {
-    const [adaptionData, setAdaptionData] = useState<Data[]>([]);
-    const specsFilter = (): [] => {
-        return []
-    };// context API 사용할지 상위 컴포넌트에서 필터를 해야할지 고려
-
+    const { adaptionLists } = props;
     const mockupData: Data[] = tempData.DATA;
-
-    // useEffect(() => {
-    //     async function fetchData() {
-    //       const data = await fetchAdaptionLists();
-    //       setAdaptionData(data);
-    //     }
-    //     fetchData();
-    //   }, []);
 
     return(
         <>
             <div className={classes.adaptionListsWrapper}>
                 {mockupData.map((el: Data, idx: number)=>{
-                    console.log(el)
-                    return <AdaptionList lists={{...el, key: idx}}></AdaptionList>
+                    return <AdaptionList key = {idx} lists={{...el, key: idx}}></AdaptionList>
                 })}
             </div>
         </>
     )
-};
+};  
 
-
-async function fetchAdaptionLists() {
-    const URL = `http://localhost:3000/api/adaptionlists`;
-    try {
-      const response = await axios.get(URL);
-      return response.data.data.TbAdpWaitAnimalView.row;
-    } catch (err) {
-      console.error(err);
-      return [];
-    }
-  }
 
 
 
