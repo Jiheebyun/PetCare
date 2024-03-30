@@ -47,7 +47,7 @@ export default function ProfileBtnModal ({setIsProfileModal, isProfileModal}: Pr
                 >
                     <li>
                         {isLoggedIn ? 
-                        (<Link href={'/login'} className={classes.LinkStyle} onClick={handler}>
+                        (<Link href={'/profile/userid'} className={classes.LinkStyle} onClick={handler}>
                             <span>프로필</span>
                         </Link>)
                         :

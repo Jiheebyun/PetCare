@@ -80,7 +80,7 @@ export default function MainNavBar() {
                                 src={'/img/profileIcon.png'} 
                                 alt="profile" 
                                 width={30} 
-                                height={30}
+                                height={30}   
                             ></Image>)}
                         </div>
                     </div>
@@ -99,7 +99,7 @@ export default function MainNavBar() {
                         <div className={classes.profileMenuMobileContainer}>
                             <ul className={classes.profileMenu}>
                                 <li>
-                                    <span>프로필</span>
+                                    <Link href={"/profile/userid"}><span>프로필</span></Link>
                                 </li>
                                 <li>
                                     <span>관신리스트</span>
