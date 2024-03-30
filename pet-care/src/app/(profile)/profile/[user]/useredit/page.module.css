@@ -1,0 +1,53 @@
+
+
+.userEditWrapper{
+    display: flex;
+    margin-top: 30px;
+    flex-wrap: wrap;
+}
+
+
+.userImageContainer{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    flex: 1;
+}
+.userProfileEditContainer{
+    flex: 1;
+}
+.userProfileEditContainer span{
+    color: #999999
+}
+
+.imageSection{
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+.image{
+    height: 200px;
+    width: 200px;
+    background-color: #999999;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+.image span{
+    font-size: 100px;
+    font-weight: 800;
+}
+
+
+
+@media screen and (max-width: 720px) {
+    .userEditWrapper {
+        display: flex;
+        margin-top: 30px;
+        flex-direction: column; /* 박스들이 세로로 배치되도록 함 */
+        text-align: center;
+    }
+  }
