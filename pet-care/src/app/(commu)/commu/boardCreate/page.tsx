@@ -67,8 +67,14 @@ export default  function BoardCreate(props:any) {
     <div className={styles.container}>
       <h2>글쓰기</h2>
       <form onSubmit={handleSubmit}>
+      <label htmlFor="ctg">카테고리 : </label>
+      <select name="ctg" id="ctg" className={styles.selectContainer}>
+        <option value="select">선택</option>
+        <option value="dov">강아지</option>
+        <option value="cat">고양이</option>
+      </select>
         <div className={styles.formGroup}>
-          <label htmlFor="title">제목:</label>
+          <label htmlFor="title">제목:</label><br/>
           <input
             type="text"
             id="title"
@@ -94,6 +100,7 @@ export default  function BoardCreate(props:any) {
                 ['clean']
               ]
             }}
+            style={{ height: '400px',marginBottom:'80px'}}
           />
         </div>
         <button type="submit" className={styles.button} >작성 완료</button>
