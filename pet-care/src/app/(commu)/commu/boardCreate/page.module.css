@@ -4,6 +4,7 @@
     height: 100%;
     margin: auto;
     padding: 20px;
+    margin-bottom: 40px;
     /* border: 1px solid #ccc;
     border-radius: 5px; */
   }
@@ -48,4 +49,6 @@
   }
   .selectContainer{
     margin-bottom: 20px;
+    border: 1px solid #ccc;
   }
+ 

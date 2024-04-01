@@ -7,6 +7,7 @@ interface BoardCreateRequestBody {
     id?:number;
     date:string;
     writer:string;
+    category:string;
 }
 console.log("boardCreateHandlers 실행")
 
@@ -22,12 +23,13 @@ export const boardCreateHandlers = [
     const read = 1
     const cmt =1
     const like =1
-    // console.log("?"+date); // 출력: "2024-03-28"
+    const category = await data?.category;
+    console.log("category"+category); // 출력: "2024-03-28"
 
 
 
 
-    return HttpResponse.json({ title, content, id, date, writer,read, cmt, like }, {
+    return HttpResponse.json({ title, content, id, date, writer,read, cmt, like, category }, {
             status: 200 // 응답 코드 설정
           });
         }),

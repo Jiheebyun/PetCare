@@ -1,4 +1,5 @@
 "use client"
+import Link from "next/link";
 import React, { useEffect, useState } from 'react';
 import styles from "./boardDetail.module.css";
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
@@ -13,23 +14,9 @@ export default function boardDetail(props:any) {
     const params = useSearchParams();
     const id =  props.params.id;
 
-    console.log("ID??:", id); // ok
-    console.log("Props:"+JSON.stringify(props));//Props:[object Object]
+    // console.log("ID??:", id); // ok
+    // console.log("Props:"+JSON.stringify(props));//Props:[object Object]
 
-
-    // const { params } = props;
-    // const id = params.id; // props에서 id 속성 가져오기
-    // const response = await fetch('https://jsonplaceholder.typicode.com/posts/');
-
-    // const posts = await response.json();
-    // if (id !== null) { //이 예외처리 안해주면 오류나서 빌드가 안됨.
-     // const post = posts.find((p: any) => p.id === parseInt(id));
-    //}
-
-
-    // URL에서 id 값을 정수로 변환하여 사용. id가 없거나, 변환할 수 없는 값이면 -1을 반환
-    // const index = id ? parseInt(id, 10) - 1 : -1;
-    // const post = postDataJson[index]; //ok
 
      // ID에 해당하는 게시물 데이터 찾기
      if (id !== null) { 
@@ -45,6 +32,7 @@ export default function boardDetail(props:any) {
                     
                         <div className={styles.articleViewHead} >
                             <h1>자유게시판</h1>
+                            <span className={styles.category}><Link href="" >강아지</Link></span>
                             <h2>{selectedPost.title}</h2>
                             <div className={styles.name} ><span>{selectedPost.writer} </span></div>
                             <div className={styles.wrapInfo} >
@@ -105,7 +93,7 @@ export default function boardDetail(props:any) {
                 const storedPost = JSON.parse(storedData);
                 console.log('storedPost'+storedPost.title);
                 const content = storedPost.content.replace(/<\/?p>/g, ''); //p태그 제거
-                const selectedPost = {"title":storedPost.title,"writer":storedPost.writer, "content":content,"id":storedPost.id,"date":storedPost.date,"read":storedPost.read,"cmt":storedPost.cmt,"like":storedPost.like}
+                const selectedPost = {"category":storedPost.category,"title":storedPost.title,"writer":storedPost.writer, "content":content,"id":storedPost.id,"date":storedPost.date,"read":storedPost.read,"cmt":storedPost.cmt,"like":storedPost.like}
 
         
                 return (
@@ -115,7 +103,7 @@ export default function boardDetail(props:any) {
                     
                         <div className={styles.articleViewHead} >
                             <h1>자유게시판</h1>
-                            <h2>{selectedPost.title}</h2>
+                            <span className={styles.category}><Link href="" >{selectedPost.category}</Link></span>
                             <div className={styles.name} ><span>{selectedPost.writer} </span></div>
                             <div className={styles.wrapInfo} >
                                 <span className={styles.date} ><AccessTimeIcon/>{selectedPost.date}</span>
