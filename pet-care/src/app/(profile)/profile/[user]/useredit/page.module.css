@@ -9,7 +9,7 @@
 
 .userImageContainer{
     display: flex;
-    justify-content: center;
+    align-items: center;
     flex-direction: column;
     flex: 1;
 }
@@ -41,13 +41,52 @@
     font-weight: 800;
 }
 
+.userProfileInputContianer{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: 60px;
+    grid-gap: 30px;
+    margin-top: 30px;
+}
+
+.profileInput{
+    border: 1px solid #000;
+    padding: 20px;
+    border-top: 0px;
+    border-left: 0px;
+    border-right: 0px;
+    border-bottom: 0px;
+    border-radius: 10px 10px 10px 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.profileInput:hover{
+    background-color: #f3f3f3;
+}
+
+/* .profileInputLines{
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: rgb(222, 221, 221); 
+} */
+
 
 
 @media screen and (max-width: 720px) {
     .userEditWrapper {
         display: flex;
         margin-top: 30px;
-        flex-direction: column; /* 박스들이 세로로 배치되도록 함 */
+        flex-direction: column; 
         text-align: center;
     }
-  }
+}
+@media (max-width: 1100px) {
+    .userProfileInputContianer {
+        grid-template-columns: repeat(1, 1fr); 
+    }
+}
