@@ -1,9 +1,11 @@
 
 "use client"
 
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import classes from './page.module.css';
 import UserEditModal from "./_components/userEditModal/UserEditModal";
+import { useOnClickOutside } from "@/hooks/useOnClickOutside";
+import { useRouter } from 'next/navigation'
 
 
 const profileTitle = [
@@ -22,10 +24,17 @@ const profileTitle = [
 
 export default function UserEdit () {
     const [ isInputModal, setIsInputModal ] = useState(false);
+    const profileInputRef = useRef(null);
+    const router = useRouter();
 
     const inputHandler = () =>{
-        setIsInputModal(true);
+        setIsInputModal(!isInputModal);
     };
+
+    // TODO 모달창 외부클릿했을떄, 사라져야함, 
+    useOnClickOutside(profileInputRef, () =>{ setIsInputModal(false) });
+    console.log(profileInputRef)
+
 
     return (
         <>
@@ -44,7 +53,11 @@ export default function UserEdit () {
                     <div className={classes.userProfileInputContianer}>
                         {profileTitle.map((title, idx)=>{
                             return (
-                                <div className={classes.profileInput} key={idx}>
+                                <div 
+                                    className={classes.profileInput} 
+                                    key={idx}
+                                    onClick={inputHandler}
+                                >
                                     <span>{title.titleName}</span>
                                     <div className={classes.profileInputLines}></div>
                                 </div>
@@ -57,7 +70,11 @@ export default function UserEdit () {
                     </div>
                 </div>
             </div>
-            {/* <UserEditModal></UserEditModal> */}
+            { isInputModal ?
+                <div  ref = {profileInputRef}>           
+                    <UserEditModal></UserEditModal>
+                </div>
+                : null}
         </>
     )
 }
