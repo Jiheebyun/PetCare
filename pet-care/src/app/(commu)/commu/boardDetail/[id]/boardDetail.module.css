@@ -182,3 +182,12 @@
     text-align: left;
     box-sizing: border-box;
 }
+.category{
+    border: 1px solid #eeeeeee4;
+    padding:2px;
+    color: #eeeeee;
+    font-size: 12px;
+}
+.hidden{
+    display: none;
+}

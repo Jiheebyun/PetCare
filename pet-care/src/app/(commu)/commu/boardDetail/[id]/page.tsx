@@ -103,7 +103,10 @@ export default function boardDetail(props:any) {
                     
                         <div className={styles.articleViewHead} >
                             <h1>자유게시판</h1>
-                            <span className={styles.category}><Link href="" >{selectedPost.category}</Link></span>
+
+                            <span className={`${selectedPost.category === '' ? styles.hidden :styles.category}`}>
+                                <Link href="">{selectedPost.category}</Link>
+                            </span>
                             <div className={styles.name} ><span>{selectedPost.writer} </span></div>
                             <div className={styles.wrapInfo} >
                                 <span className={styles.date} ><AccessTimeIcon/>{selectedPost.date}</span>

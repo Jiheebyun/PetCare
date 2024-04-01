@@ -62,8 +62,8 @@ export default  function BoardCreate(props:any) {
       <label htmlFor="ctg">카테고리 : </label>
       <select name="ctg" id="ctg" className={styles.selectContainer} onChange={handleCategoryChange}>
         <option value="select">선택</option>
-        <option value="dog">강아지</option>
-        <option value="cat">고양이</option>
+        <option value="강아지">강아지</option>
+        <option value="고양이">고양이</option>
       </select>
         <div className={styles.formGroup}>
           <label htmlFor="title">제목:</label><br/>
