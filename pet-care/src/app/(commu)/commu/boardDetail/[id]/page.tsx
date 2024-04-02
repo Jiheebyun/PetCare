@@ -8,9 +8,21 @@ import ChatBubbleIcon from '@mui/icons-material/ChatBubble';
 import ThumbUpOffAltIcon from '@mui/icons-material/ThumbUpOffAlt';
 import postDataJson from '../../../../_components/tempDataCommu.json';
 import { useSearchParams,useParams } from "next/navigation";
+import Image from 'next/image';
 import Cmt from '../cmt/cmt'
 export default function boardDetail(props:any) {
+    const getImageSrc = (category:any) => {
+        switch (category) {
+          case '강아지':
+            return '/img/dogIcon.png';
+          case '고양이':
+            return '/img/catIcon.png';
     
+          default:
+            return '';
+        }
+      };
+
     const params = useSearchParams();
     const id =  props.params.id;
 
@@ -31,9 +43,18 @@ export default function boardDetail(props:any) {
                         <div className={styles.content} >
                     
                         <div className={styles.articleViewHead} >
-                            <h1>자유게시판</h1>
-                            <span className={styles.category}><Link href="" >강아지</Link></span>
+                            
+                            <h1>자유게시판</h1> 
+                            <div className={styles.flex}> 
+                            <span className={styles.categoryContainer}>
+                                <span className={`${selectedPost.category === '' ? styles.hidden :styles.category}`}>
+                                    <Link href=""> 
+                                        <Image className={styles.icon}src={getImageSrc(selectedPost.category)} alt="pet" width={20} height={20} />  {selectedPost.category}
+                                    </Link>
+                                </span>
+                            </span>
                             <h2>{selectedPost.title}</h2>
+                            </div>
                             <div className={styles.name} ><span>{selectedPost.writer} </span></div>
                             <div className={styles.wrapInfo} >
                                 <span className={styles.date} ><AccessTimeIcon/>{selectedPost.date}</span>
@@ -103,10 +124,16 @@ export default function boardDetail(props:any) {
                     
                         <div className={styles.articleViewHead} >
                             <h1>자유게시판</h1>
+                            <div className={styles.flex}> 
+                                <span className={`${selectedPost.category === '' ? styles.hidden :styles.category}`}>
+                                    <Link href="">{selectedPost.category}</Link>
+                                </span>
+                                <h2>{selectedPost.title}</h2>
+                            </div>
 
-                            <span className={`${selectedPost.category === '' ? styles.hidden :styles.category}`}>
-                                <Link href="">{selectedPost.category}</Link>
-                            </span>
+
+
+                           
                             <div className={styles.name} ><span>{selectedPost.writer} </span></div>
                             <div className={styles.wrapInfo} >
                                 <span className={styles.date} ><AccessTimeIcon/>{selectedPost.date}</span>
