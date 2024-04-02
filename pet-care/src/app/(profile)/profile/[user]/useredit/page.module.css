@@ -67,6 +67,27 @@
     background-color: #f3f3f3;
 }
 
+
+.userIntroWrapper{
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    margin-bottom: 50px;
+}
+.userIntroContainer{
+    padding: 20px;
+    height: 100px;
+    border: 1px dashed #999999;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+.userIntroInput{
+    cursor: pointer;
+    text-decoration: underline;
+}
+
 /* .profileInputLines{
     bottom: 0;
     left: 0;

@@ -64,15 +64,24 @@ export default function UserEdit () {
                             )
                         })}
                     </div>
-                    <div>
+                    <div className={classes.userIntroWrapper}>
                         <h2>자기소개</h2>
-                        <div></div>
+                        <div className={classes.userIntroContainer}>
+                            <span> 자기 소개를 넣어주세요 !</span>
+                            <span 
+                                className={classes.userIntroInput}
+                                onClick={inputHandler}
+                            > 자기소개 작성하기</span>
+                        </div>
                     </div>
                 </div>
             </div>
             { isInputModal ?
                 <div  ref = {profileInputRef}>           
-                    <UserEditModal></UserEditModal>
+                    <UserEditModal
+                        setIsInputModal = {setIsInputModal}
+                        isInputModal = {isInputModal}
+                    ></UserEditModal>
                 </div>
                 : null}
         </>
