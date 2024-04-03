@@ -13,6 +13,7 @@
     border-bottom:1px solid #eee;
     border-bottom-width: 2px;
     font-size: 18px;
+    padding-bottom: 5px;
 }
 .articleList{
     overflow: hidden;
@@ -150,6 +151,64 @@
     color:white;
     border:2px solid #92c14c;
 }
+.category{
+    padding:3px 5px;
+    /* color: #eeeeee; */
+    font-size: 12px;
+    border-radius: 5px;
+    border: 1px solid #64c6c4c5;
+
+    color: white;
+    /* background-color:#64c6c4c5; */
+}
+.category a{
+    color:#64c6c4;
+    font-weight: 700;
+    display: flex;
+    align-items: center; /* 세로 방향으로 중앙 정렬 */
+}
+.category a img{
+    margin-right:3px;
+}
+.hidden{
+    display: none;
+}
+.categoryContainer{
+    height:19.2px;
+    /* display: block; */
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center; /* 아이콘과 텍스트를 수평 중앙에 정렬 */
+}
+.categoryFilter{
+    /* border: 1px solid 64C6C4; */
+    padding:6px 10px;
+    margin:4px;
+    color: white;
+    font-size: 14px;
+    border-radius: 8px;
+    background-color:#64c6c4c5;
+    border: 1px solid #64c6c4c5;
+}
+.categoryFilter:hover{
+    background-color: #08b6b3;
+    color:white;
+    /* border: 1px solid #64C6C4;  */
+}
+.categoryFilterContainer{
+    margin-left:8px;
+}
+.icon{
+    top:-5px;
+}
+.categoryFilterSelected{
+    background-color: #08b6b3;
+    color:white;
+}
+/* .flex{
+    display: flex;
+    align-items: center; 
+  } */
 @media screen and (min-width: 1100px){
     .articleList .articleListPre:nth-child(1n) {
         width: 50%;
@@ -187,7 +246,7 @@
         padding-right: 105px;
     }
     .articleList .articleListPre h3 a {
-        height: 52px;
+        height: 40px;
         max-height: 52px;
         margin-top: 1px;
         font-size: 18px;

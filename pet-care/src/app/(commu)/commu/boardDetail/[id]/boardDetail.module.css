@@ -33,9 +33,9 @@
 .name {  
     display: flex;
     align-items: center;
-    margin-top: 16px;
     font-size: 12px;
     line-height: 16px;
+    font-weight: 500;
 }
 .articleViewHead .wrapInfo {
     margin-top: 16px;
@@ -44,6 +44,7 @@
     position: relative;
     margin-top: 8px;
     font-size: 12px;
+    margin-bottom: 10px;
 }
 .wrapInfo span, .wrapInfo a {
     margin-right: 14px;
@@ -183,11 +184,33 @@
     box-sizing: border-box;
 }
 .category{
-    border: 1px solid #eeeeeee4;
-    padding:2px;
-    color: #eeeeee;
+    border: 1px solid #64c6c4c5;
+    padding:3px;
+    color:white ;
     font-size: 12px;
+    margin-right: 7px;
+    border-radius: 5px;
 }
 .hidden{
     display: none;
+}
+.flex{
+    display: flex;
+    align-items: center; 
+  }
+  .categoryContainer{
+    height:19.2px;
+    /* display: block; */
+    /* margin-bottom: 10px; */
+    display: flex;
+    align-items: center; /* 아이콘과 텍스트를 수평 중앙에 정렬 */
+}
+.category a img{
+    margin-right:3px;
+}
+.category a{
+    color:#64c6c4;
+    font-weight: 700;
+    display: flex;
+    align-items: center; /* 세로 방향으로 중앙 정렬 */
 }
