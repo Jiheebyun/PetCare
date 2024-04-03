@@ -33,8 +33,6 @@ export default function UserEdit () {
 
     // TODO 모달창 외부클릿했을떄, 사라져야함, 
     useOnClickOutside(profileInputRef, () =>{ setIsInputModal(false) });
-    console.log(profileInputRef)
-
 
     return (
         <>
