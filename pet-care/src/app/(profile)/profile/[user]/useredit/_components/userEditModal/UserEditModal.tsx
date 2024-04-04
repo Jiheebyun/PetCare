@@ -16,7 +16,8 @@ export default function UserEditModal ({ isInputModal, setIsInputModal }: any): 
 
     return (
         <>
-            <div className={classes.profileTextModalContainer}>
+            {isInputModal ? 
+            (<div className={classes.profileTextModalContainer}>
                     <div className={classes.TextInput}>
                         <div className={classes.cancelBtnContainer} onClick={closedInputModal}>
                         <Image 
@@ -26,7 +27,8 @@ export default function UserEditModal ({ isInputModal, setIsInputModal }: any): 
                             height={25}></Image>
                         </div>
                     </div>
-            </div>
+            </div>)
+            :null}
         </>
     )
 }

@@ -1,7 +1,7 @@
 
 "use client"
 
-import React, { useRef, useState } from "react";
+import React, { useLayoutEffect, useRef, useState } from "react";
 import classes from './page.module.css';
 import UserEditModal from "./_components/userEditModal/UserEditModal";
 import { useOnClickOutside } from "@/hooks/useOnClickOutside";
@@ -31,8 +31,11 @@ export default function UserEdit () {
         setIsInputModal(!isInputModal);
     };
 
+    console.log(profileInputRef)
     // TODO 모달창 외부클릿했을떄, 사라져야함, 
-    useOnClickOutside(profileInputRef, () =>{ setIsInputModal(false) });
+    useOnClickOutside(profileInputRef, () =>{ setIsInputModal });
+
+    
 
     return (
         <>
@@ -74,14 +77,12 @@ export default function UserEdit () {
                     </div>
                 </div>
             </div>
-            { isInputModal ?
-                <div  ref = {profileInputRef}>           
-                    <UserEditModal
-                        setIsInputModal = {setIsInputModal}
-                        isInputModal = {isInputModal}
-                    ></UserEditModal>
-                </div>
-                : null}
+            <div  ref={profileInputRef}>           
+                <UserEditModal
+                    setIsInputModal = {setIsInputModal}
+                    isInputModal = {isInputModal}
+                ></UserEditModal>
+            </div>
         </>
     )
 }
