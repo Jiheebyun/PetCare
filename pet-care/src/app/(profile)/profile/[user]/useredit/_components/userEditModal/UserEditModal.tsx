@@ -22,6 +22,17 @@ export default function UserEditModal ({ isInputModal, setIsInputModal }: any): 
                             width={25} 
                             height={25}></Image>
                         </div>
+                        <h2> 
+                        {'여기에 타이틀이 입력됩니다.'}
+                        </h2>
+                        <p> 여기에 상세 설명이 입력됩니다.</p>
+                        <div className={classes.answerInputContainer}>
+                            <input></input>
+                        </div>
+
+                        <div className={classes.saveButtonContainer}>
+                            <button> 저장</button>
+                        </div>
                     </div>
             </div>)
             :null}
