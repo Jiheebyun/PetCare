@@ -4,7 +4,7 @@ import classes from "./UserEditModal.module.css";
 import Image from "next/image";
 import { useOnClickOutside } from "@/hooks/useOnClickOutside";
 
-export default function UserEditModal ({ isInputModal, setIsInputModal }: any): React.ReactElement{
+export default function UserEditModal ({ isInputModal, setIsInputModal, inputTitle }: any): React.ReactElement{
     const profileInputRef = useRef<HTMLDivElement>(null);
 
     const closedInputModal = () => { setIsInputModal(false); };
@@ -23,9 +23,9 @@ export default function UserEditModal ({ isInputModal, setIsInputModal }: any): 
                             height={25}></Image>
                         </div>
                         <h2> 
-                        {'여기에 타이틀이 입력됩니다.'}
+                        {inputTitle}
                         </h2>
-                        <p> 여기에 상세 설명이 입력됩니다.</p>
+                        <p> { '여기에 상세 설명이 입력됩니다.'}</p>
                         <div className={classes.answerInputContainer}>
                             <input></input>
                         </div>
