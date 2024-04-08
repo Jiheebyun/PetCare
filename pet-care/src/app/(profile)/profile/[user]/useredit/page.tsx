@@ -1,12 +1,12 @@
 "use client"
 
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import classes from './page.module.css';
 import UserEditModal from "./_components/userEditModal/UserEditModal";
 import { useRouter } from 'next/navigation';
 
 
-const profileTitle = [
+const profileTitles = [
     { titleName: "거주지" },
     { titleName: "거주형태(주택,아파트 etc)" },
     { titleName: "직업" },
@@ -21,10 +21,14 @@ const profileTitle = [
 
 export default function UserEdit() {
     const [isInputModal, setIsInputModal] = useState(false);
+    const [ inputTitle, setInputTitle ] = useState('');
     const router = useRouter();
 
-    const inputModalHandler = () => { setIsInputModal(true); };
-
+    const inputModalHandler = (e: React.MouseEvent<HTMLDivElement>) => {
+        const target = e.target as HTMLDivElement;
+        setInputTitle(target.innerText);
+        setIsInputModal(true); 
+    };
 
     return (
         <>
@@ -41,12 +45,12 @@ export default function UserEdit() {
                     <span>프로필은 입양에 도움이 될수 있도록 반려견 또는 반려묘 입양을 원하시는 분들에 대한 입양처에 제공되는 기본정보입니다.</span>
 
                     <div className={classes.userProfileInputContianer}>
-                        {profileTitle.map((title, idx) => {
+                        {profileTitles.map((title, idx) => {
                             return (
                                 <div
                                     className={classes.profileInput}
                                     key={idx}
-                                    onClick={inputModalHandler}
+                                    onClick={ (e) => { inputModalHandler(e) }}
                                 >
                                     <span>{title.titleName}</span>
                                     <div className={classes.profileInputLines}></div>
@@ -68,6 +72,7 @@ export default function UserEdit() {
             </div>
             {isInputModal ?
                 (<UserEditModal
+                    inputTitle ={inputTitle}
                     setIsInputModal={setIsInputModal}
                     isInputModal={isInputModal}
                  ></UserEditModal>)
