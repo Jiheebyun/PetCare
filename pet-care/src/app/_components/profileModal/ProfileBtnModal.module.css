@@ -10,7 +10,7 @@
     position: absolute;
     border: 1px solid #EBEBEB;
     top: 80px;
-    right: 48px;
+    right: 0%;
     z-index: 5;
 }
 
@@ -39,11 +39,7 @@
 
 .modalList > li:first-child { border-radius: 20px 20px 0px 0px; }
 .modalList > li:last-child { border-radius: 0px 0px 20px 20px; }
-
-.modalList > li:hover{
-    background-color: rgb(246, 246, 246);
-}
-
+.modalList > li:hover{ background-color: rgb(246, 246, 246); }
 
 
 .LinkStyle{
@@ -65,3 +61,14 @@
 }
 
 
+@media (min-width: 1400px) {
+    .profileModalWrapper {
+        position: absolute; 
+        /* top: 80px;
+        left: 0px;
+        display: flex;
+        justify-content: end;
+        left: 0; */
+        /* transform: translate(-50%, -50%); */
+    }
+}
