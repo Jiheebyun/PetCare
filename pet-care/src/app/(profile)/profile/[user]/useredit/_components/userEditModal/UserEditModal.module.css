@@ -57,8 +57,8 @@
 
 .answerInputContainer input:focus {
     font-size: 17px;
-    border-color: #2b2b2b; /* 변경하고 싶은 border 색상으로 설정하세요 */
-    outline: none; /* 포커스 효과를 제거합니다. */
+    border-color: #2b2b2b; 
+    outline: none; 
   }
 
 .saveButtonContainer{
