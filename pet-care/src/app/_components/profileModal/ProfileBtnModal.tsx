@@ -38,7 +38,7 @@ export default function ProfileBtnModal ({setIsProfileModal, isProfileModal}: Pr
         
     }
 
-
+//input의 TextArea에 XSS공격을 방지하지 위해서, DomPurify를 사용하는것을 추천한다.
     return (
         <>
             <div className={classes.profileModalWrapper}>
