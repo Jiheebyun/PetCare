@@ -1,6 +1,7 @@
 "use client"
 
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
+import axios from "axios";
 import classes from './page.module.css';
 import UserEditModal from "./_components/userEditModal/UserEditModal";
 import { useRouter } from 'next/navigation';
@@ -29,6 +30,23 @@ export default function UserEdit() {
         setInputTitle(target.innerText);
         setIsInputModal(true); 
     };
+
+    const fetchUserProfileData = async () => {
+        const URL = ``;
+        try {
+            const response = await axios.get( URL, {} );
+            // console.log(response?.data);
+        }
+        catch (err) {
+            console.error(err);
+        }
+    }
+
+    //유저세션을 확인하여 로그인이 되어있는지 확인, 로그인이 되어있지 않으면 이페이지에 접근 x 
+    useEffect(()=>{
+        fetchUserProfileData();
+    },[])
+    
 
     return (
         <>
