@@ -5,6 +5,7 @@ import axios from "axios";
 import classes from './page.module.css';
 import UserEditModal from "./_components/userEditModal/UserEditModal";
 import { useRouter } from 'next/navigation';
+import { useParams } from 'next/navigation'
 
 
 const profileTitles = [
@@ -24,6 +25,8 @@ export default function UserEdit() {
     const [isInputModal, setIsInputModal] = useState(false);
     const [ inputTitle, setInputTitle ] = useState('');
     const router = useRouter();
+    // const userID = useParams<{ tag: string; item: string }>();
+    const userID = 'userid'
 
     const inputModalHandler = (e: React.MouseEvent<HTMLDivElement>) => {
         const target = e.target as HTMLDivElement;
@@ -32,10 +35,10 @@ export default function UserEdit() {
     };
 
     const fetchUserProfileData = async () => {
-        const URL = ``;
+        const URL = `http://localhost:3000/api/profile/${userID}/useredit`;
         try {
             const response = await axios.get( URL, {} );
-            // console.log(response?.data);
+            console.log(response?.data);
         }
         catch (err) {
             console.error(err);
