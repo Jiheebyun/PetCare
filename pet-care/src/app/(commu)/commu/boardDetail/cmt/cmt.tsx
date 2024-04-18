@@ -1,8 +1,15 @@
 // Cmt.tsx
-import React from 'react';
+"use client"
+import React, { useState } from 'react';
 import styles from './cmt.module.css';
 import CameraAltIcon from '@mui/icons-material/CameraAlt';
+import Link from 'next/link';
 export default function Cmt() {
+  const [comments, setComments] = useState([
+    { id: 1, text: '첫 번째 댓글입니다!' },
+    { id: 2, text: '두 번째 댓글입니다!' }
+  ]);
+
   return (
     <div className={styles.articleComments}>
       <h3>댓글 0</h3>
@@ -32,12 +39,6 @@ export default function Cmt() {
                       <ul className={styles.list}>
                         <li>
                           <div className={styles.hidecompanyItem}>
-                            {/* <div className={styles.checkBx}>
-                              <input type="checkbox" id="inpcp" name="hide_company" className={styles.inpChk} />
-                              <label htmlFor="inpcp" className={styles.inpLb}>
-                                <div className={styles.labelContext}>회사명 비공개</div>
-                              </label>
-                            </div> */}
                           </div>
                         </li>
                       </ul>
@@ -53,6 +54,68 @@ export default function Cmt() {
           </div>
         </div>
       </div>
+
+
+
+      {/* 댓글리스트 */}
+      <div className={styles.commentsList}>
+            {comments.map((comment) => (
+                <div key={comment.id} id="310682887" className={`${styles.wrapComment} ${styles.commentArea}`}>
+                    <p className={styles.name}>
+                        <Link href="/kr/company/LG%20HelloVision/"className={styles.point}>LG HelloVision
+                            {/* <a ></a> */}
+                        </Link>
+                    </p>
+                    <p className={styles.cmtTxt}>{comment.text}</p>
+                    <div className={styles.wrapInfo}>
+                        <span className={styles.date}>
+                            <i className="blind">작성일</i>3일
+                        </span> 
+                        <Link href="/like"className={styles.like}>
+                            {/* <a > */}
+                                <i className="blind">좋아요수</i>좋아요
+                            {/* </a> */}
+                        </Link>
+                        <Link href="/comments"className={styles.cmt}>
+                            {/* <a > */}
+                                <i className="blind">대댓글</i>6
+                            {/* </a> */}
+                        </Link>
+                        <div className={styles.infoFnc}>
+                            <div className={styles.moreWp}>
+                                <span>
+                                    <span style={{ display: 'none' }}>
+                                        <div className={`${styles.lyMore} ${styles.popper}`}>
+                                            <div className={styles.tip}></div>
+                                            <ul className={styles.typeIcons}>
+                                                <li>
+                                                    <Link href="/write-comment">
+                                                        {/* <a> */}
+                                                            <span className={`${styles.ico} ${styles.icoComment}`}>
+                                                                <em className="blind">write comment</em>
+                                                            </span>
+                                                            대댓글 쓰기
+                                                        {/* </a> */}
+                                                    </Link>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </span>
+                                    <Link href="/more-options"className={styles.moreOn}>
+                                        {/* <a > */}
+                                            <i className="blind">메뉴 더보기</i>
+                                        {/* </a> */}
+                                    </Link>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            ))}
+        </div>
+
+
     </div>
   );
 }
+
