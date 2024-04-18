@@ -35,7 +35,7 @@ export default function UserEdit() {
     };
 
     const fetchUserProfileData = async () => {
-        const URL = `http://localhost:3000/api/profile/${userID}/useredit`;
+        const URL = `http://localhost:3000/api/useredit/${userID}`;
         try {
             const response = await axios.get( URL, {} );
             console.log(response?.data);
