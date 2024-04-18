@@ -153,3 +153,79 @@
 .articleComments .replyIng .attachFile input {
     display: none;
 }
+
+.commentsList {
+    margin-top: 20px;
+    padding: 20px;
+  }
+  
+  .comment {
+    padding: 8px;
+    margin-bottom: 10px;
+    background-color: white;
+    border-radius: 4px;
+    border-bottom:1px solid #eee;
+  }
+
+
+
+  .articleComments .wrapComment {
+    padding: 8px 20px 15px;
+    border-bottom: 1px solid #eee;
+}
+.articleComments .wrapComment .name {
+    margin-top: 9px;
+    color: #94969b;
+    font-size: 12px;
+    line-height: 1.33em;
+}
+.name {
+    display: flex;
+    align-items: center;
+    margin-top: 16px;
+    font-size: 12px;
+    line-height: 16px;
+}
+.name a.point {
+    color: #37acc9;
+}
+.name a {
+    margin-right: 4px;
+}
+.articleComments .wrapComment .cmtTxt {
+    margin-top: 4px;
+    font-size: 14px;
+    line-height: 1.43em;
+}
+.articleComments .wrapComment .wrapInfo {
+    margin-top: 10px;
+}
+.wrapInfo {
+    position: relative;
+    margin-top: 8px;
+    font-size: 12px;
+}
+.wrapInfo span, .wrapInfo a {
+    margin-right: 14px;
+    color: #94969b;
+    vertical-align: top;
+}
+.wrapInfo span:before, .wrapInfo a:before {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    margin: -1px 3px 1px 0;
+    vertical-align: middle;
+    content: '';
+    background: url(https://static.teamblind.com/img/www_kr/sp-kr.png?time=nov2023) no-repeat;
+    background-size: 600px 900px;
+    background-position: -62px -600px; /* Default position, can be overridden */
+}
+.wrapInfo .date:before {
+    background-position: -88px -600px;
+}
+.wrapInfo .infoFnc {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
