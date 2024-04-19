@@ -242,6 +242,7 @@
     color: #94969b;
     vertical-align: top;
 }
+/* 더보기 아이콘 */
 .wrapInfo .infoFnc .more:before {
     background: url(https://static.teamblind.com/img/www_kr/sp-kr.png?time=nov2023) no-repeat;
     background-size: 600px 900px;
@@ -265,4 +266,11 @@
     background: url(https://static.teamblind.com/img/www_kr/sp-kr.png?time=nov2023) no-repeat;
     background-size: 600px 900px;
     background-position: -36px -600px;
+}
+
+.replyBox{
+    border:1px solid #d4d4d4;
+    padding:10px 7px;
+    color:gray;
+    background-color: white;
 }
