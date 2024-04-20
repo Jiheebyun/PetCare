@@ -219,7 +219,7 @@
     content: '';
     background: url(https://static.teamblind.com/img/www_kr/sp-kr.png?time=nov2023) no-repeat;
     background-size: 600px 900px;
-    background-position: -62px -600px; /* Default position, can be overridden */
+    background-position: -62px -600px;
 }
 .wrapInfo .date:before {
     background-position: -88px -600px;
@@ -228,4 +228,49 @@
     position: absolute;
     top: 0;
     right: 0;
+}
+.wrapInfo .infoFnc .more {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-right: 0;
+    padding: 2px;
+    box-sizing: border-box;
+}
+.wrapInfo span, .wrapInfo a {
+    margin-right: 14px;
+    color: #94969b;
+    vertical-align: top;
+}
+/* 더보기 아이콘 */
+.wrapInfo .infoFnc .more:before {
+    background: url(https://static.teamblind.com/img/www_kr/sp-kr.png?time=nov2023) no-repeat;
+    background-size: 600px 900px;
+    background-position: -166px -652px;
+    vertical-align: top;
+}
+.wrapInfo span:before, .wrapInfo a:before {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    margin: -1px 3px 1px 0;
+    vertical-align: middle;
+    content: '';
+}
+.wrapInfo .infoFnc .moreWp {
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+}
+.wrapInfo .cmt:before {
+    background: url(https://static.teamblind.com/img/www_kr/sp-kr.png?time=nov2023) no-repeat;
+    background-size: 600px 900px;
+    background-position: -36px -600px;
+}
+
+.replyBox{
+    border:1px solid #d4d4d4;
+    padding:10px 7px;
+    color:gray;
+    background-color: white;
 }

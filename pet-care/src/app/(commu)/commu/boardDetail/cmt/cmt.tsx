@@ -1,6 +1,6 @@
 // Cmt.tsx
 "use client"
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import styles from './cmt.module.css';
 import CameraAltIcon from '@mui/icons-material/CameraAlt';
 import Link from 'next/link';
@@ -9,6 +9,47 @@ export default function Cmt() {
     { id: 1, text: '첫 번째 댓글입니다!' },
     { id: 2, text: '두 번째 댓글입니다!' }
   ]);
+
+  //더보기 기능
+  const [showReplyBox, setShowReplyBox] = useState(false);
+
+  const toggleReplyBox = (e:any) => {
+    console.log("toggleReplyBox")
+    // 다른 요소의 이벤트를 방지
+    e.stopPropagation(); //?
+    // 대댓글 상자의 표시 상태를 토글
+    setShowReplyBox(prev => !prev);
+  };
+
+  // 문서 클릭 시 대댓글 상자 숨기기
+  const hideReplyBox = (event:any) => {
+    //  // 이벤트가 특정 요소 내부에서 발생했는지 확인하여
+    // // 바깥쪽 클릭인 경우에만 상태를 변경합니다.
+    // if (event.target.closest(`.${styles.lyMore}`) === null) {
+    //   setShowReplyBox(false);
+    // }
+
+
+    if (showReplyBox) {
+      console.log(" hideReplyBox => if (showReplyBox)")
+      setShowReplyBox(false);
+    }
+    console.log("hideReplyBox => if not (showReplyBox)")
+  };
+
+  // useEffect를 사용하여 이벤트 리스너 추가하기
+  useEffect(() => {
+    console.log("showReplyBox:"+showReplyBox)
+    document.addEventListener('click', hideReplyBox);
+    
+    // 컴포넌트가 언마운트 될 때 이벤트 리스너 정리
+    return () => {
+        document.removeEventListener('click', hideReplyBox);
+        console.log("showReplyBox:"+showReplyBox)
+    };
+  }, []);
+
+
 
   return (
     <div className={styles.articleComments}>
@@ -69,21 +110,23 @@ export default function Cmt() {
                     <p className={styles.cmtTxt}>{comment.text}</p>
                     <div className={styles.wrapInfo}>
                         <span className={styles.date}>
-                            <i className="blind">작성일</i>3일
+                            {/* <i className="blind">작성일</i> */}
+                            3일
                         </span> 
-                        <Link href="/like"className={styles.like}>
+                        <Link href="/like"className={styles.like}>6
                             {/* <a > */}
-                                <i className="blind">좋아요수</i>좋아요
+                                {/* <i className="blind">좋아요수</i> */}
+                                {/* 좋아요 */}
                             {/* </a> */}
                         </Link>
                         <Link href="/comments"className={styles.cmt}>
                             {/* <a > */}
-                                <i className="blind">대댓글</i>6
+                                {/* <i className="blind">대댓글</i> */}
+                                6
                             {/* </a> */}
                         </Link>
                         <div className={styles.infoFnc}>
                             <div className={styles.moreWp}>
-                                <span>
                                     <span style={{ display: 'none' }}>
                                         <div className={`${styles.lyMore} ${styles.popper}`}>
                                             <div className={styles.tip}></div>
@@ -101,12 +144,18 @@ export default function Cmt() {
                                             </ul>
                                         </div>
                                     </span>
-                                    <Link href="/more-options"className={styles.moreOn}>
+                                    <Link href=""className={`${styles.more} ${styles.on}`}   onClick={toggleReplyBox}>
                                         {/* <a > */}
-                                            <i className="blind">메뉴 더보기</i>
+                                            {/* <i className="blind">메뉴 더보기</i> */}
                                         {/* </a> */}
                                     </Link>
-                                </span>
+                                   
+                                    {/* 더보기  클릭후 박스 */}
+                                    {showReplyBox && (
+                                        <div className={styles.replyBox}>
+                                           대댓글 달기
+                                        </div>
+                                    )}
                             </div>
                         </div>
                     </div>
