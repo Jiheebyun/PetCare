@@ -20,11 +20,12 @@ export async function GET(req: NextRequest, res: NextResponse) {
     const result = await userData.find().toArray();
     console.log(result)
     //예외처리 
-    
+
+
     client.close(); // 데이터베이스 연결 차단
+    return NextResponse.json({
+      data: result,
+  });
   }
 
-  return NextResponse.json({
-      name: "CONNEDTED?",
-  });
 }
