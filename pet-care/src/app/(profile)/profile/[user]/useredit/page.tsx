@@ -22,8 +22,9 @@ const profileTitles = [
 ];
 
 export default function UserEdit() {
-    const [isInputModal, setIsInputModal] = useState(false);
+    const [ isInputModal, setIsInputModal ] = useState(false);
     const [ inputTitle, setInputTitle ] = useState('');
+    const [ userData, setUserData ] = useState({});
     const router = useRouter();
     // const userID = useParams<{ tag: string; item: string }>();
     const userID = 'userid'
@@ -37,19 +38,22 @@ export default function UserEdit() {
     const fetchUserProfileData = async () => {
         const URL = `http://localhost:3000/api/useredit/${userID}`;
         try {
-            const response = await axios.get( URL, {} );
-            console.log(response?.data);
+            const response = await axios.get( URL, {});
+            const fetchData = response?.data.data[0];
+            console.log(fetchData);
+            setUserData(fetchData);
         }
         catch (err) {
             console.error(err);
         }
-    }
+    };
 
     //유저세션을 확인하여 로그인이 되어있는지 확인, 로그인이 되어있지 않으면 이페이지에 접근 x 
     useEffect(()=>{
         fetchUserProfileData();
     },[])
     
+    console.log(userData)
 
     return (
         <>
@@ -96,6 +100,8 @@ export default function UserEdit() {
                     inputTitle ={inputTitle}
                     setIsInputModal={setIsInputModal}
                     isInputModal={isInputModal}
+                    userData={userData}
+                    setUserData={setUserData}
                  ></UserEditModal>)
                 : null}
         </>
