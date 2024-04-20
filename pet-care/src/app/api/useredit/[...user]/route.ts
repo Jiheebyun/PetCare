@@ -15,17 +15,15 @@ export async function GET(req: NextRequest, res: NextResponse) {
 
     const client = await MongoClient.connect(URL);
     const db = client.db('petCare');
-    const testing = db.collection('users');
+    const userData = db.collection('users');
     
-    // const testing2 = db.collection("users").find()
-
-    console.log(testing.find())
+    const result = await userData.find().toArray();
+    console.log(result)
     //예외처리 
     
     client.close(); // 데이터베이스 연결 차단
-    // res.status(201).json({ message: '!!!' }); // 응답 반환
   }
-  console.log(req.method)
+
   return NextResponse.json({
       name: "CONNEDTED?",
   });
