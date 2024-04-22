@@ -40,7 +40,6 @@ export default function UserEdit() {
         try {
             const response = await axios.get( URL, {});
             const fetchData = response?.data.data[0];
-            console.log(fetchData);
             setUserData(fetchData);
         }
         catch (err) {
@@ -54,6 +53,8 @@ export default function UserEdit() {
     },[])
     
     console.log(userData)
+
+    //  working on the mongoDB to put mockup data
 
     return (
         <>
