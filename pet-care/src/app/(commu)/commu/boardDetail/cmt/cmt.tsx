@@ -31,23 +31,33 @@ export default function Cmt() {
 
 
     if (showReplyBox) {
-      console.log(" hideReplyBox => if (showReplyBox)")
       setShowReplyBox(false);
     }
-    console.log("hideReplyBox => if not (showReplyBox)")
   };
 
   // useEffect를 사용하여 이벤트 리스너 추가하기
   useEffect(() => {
-    console.log("showReplyBox:"+showReplyBox)
     document.addEventListener('click', hideReplyBox);
     
     // 컴포넌트가 언마운트 될 때 이벤트 리스너 정리
     return () => {
         document.removeEventListener('click', hideReplyBox);
-        console.log("showReplyBox:"+showReplyBox)
     };
   }, []);
+
+  const [comment, setComment] = useState('');
+  const [isButtonDisabled, setIsButtonDisabled] = useState(true);
+
+   // 입력창에 텍스트가 변경될 때 호출될 함수
+   const handleInputChange = (event:any) => {
+    setComment(event.target.value);
+    console.log("comment"+comment);
+    if (comment.trim()!== '') {
+      setIsButtonDisabled(false);
+    } else {
+      setIsButtonDisabled(true);
+    }
+  };
 
 
 
@@ -57,7 +67,7 @@ export default function Cmt() {
       <div className={styles.writeArea}>
         <div id="btn_add_comment" style={{ display: 'none' }}>
           <div className={styles.replyArea}>
-            <button type="button" className={styles.btnReply}>댓글을 남겨주세요.</button>
+            <button type="button" className={styles.btnReply} >댓글을 남겨주세요.</button>
           </div>
         </div>
         <div className={styles.form}>
@@ -73,7 +83,7 @@ export default function Cmt() {
                     <input id="inpfile" type="file" name="file" accept="image/gif, image/jpeg, image/png" />
                   </span>
                   <div className={styles.txtara}>
-                    <textarea id="content" name="content" placeholder="댓글을 남겨주세요." />
+                    <textarea id="content" name="content"  onChange={handleInputChange} placeholder="댓글을 남겨주세요." />
                   </div>
                   <div className={styles.fncUx}>
                     <div className={styles.hideItem}>
@@ -86,7 +96,7 @@ export default function Cmt() {
                     </div>
                     <div className={styles.btnGroup}>
                       <button type="button" className={styles.btnCncl}>취소</button>
-                      <button type="button" disabled className={styles.btnPost}>등록</button>
+                      <button type="button" disabled={isButtonDisabled} className={styles.btnPost}>등록</button>
                     </div>
                   </div>
                 </div>
