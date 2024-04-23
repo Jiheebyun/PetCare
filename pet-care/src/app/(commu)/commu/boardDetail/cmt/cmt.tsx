@@ -12,43 +12,39 @@ export default function Cmt() {
 
   //더보기 기능
   const [showReplyBox, setShowReplyBox] = useState(false);
-  const toggleReplyBox = (e:any) => {
+  const toggleReplyBox = (): void => {
     console.log("toggleReplyBox")//ok
-    // 다른 요소의 이벤트를 방지
-    // e.stopPropagation(); //?
-    // 대댓글 상자의 표시 상태를 토글
-    // setShowReplyBox(prev => !prev);
-    setShowReplyBox(prev =>!prev);
+    setShowReplyBox((prev: boolean)=>!prev);
   };
 
   // 문서 클릭 시 대댓글 상자 숨기기
+  
   const hideReplyBox = (event:any) => {
-    //  // 이벤트가 특정 요소 내부에서 발생했는지 확인하여
-    // // 바깥쪽 클릭인 경우에만 상태를 변경합니다.
-    console.log("0")
+    // 바깥쪽 클릭인 경우에만 상태를 변경합니다.
+    console.log("0");
     if (event.target.closest(`.${styles.lyMore}`) === null) {
-      console.log("1")
-      // setShowReplyBox(prev => !prev);
-      setShowReplyBox(prev => !prev);
+      console.log("오ㅣ부클릭");
+      setShowReplyBox((prev: boolean)=>!prev);
+      
     }
     
     if (showReplyBox) {
-      console.log("2")
       // setShowReplyBox(prev => !prev);
-      // setShowReplyBox(false);
+      setShowReplyBox(false);
     }
   };
+
 //왜 더보기 아이콘 클릭시 새로고침?
 //박스 바깥클릭시 박스 왜 안없어지는지?
   // useEffect를 사용하여 이벤트 리스너 추가하기
-  // useEffect(() => {
-  //   document.addEventListener('click', hideReplyBox);
+  useEffect(() => {
+    document.addEventListener('click', hideReplyBox);
     
-  //   // 컴포넌트가 언마운트 될 때 이벤트 리스너 정리
-  //   return () => {
-  //       document.removeEventListener('click', hideReplyBox);
-  //   };
-  // }, []);
+    // 컴포넌트가 언마운트 될 때 이벤트 리스너 정리
+    return () => {
+        document.removeEventListener('click', hideReplyBox);
+    };
+  }, []);
 
   const [comment, setComment] = useState('');
   const [isButtonDisabled, setIsButtonDisabled] = useState(true);
@@ -163,7 +159,7 @@ export default function Cmt() {
                                     </span>
 
                                     {/* 더보기 아이콘 */}
-                                    <Link href=""className={`${styles.more} ${styles.on}`} onClick={toggleReplyBox}>
+                                    <Link href=""className={`${styles.more} ${styles.on}`} onClick={(event) => { event.preventDefault(); toggleReplyBox(); }}>
                                         {/* <a > */}
                                             {/* <i className="blind">메뉴 더보기</i> */}
                                         {/* </a> */}
