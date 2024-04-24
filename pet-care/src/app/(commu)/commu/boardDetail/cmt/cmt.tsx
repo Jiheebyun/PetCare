@@ -1,6 +1,6 @@
 // Cmt.tsx
 "use client"
-import React, { useState,useEffect } from 'react';
+import React, { useState,useEffect,useRef } from 'react';
 import styles from './cmt.module.css';
 import CameraAltIcon from '@mui/icons-material/CameraAlt';
 import Link from 'next/link';
@@ -13,38 +13,49 @@ export default function Cmt() {
   //더보기 기능
   const [showReplyBox, setShowReplyBox] = useState(false);
   const toggleReplyBox = (): void => {
-    console.log("toggleReplyBox")//ok
-    setShowReplyBox((prev: boolean)=>!prev);
+    console.log("toggleReplyBox");
+    // setShowReplyBox(true);
+    setShowReplyBox(prev => !prev);
   };
 
   // 문서 클릭 시 대댓글 상자 숨기기
   
-  const hideReplyBox = (event:any) => {
-    // 바깥쪽 클릭인 경우에만 상태를 변경합니다.
-    console.log("0");
-    if (event.target.closest(`.${styles.lyMore}`) === null) {
-      console.log("오ㅣ부클릭");
-      setShowReplyBox((prev: boolean)=>!prev);
+  // const hideReplyBox = (event:any) => {
+  //   // 바깥쪽 클릭인 경우에만 상태를 변경합니다.
+  //   console.log("0");
+  //   if (event.target.closest(`.${styles.lyMore}`) === null) {
+  //     console.log("오ㅣ부클릭");
+  //     setShowReplyBox((prev: boolean)=>!prev);
       
-    }
+  //   }
     
-    if (showReplyBox) {
-      // setShowReplyBox(prev => !prev);
-      setShowReplyBox(false);
-    }
-  };
+  //   if (showReplyBox) {
+  //     // setShowReplyBox(prev => !prev);
+  //     setShowReplyBox(false);
+  //   }
+  // };
 
-//왜 더보기 아이콘 클릭시 새로고침?
-//박스 바깥클릭시 박스 왜 안없어지는지?
-  // useEffect를 사용하여 이벤트 리스너 추가하기
-  useEffect(() => {
-    document.addEventListener('click', hideReplyBox);
-    
-    // 컴포넌트가 언마운트 될 때 이벤트 리스너 정리
-    return () => {
-        document.removeEventListener('click', hideReplyBox);
-    };
-  }, []);
+const moreIconRef = useRef<HTMLDivElement>(null);
+  useEffect(()=>{
+    const handleClick = (e:MouseEvent) => {
+      if(moreIconRef.current && !moreIconRef.current.contains(e.target as Node)){
+        // console.log("moreIconRef.current"+moreIconRef.current);
+        // console.log("e.target as Node"+e.target);
+        setShowReplyBox(false);
+        // setShowReplyBox((prev: boolean)=>!prev);
+      }
+    }
+    if (showReplyBox === true) {
+      window.addEventListener('mousedown', handleClick);
+    } else {
+      window.removeEventListener('mousedown', handleClick);
+    }
+
+
+    window.addEventListener('mousedown', handleClick); //문제임
+    return () => window.removeEventListener('mousedown', handleClick);
+  }, [moreIconRef])
+
 
   const [comment, setComment] = useState('');
   const [isButtonDisabled, setIsButtonDisabled] = useState(true);
@@ -159,12 +170,9 @@ export default function Cmt() {
                                     </span>
 
                                     {/* 더보기 아이콘 */}
-                                    <Link href=""className={`${styles.more} ${styles.on}`} onClick={(event) => { event.preventDefault(); toggleReplyBox(); }}>
-                                        {/* <a > */}
-                                            {/* <i className="blind">메뉴 더보기</i> */}
-                                        {/* </a> */}
+                                    <Link  href=""className={`${styles.more} ${styles.on}`} onClick={(event) => { event.preventDefault(); toggleReplyBox(); }}>
                                       {showReplyBox && (
-                                          <div className={styles.replyBox}>
+                                          <div className={styles.replyBox}  ref={moreIconRef}>
                                             대댓글 달기
                                           </div>
                                       )}
