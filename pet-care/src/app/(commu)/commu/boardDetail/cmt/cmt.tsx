@@ -13,53 +13,82 @@ export default function Cmt() {
   //더보기 기능
   const [showReplyBox, setShowReplyBox] = useState(false);
   const toggleReplyBox = (): void => {
-    console.log("toggleReplyBox");
-    // setShowReplyBox(true);
-    setShowReplyBox(prev => !prev);
+    setShowReplyBox((prev: boolean) => !prev);
   };
 
-  // 문서 클릭 시 대댓글 상자 숨기기
-  
-  // const hideReplyBox = (event:any) => {
-  //   // 바깥쪽 클릭인 경우에만 상태를 변경합니다.
-  //   console.log("0");
-  //   if (event.target.closest(`.${styles.lyMore}`) === null) {
-  //     console.log("오ㅣ부클릭");
-  //     setShowReplyBox((prev: boolean)=>!prev);
+  // ref 생성
+  const replyBoxRef = useRef<HTMLAnchorElement>(null);
+
+   // 클릭 이벤트가 컴포넌트 외부에서 발생했는지 검사하는 함수
+   const handleClickOutside = (event:any) => {
+    if (replyBoxRef.current && !replyBoxRef.current.contains(event.target)) {
+      setShowReplyBox(false);
+    }
+  };
+
+  useEffect(() => {
+    // 컴포넌트가 마운트 되었을 때 이벤트 리스너를 추가합니다.
+    document.addEventListener('mousedown', handleClickOutside);
+
+    // 컴포넌트가 언마운트 되거나 업데이트 될 때 이전 이벤트 리스너를 제거합니다.
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []); // 빈 의존성 배열을 사용하여 마운트 시에만 이벤트 리스너를 추가하도록 합니다.
+
+
+// const moreIconRef = useRef<HTMLAnchorElement>(null);
+//   useEffect(()=>{
+//     const handleClick = (e:MouseEvent) => {
+//       console.log("0");
+//       if(moreIconRef.current && !moreIconRef.current.contains(e.target as Node)){
       
-  //   }
-    
-  //   if (showReplyBox) {
-  //     // setShowReplyBox(prev => !prev);
+//         setShowReplyBox(false);
+//       }
+//     }
+//     if (showReplyBox) {
+//       console.log("showReplyBox");
+//       window.addEventListener('mousedown', handleClick);
+//       setShowReplyBox(prev => !prev);
+      
+//     } else {
+//       console.log("2");
+//       window.removeEventListener('mousedown', handleClick);
+//     }
+
+//     return () => {
+//       console.log("Cleanup useEffect");
+//       window.removeEventListener('mousedown', handleClick);
+//     };
+//   }, [showReplyBox]);
+
+
+  // }, [showReplyBox]) //영역밖 클릭시만 닫힘
+  // }, [moreIconRef]) //아이콘 클릭시만 닫힘
+
+
+  // 외부 영역을 클릭했을 때 showReplyBox를 false로 설정하는 이벤트 핸들러
+  // const handleClickOutside = (event: MouseEvent) => {
+  //   if (!event.target) return;
+
+  //   const target = event.target as HTMLElement;
+  //   if (!target.closest(".more")) {
   //     setShowReplyBox(false);
   //   }
   // };
 
-const moreIconRef = useRef<HTMLDivElement>(null);
-  useEffect(()=>{
-    const handleClick = (e:MouseEvent) => {
-      if(moreIconRef.current && !moreIconRef.current.contains(e.target as Node)){
-        // console.log("moreIconRef.current"+moreIconRef.current);
-        // console.log("e.target as Node"+e.target);
-        setShowReplyBox(false);
-        // setShowReplyBox((prev: boolean)=>!prev);
-      }
-    }
-    if (showReplyBox) {
-      window.addEventListener('mousedown', handleClick);
-    } else {
-      window.removeEventListener('mousedown', handleClick);
-    }
+  // // useEffect를 사용하여 외부 영역 클릭 이벤트 핸들러를 관리합니다.
+  // useEffect(() => {
+  //   if (showReplyBox) {
+  //     window.addEventListener('mousedown', handleClickOutside);
+  //   } else {
+  //     window.removeEventListener('mousedown', handleClickOutside);
+  //   }
 
-
-    // window.addEventListener('mousedown', handleClick); //문제임
-    return () => {
-      window.removeEventListener('mousedown', handleClick);
-    };
-
-
-  }, [showReplyBox])
-
+  //   return () => {
+  //     window.removeEventListener('mousedown', handleClickOutside);
+  //   };
+  // }, [showReplyBox]);
 
   const [comment, setComment] = useState('');
   const [isButtonDisabled, setIsButtonDisabled] = useState(true);
@@ -174,12 +203,21 @@ const moreIconRef = useRef<HTMLDivElement>(null);
                                     </span>
 
                                     {/* 더보기 아이콘 */}
-                                    <Link  href=""className={`${styles.more} ${styles.on}`} onClick={(event) => { event.preventDefault(); toggleReplyBox(); }}>
-                                      {showReplyBox && (
-                                          <div className={styles.replyBox}  ref={moreIconRef}>
+                                    <Link  href=""className={`${styles.more} ${styles.on}`} 
+                                    // ref={moreIconRef} 
+                                    onClick={(event) => { event.preventDefault(); toggleReplyBox(); }}>
+
+                                      
+                                      {/* {showReplyBox && (
+                                          <div className={styles.replyBox}  >
                                             대댓글 달기
                                           </div>
-                                      )}
+                                      )} */}
+                                      {showReplyBox ?
+                                        <div className={styles.replyBox}  >
+                                            대댓글 달기
+                                          </div>
+                                      :null}
                                     </Link>
                                     {/* 더보기 내부 박스 */}
                             </div>
