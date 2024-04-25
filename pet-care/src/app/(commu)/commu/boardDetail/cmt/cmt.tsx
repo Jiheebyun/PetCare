@@ -45,16 +45,20 @@ const moreIconRef = useRef<HTMLDivElement>(null);
         // setShowReplyBox((prev: boolean)=>!prev);
       }
     }
-    if (showReplyBox === true) {
+    if (showReplyBox) {
       window.addEventListener('mousedown', handleClick);
     } else {
       window.removeEventListener('mousedown', handleClick);
     }
 
 
-    window.addEventListener('mousedown', handleClick); //문제임
-    return () => window.removeEventListener('mousedown', handleClick);
-  }, [moreIconRef])
+    // window.addEventListener('mousedown', handleClick); //문제임
+    return () => {
+      window.removeEventListener('mousedown', handleClick);
+    };
+
+
+  }, [showReplyBox])
 
 
   const [comment, setComment] = useState('');
