@@ -4,73 +4,48 @@ import React, { useState,useEffect,useRef } from 'react';
 import styles from './cmt.module.css';
 import CameraAltIcon from '@mui/icons-material/CameraAlt';
 import Link from 'next/link';
+import { useOnClickOutside } from "@/hooks/useOnClickOutside";
+
 export default function Cmt() {
   const [comments, setComments] = useState([
     { id: 1, text: '첫 번째 댓글입니다!' },
     { id: 2, text: '두 번째 댓글입니다!' }
   ]);
-
   //더보기 기능
   const [showReplyBox, setShowReplyBox] = useState(false);
-  // ref 생성
   const replyBoxRef = useRef<HTMLDivElement>(null);
-  const toggleReplyBox = (): void => {
-    // if(){
+  useOnClickOutside(replyBoxRef, () => { setShowReplyBox(false)});
 
-    // }
+  const [openReplyBoxId, setOpenReplyBoxId] = useState(null);
+  const toggleReplyBox = (commentId:any): void => {
     setShowReplyBox((prev: boolean) => !prev);
+    setOpenReplyBoxId(openReplyBoxId === commentId ? null : commentId)
   };
 
-  
 
-  useEffect(() => {
-    // 클릭 이벤트가 컴포넌트 외부에서 발생했는지 검사하는 함수
-  // const handleClickOutside = (event:MouseEvent) => {
-    function handleClickOutside(e: MouseEvent): void {
-      // console.log("event.target : "+event.target)
-      // console.log("replyBoxRef.current : "+replyBoxRef.current)
-      //아이콘 클릭시 : event.target : http://localhost:3000/commu/boardDetail/1
-      //외부영역 클릭시 : event.target : [object HTMLDivElement] / [object HTMLTextAreaElement] etc..
-      console.log("replyBoxRef.current:"+replyBoxRef.current)
-      //아이콘 클릭시 : replyBoxRef.current:http://localhost:3000/commu/boardDetail/1
-      //외부영역 클릭시 : replyBoxRef.current:http://localhost:3000/commu/boardDetail/1
-      // if (replyBoxRef.current && !replyBoxRef.current.contains(e.target as Node)) {
-        if (!replyBoxRef.current || replyBoxRef.current.contains(e.target as Node)) {
-        setShowReplyBox(false);
-      }
-    };
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
-  }, [replyBoxRef]); // 빈 의존성 배열을 사용하여 마운트 시에만 이벤트 리스너를 추가하도록 합니다.
+  // useEffect(() => {
+  // // const handleClickOutside = (event:MouseEvent) => {
+  //   function handleClickOutside(e: MouseEvent): void {
+  //     // console.log("event.target : "+event.target)
+  //     // console.log("replyBoxRef.current : "+replyBoxRef.current)
+  //     //아이콘 클릭시 : event.target : http://localhost:3000/commu/boardDetail/1
+  //     //외부영역 클릭시 : event.target : [object HTMLDivElement] / [object HTMLTextAreaElement] etc..
 
+  //     console.log("replyBoxRef.current:"+replyBoxRef.current)
+  //     //아이콘 클릭시 : replyBoxRef.current:http://localhost:3000/commu/boardDetail/1
+  //     //외부영역 클릭시 : replyBoxRef.current:http://localhost:3000/commu/boardDetail/1
+  //     // if (replyBoxRef.current && !replyBoxRef.current.contains(e.target as Node)) {
+       
+  //       if (replyBoxRef.current) {
+  //       setShowReplyBox(false);
+  //     }
+  //   };
+  //   document.addEventListener('mousedown', handleClickOutside);
+  //   return () => {
+  //     document.removeEventListener('mousedown', handleClickOutside);
+  //   };
+  // }, [replyBoxRef]); // 빈 의존성 배열을 사용하여 마운트 시에만 이벤트 리스너를 추가하도록 합니다.
 
-// const moreIconRef = useRef<HTMLAnchorElement>(null);
-//   useEffect(()=>{
-//     const handleClick = (e:MouseEvent) => {
-//       console.log("0");
-//       if(moreIconRef.current && !moreIconRef.current.contains(e.target as Node)){
-      
-//         setShowReplyBox(false);
-//       }
-//     }
-//     if (showReplyBox) {
-//       console.log("showReplyBox");
-//       window.addEventListener('mousedown', handleClick);
-//       setShowReplyBox(prev => !prev);
-      
-//     } else {
-//       console.log("2");
-//       window.removeEventListener('mousedown', handleClick);
-//     }
-
-//     return () => {
-//       console.log("Cleanup useEffect");
-//       window.removeEventListener('mousedown', handleClick);
-//     };
-  // }, [showReplyBox]) //영역밖 클릭시만 닫힘
-  // }, [moreIconRef]) //아이콘 클릭시만 닫힘
 
 
   const [comment, setComment] = useState('');
@@ -135,7 +110,8 @@ export default function Cmt() {
       {/* 댓글리스트 */}
       <div className={styles.commentsList}>
             {comments.map((comment) => (
-                <div key={comment.id} id="310682887" className={`${styles.wrapComment} ${styles.commentArea}`}>
+                <div key={comment.id.toString()} id={comment.id.toString()} className={`${styles.wrapComment} ${styles.commentArea}`}>
+                  {/* 왜 id는 number 타입이면 오류? */}
                     <p className={styles.name}>
                         <Link href="/kr/company/LG%20HelloVision/"className={styles.point}>LG HelloVision
                         </Link>
@@ -173,15 +149,11 @@ export default function Cmt() {
 
                                     {/* 더보기 아이콘 */}
                                     <Link  href=""className={`${styles.more} ${styles.on}`} 
-                                    onClick={(event) => { event.preventDefault(); toggleReplyBox(); }}
+                                    onClick={(event) => { event.preventDefault(); toggleReplyBox(comment.id.toString()); }}
                                    >
-                                      {/* {showReplyBox && (
-                                          <div className={styles.replyBox}  >
-                                            대댓글 달기
-                                          </div>
-                                      )} */}
                                       {/* 더보기 내부 박스 */}
-                                      {showReplyBox ?
+                                      {/* {showReplyBox ? */}
+                                      {showReplyBox && openReplyBoxId === comment.id.toString()?
                                         <div  ref={replyBoxRef}className={styles.replyBox}  >
                                             대댓글 달기
                                           </div>
