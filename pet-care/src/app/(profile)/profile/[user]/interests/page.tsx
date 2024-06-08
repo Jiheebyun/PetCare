@@ -38,10 +38,6 @@ export default function Interests() {
     useEffect(()=>{
         fetchUserProfileData();
     },[])
-    
-    console.log(userData)
-
-    //  working on the mongoDB to put mockup data
 
     return (
         <>
