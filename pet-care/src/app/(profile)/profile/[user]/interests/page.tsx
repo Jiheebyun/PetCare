@@ -42,8 +42,18 @@ export default function Interests() {
     return (
         <>
             <div className={classes.userEditWrapper}>
-                <h1>THIS IS Interested List's Page       
-                </h1>
+                <h1>관심리스트</h1>
+                <div className={classes.listsContainer}>
+                    <ul className={classes.lists}>
+                        <li className={classes.list}>
+                            <div></div>
+                            <div>
+                                <span>{"댕댕이이름"}</span>
+                            </div>
+                            
+                        </li>
+                    </ul>
+                </div>
                 {/* <div className={classes.userImageContainer}>
                     <div className={classes.imageSection}>
                         <div className={classes.image}>

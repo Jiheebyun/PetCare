@@ -57,7 +57,7 @@ export default function ProfileBtnModal ({setIsProfileModal, isProfileModal}: Pr
                     </li>
                     {isLoggedIn ? 
                     (<li>
-                        <Link href={'/login'} className={classes.LinkStyle} onClick={handler}>
+                        <Link href={'/profile/userid/interests'} className={classes.LinkStyle} onClick={handler}>
                         <span>관심리스트</span>
                         </Link>
                     </li>)
