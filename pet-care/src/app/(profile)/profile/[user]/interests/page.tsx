@@ -46,11 +46,31 @@ export default function Interests() {
                 <div className={classes.listsContainer}>
                     <ul className={classes.lists}>
                         <li className={classes.list}>
-                            <div></div>
+                            <div className={classes.listImgContainer}>
+                                <h1> 이미지</h1>
+                            </div>
                             <div>
                                 <span>{"댕댕이이름"}</span>
                             </div>
                             
+                        </li>
+                        <li className={classes.list}>
+                            <div></div>
+                            <div>
+                                <span>{"댕댕이이름"}</span>
+                            </div>
+                        </li>
+                        <li className={classes.list}>
+                            <div></div>
+                            <div>
+                                <span>{"댕댕이이름"}</span>
+                            </div>
+                        </li>
+                        <li className={classes.list}>
+                            <div></div>
+                            <div>
+                                <span>{"댕댕이이름"}</span>
+                            </div>
                         </li>
                     </ul>
                 </div>
