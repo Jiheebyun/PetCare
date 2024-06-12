@@ -49,7 +49,7 @@ export default function Interests() {
                             <div className={classes.listImgContainer}>
                                 <h1> 이미지</h1>
                             </div>
-                            <div>
+                            <div className={classes.listInfoContainer}>
                                 <span>{"댕댕이이름"}</span>
                             </div>
                             

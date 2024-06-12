@@ -31,3 +31,8 @@
     height: 150px;
     background-color: #ac7575;
 }
+
+.listInfoContainer{
+    margin-top: 10px;
+    font-weight: 700;
+}
