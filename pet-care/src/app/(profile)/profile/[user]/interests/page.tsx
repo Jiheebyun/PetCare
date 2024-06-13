@@ -23,7 +23,7 @@ export default function Interests() {
     };
 
 
-    
+    //REF:  USER INFO를 가져오는 API를 따로 커스텀 Hook을 만들어 재사용하면 좋을꺼같음
     const fetchUserProfileData = async () => {
         const URL = `http://localhost:3000/api/useredit/${userID}`;
         try {
@@ -35,6 +35,8 @@ export default function Interests() {
             console.error(err);
         }
     };
+
+    console.log(userData)
 
     //TODO 유저세션을 확인하여 로그인이 되어있는지 확인, 로그인이 되어있지 않으면 이페이지에 접근 x 
     //TODO db에서 아이디에 있는 관리심리스트 db에서 사용자 아이디에 해당하는 데이터를 호출하여 불러와야한다. 
