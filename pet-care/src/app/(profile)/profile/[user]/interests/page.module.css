@@ -1,25 +1,25 @@
 .listsContainer{
-
     width: 100%;
-    height: 750px;
-    background-color: #685d5d;
+    height: 100%;
+    margin-top: 30px;
+    margin-bottom: 50px;
 }
 
 .lists{
     width: 100%;
     height: 100%;
-    background-color: #a7a7a7;
+    /* background-color: #a7a7a7; */
     padding: 0 0 0 0;
     display: flex;
     justify-content: center;
-    gap: 50px;
+    gap: 30px;
     flex-wrap: wrap;
 }
 
 .list{
     width: 180px;
     height: 180px;
-    background-color: #e8e8e8;
+    border: 1px solid #d5d5d5;
     border-radius: 10px;
     padding: 20px;
     display: flex;
@@ -30,6 +30,7 @@
     width: 100%;
     height: 150px;
     background-color: #ac7575;
+    border-radius: 10px;
 }
 
 .listInfoContainer{
