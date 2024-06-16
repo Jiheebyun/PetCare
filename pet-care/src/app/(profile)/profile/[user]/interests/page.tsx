@@ -24,16 +24,30 @@ export default function Interests() {
 
 
     //REF:  USER INFO를 가져오는 API를 따로 커스텀 Hook을 만들어 재사용하면 좋을꺼같음
+    //MongoDb Data Format: 
+    // {
+    //     _id: new ObjectId('661a7d99644d507daa89e292'),
+    //     userName: 'jihee',
+    //     email: 'test@test.com',
+    //     name: 'Jihee',
+    //     password: '******',
+    //     reg_date: 2024-04-20T00:00:00.000Z,
+    //     status: 'ON',
+    //     last_access: '',
+    //     interested_lists: [ [Object] ] //  하나의 객체 = 하나의 관심리스트 
+    // }
     const fetchUserProfileData = async () => {
-        const URL = `http://localhost:3000/api/useredit/${userID}`;
-        try {
-            const response = await axios.get( URL, {});
-            const fetchData = response?.data.data[0];
-            setUserData(fetchData);
-        }
-        catch (err) {
-            console.error(err);
-        }
+
+
+        // const URL = `http://localhost:3000/api/useredit/${userID}`;
+        // try {
+        //     const response = await axios.get( URL, {});
+        //     const fetchData = response?.data.data[0];
+        //     setUserData(fetchData);
+        // }
+        // catch (err) {
+        //     console.error(err);
+        // }
     };
 
     console.log(userData)
