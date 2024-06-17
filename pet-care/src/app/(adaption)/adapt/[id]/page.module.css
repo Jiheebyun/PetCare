@@ -22,6 +22,7 @@
     justify-content: center;
     align-items: center;
     padding: 5px;
+    cursor: pointer;
 }
 .heartContainer span{
     margin-left: 10px;
