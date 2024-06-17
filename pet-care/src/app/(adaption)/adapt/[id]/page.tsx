@@ -28,12 +28,19 @@ export default function listDatail({ params }: { params: string }){
         return resultLocation
     };
 
+    const interestedHandler = () => {
+        //사용자의 아이디를 찾아서 해당 유기견의 정보를 db에 저장
+        //interested_lists: [ { 유기견 정보 } ]
+        //유기견, 또는 유기묘를 저장후에, 하트아이콘을 빨간색으로 표시 
+
+    };
+
     return (
         <>
            <div className={classes.listDatailWrapper}>
                 <div className={classes.listDatailHeaderContainer}>
                     <h2>활발하고 사람들에게 순한 코코</h2>
-                    <div className={classes.heartContainer}>
+                    <div className={classes.heartContainer} onClick={interestedHandler}>
                         <Image
                             src={"/img/listDetail/emptyHeart.png"}
                             width={17}
