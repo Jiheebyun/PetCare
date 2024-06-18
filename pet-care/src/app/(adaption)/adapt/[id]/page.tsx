@@ -33,6 +33,9 @@ export default function listDatail({ params }: { params: string }){
         //interested_lists: [ { 유기견 정보 } ]
         //유기견, 또는 유기묘를 저장후에, 하트아이콘을 빨간색으로 표시 
 
+        //api 통해서 가져오는 유기견 데이터에서 ANIMAL_NO라는 데이터를 유니크한 키로 사용이 가능할지 확인
+        //만약 유니크한 키라면 ANIMAL_NO를 사용하여 사용자가 관심버튼을 눌렀는지 여부를 빨간색으로 표시가 가능할거 같음
+
     };
 
     return (
