@@ -4,7 +4,8 @@
 
 
 
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import { useRouter } from "next/router";
 import { useSearchParams, useSelectedLayoutSegment } from "next/navigation";
 
@@ -13,6 +14,8 @@ import Image from "next/image";
 import DetailListIMG from "./_components/detailListIMG/DetailListIMG";
 
 export default function listDatail({ params }: { params: string }){
+    const [ userData, setUserData ] = useState([]);
+    const userID = 'userid'
     const KEY = params;
     console.log(KEY);
     //https://mycodings.fly.dev/blog/2022-09-08-all-about-nextjs-image-component :: 이미지태그 
@@ -28,6 +31,23 @@ export default function listDatail({ params }: { params: string }){
         return resultLocation
     };
 
+    const fetchUserProfileData = async () => {
+        const URL = `http://localhost:3000/api/useredit/${userID}`;
+        try {
+            const response = await axios.get( URL, {});
+            const fetchData: any = [response?.data.data[0]];
+            setUserData(fetchData);
+        }
+        catch (err) {
+            console.error(err);
+        }
+    };
+    useEffect(()=>{
+        fetchUserProfileData();
+    },[])
+
+    console.log(userData)
+
     const interestedHandler = () => {
         //사용자의 아이디를 찾아서 해당 유기견의 정보를 db에 저장
         //interested_lists: [ { 유기견 정보 } ]
@@ -35,8 +55,15 @@ export default function listDatail({ params }: { params: string }){
 
         //api 통해서 가져오는 유기견 데이터에서 ANIMAL_NO라는 데이터를 유니크한 키로 사용이 가능할지 확인
         //만약 유니크한 키라면 ANIMAL_NO를 사용하여 사용자가 관심버튼을 눌렀는지 여부를 빨간색으로 표시가 가능할거 같음
-
+        if(userData.length === 1){
+            //몽고 db에 해당 유저아이디를 찾아 
+            // interested_lists: [ { 유기견 정보 } ] 넣어줘야한다.
+        };
+        if(userData.length === 0){
+            //user데이터가 존재하지 않으면 관심을 클릭할수 없음. -> 로그인, 또는 회원가입 요구 
+        };
     };
+
 
     return (
         <>

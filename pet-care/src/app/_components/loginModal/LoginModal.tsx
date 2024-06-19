@@ -30,7 +30,8 @@ export default function LoginModal (){
     const { data: session, status }: any = useSession();
     const router = useRouter();
 
-
+    //구글 로그인 api을 통해서 받을수 있는 유저정보는 아래와 같다 
+    // id, email, verified_email, name, picture, locale:"ko"
 
     useEffect(() => {
         const keyDown = (event: KeyboardEvent) => {

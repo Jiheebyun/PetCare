@@ -37,17 +37,15 @@ export default function Interests() {
     //     interested_lists: [ [Object] ] //  하나의 객체 = 하나의 관심리스트 
     // }
     const fetchUserProfileData = async () => {
-
-
-        // const URL = `http://localhost:3000/api/useredit/${userID}`;
-        // try {
-        //     const response = await axios.get( URL, {});
-        //     const fetchData = response?.data.data[0];
-        //     setUserData(fetchData);
-        // }
-        // catch (err) {
-        //     console.error(err);
-        // }
+        const URL = `http://localhost:3000/api/useredit/${userID}`;
+        try {
+            const response = await axios.get( URL, {});
+            const fetchData = response?.data.data[0];
+            setUserData(fetchData);
+        }
+        catch (err) {
+            console.error(err);
+        }
     };
 
     console.log(userData)
