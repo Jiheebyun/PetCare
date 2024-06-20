@@ -11,6 +11,8 @@ type ResponseData = {
 export async function GET(req: NextRequest, res: NextResponse) {
   if (req.method === 'GET') {
     const data: any = req.body;
+    console.log("AAAAAAA")
+    console.log(data)
     const URL = `mongodb+srv://${process.env.MONGO_DB_USERNAME}:${process.env.MONGO_DB_PWD_KEY}@cluster0.2wxik4s.mongodb.net/`;
 
     const client = await MongoClient.connect(URL);
