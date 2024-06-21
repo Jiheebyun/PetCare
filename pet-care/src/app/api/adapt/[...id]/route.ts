@@ -9,6 +9,7 @@ export async function GET(req: NextRequest, res: NextResponse) {
   if (req.method === 'GET') {
     const data: any = req.body;
     const userEmail: string = 'test@test.com';
+
     // 관심리스트를 누른 유기견의 정보, 유저 정보
 
     const URL = `mongodb+srv://${process.env.MONGO_DB_USERNAME}:${process.env.MONGO_DB_PWD_KEY}@cluster0.2wxik4s.mongodb.net/`;
@@ -26,11 +27,11 @@ export async function GET(req: NextRequest, res: NextResponse) {
       if (result.length === 1) {
         const updateResult = await userData.updateOne(
             { email: userEmail },
-            { $push: { 
+            { $addToSet: { 
                 interested_lists: {
-                    interested_id: "2342342",
-                    img: "IMG",
-                    name: "마루마루"
+                    interested_id: "43242",
+                    img: "https:www.fdsfe.cese/sdf/awf",
+                    name: "보리"
                 }
             } as any }
         );
