@@ -20,8 +20,9 @@ export default function listDatail({ params }: { params: string }){
     const KEY = params; // 추후에 ANIMAL_NO를 넘겨줘야함
     console.log(KEY);
     //https://mycodings.fly.dev/blog/2022-09-08-all-about-nextjs-image-component :: 이미지태그 
+    const [ isHeartRed, setIsHeartRed ] = useState(false);
 
-    const removeHtmlTags = (htmlString : any) => {
+    const removeHtmlTags = (htmlString : string) => {
         return htmlString.replace(/<[^>]*>?/gm, ''); 
     };
 
@@ -47,6 +48,7 @@ export default function listDatail({ params }: { params: string }){
     };
     useEffect(()=>{
         fetchUserProfileData();
+        checkInterests();
     },[])
 
     /**
@@ -71,6 +73,13 @@ export default function listDatail({ params }: { params: string }){
           return <p>사랑스러운 댕댕이</p>
         }
     };
+
+    // console.log(userData[0].interested_lists)// db에 언더바 제거 
+
+    
+    const checkInterests = () => {
+        setIsHeartRed(true);
+    }
 
     const interestedHandler = () => {
         //api/adapt/[유기견 정보]
@@ -97,7 +106,7 @@ export default function listDatail({ params }: { params: string }){
                     <h2>{ extractTextTitle() }</h2>
                     <div className={classes.heartContainer} onClick={interestedHandler}>
                         <Image
-                            src={"/img/listDetail/emptyHeart.png"}
+                            src={isHeartRed ? "/img/listDetail/fullHeart.png": "/img/listDetail/emptyHeart.png"}
                             width={17}
                             height={17}
                             alt="heart"
