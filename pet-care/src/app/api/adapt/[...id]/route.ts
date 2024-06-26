@@ -28,7 +28,7 @@ export async function GET(req: NextRequest, res: NextResponse) {
         const updateResult = await userData.updateOne(
             { email: userEmail },
             { $addToSet: { 
-                interested_lists: {
+                interestedLists: {
                     interested_id: "43242",
                     img: "https:www.fdsfe.cese/sdf/awf",
                     name: "보리"
