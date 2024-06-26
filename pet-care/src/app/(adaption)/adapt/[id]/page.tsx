@@ -13,7 +13,7 @@ import DetailListIMG from "./_components/detailListIMG/DetailListIMG";
 import tempData from "../../../_components/ tempData.json";
 
 export default function listDatail({ params }: { params: string }){
-    const [ userData, setUserData ] = useState([]);
+    const [ userData, setUserData ]: any = useState([]);
     const listData = tempData.DATA[0];
     const listContentData = tempData.DATA[0].intrcn_cn;
     const userID = 'userid'
@@ -40,7 +40,7 @@ export default function listDatail({ params }: { params: string }){
         try {
             const response = await axios.get( URL, {});
             const fetchData: any = [response?.data.data[0]];
-            setUserData(fetchData);
+            setUserData(fetchData[0]);
         }
         catch (err) {
             console.error(err);
@@ -74,12 +74,14 @@ export default function listDatail({ params }: { params: string }){
         }
     };
 
-    // console.log(userData[0].interested_lists)// db에 언더바 제거 
-
     
     const checkInterests = () => {
-        setIsHeartRed(true);
-    }
+        const interests: any = userData.interestedList;
+        console.log(Array.isArray(interests))
+        // setIsHeartRed(true);
+    };
+
+    checkInterests();
 
     const interestedHandler = () => {
         //api/adapt/[유기견 정보]
