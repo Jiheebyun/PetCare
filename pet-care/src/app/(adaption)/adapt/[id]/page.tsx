@@ -11,6 +11,7 @@ import Image from "next/image";
 import DetailListIMG from "./_components/detailListIMG/DetailListIMG";
 
 import tempData from "../../../_components/ tempData.json";
+import { stringify } from "querystring";
 
 export default function listDatail({ params }: { params: string }){
     const [ userData, setUserData ]: any = useState([]);
@@ -46,10 +47,19 @@ export default function listDatail({ params }: { params: string }){
             console.error(err);
         }
     };
-    useEffect(()=>{
-        fetchUserProfileData();
-        checkInterests();
-    },[])
+    useEffect(() => {
+        const executeFunctionsSequentially = async () => {
+            await fetchUserProfileData();
+        };
+
+        executeFunctionsSequentially();
+    }, []);
+
+    useEffect(() => {
+        if (userData) {
+            checkInterests();
+        }
+    }, [userData]);
 
     /**
      * extractTextTitle()
@@ -76,9 +86,17 @@ export default function listDatail({ params }: { params: string }){
 
     
     const checkInterests = () => {
-        const interests: any = userData.interestedList;
-        console.log(Array.isArray(interests))
-        // setIsHeartRed(true);
+        console.log("Checking interests...");
+        if (userData) {
+            console.log("User Data:", userData);
+            console.log("Interested List:", userData.interestedLists);
+            const interests: any = userData.interestedLists;
+            console.log("Interests:", interests);
+            console.log("Is Array:", Array.isArray(interests));
+            // setIsHeartRed(true);
+        } else {
+            console.log("userData or userData.interestedList is not available yet");
+        }
     };
 
     checkInterests();

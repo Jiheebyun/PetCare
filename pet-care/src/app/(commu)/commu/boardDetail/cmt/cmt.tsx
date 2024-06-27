@@ -51,26 +51,28 @@ export default function Cmt() {
   const [comment, setComment] = useState('');
   const [isButtonDisabled, setIsButtonDisabled] = useState(true);
 
-   // 입력창에 텍스트가 변경될 때 호출될 함수
-   const handleInputChange = (event:any) => {
-    setComment(event.target.value);
-    console.log("comment"+comment);
-    if (comment.trim()!== '') {
+  useEffect(() => {
+    if (comment.trim() !== '') {
       setIsButtonDisabled(false);
     } else {
       setIsButtonDisabled(true);
     }
+  }, [comment]);
+
+   // 입력창에 텍스트가 변경될 때 호출될 함수
+   const handleInputChange = (event:any) => {
+    setComment(event.target.value);
   };
 
   return (
     <div className={styles.articleComments}>
       <h3>댓글 0</h3>
       <div className={styles.writeArea}>
-        <div id="btn_add_comment" style={{ display: 'none' }}>
+        {/* <div id="btn_add_comment" style={{ display: 'none' }}>
           <div className={styles.replyArea}>
             <button type="button" className={styles.btnReply} >댓글을 남겨주세요.</button>
           </div>
-        </div>
+        </div> */}
         <div className={styles.form}>
           <div id="comment_apply" style={{ display: 'block' }}>
             <div className={styles.replyArea}>
