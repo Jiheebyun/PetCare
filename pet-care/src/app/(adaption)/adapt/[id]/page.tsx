@@ -18,8 +18,8 @@ export default function listDatail({ params }: { params: string }){
     const listData = tempData.DATA[0];
     const listContentData = tempData.DATA[0].intrcn_cn;
     const userID = 'userid'
-    const KEY = params; // 추후에 ANIMAL_NO를 넘겨줘야함
-    console.log(KEY);
+    // const animalNo = params; // 추후에 ANIMAL_NO를 넘겨줘야함
+    const animalNo = "23414";
     //https://mycodings.fly.dev/blog/2022-09-08-all-about-nextjs-image-component :: 이미지태그 
     const [ isHeartRed, setIsHeartRed ] = useState(false);
 
@@ -56,6 +56,21 @@ export default function listDatail({ params }: { params: string }){
     }, []);
 
     useEffect(() => {
+        const checkInterests = () => {
+            console.log("Checking interests...");
+            if (userData) {
+                const interestedListCount: any = userData.interestedLists?.length;
+                const interests: any = userData.interestedLists;
+                const checkTohaveAnimals: any = interests?.filter((animal: any, idx: number)=>{
+                    return animal.interested_id === animalNo
+                }) 
+                if(interestedListCount > 0 && checkTohaveAnimals.length === 1){
+                    setIsHeartRed(true);
+                };
+            } else {
+                console.log("userData or userData.interestedList is not available yet");
+            }
+        };
         if (userData) {
             checkInterests();
         }
@@ -85,21 +100,23 @@ export default function listDatail({ params }: { params: string }){
     };
 
     
-    const checkInterests = () => {
-        console.log("Checking interests...");
-        if (userData) {
-            console.log("User Data:", userData);
-            console.log("Interested List:", userData.interestedLists);
-            const interests: any = userData.interestedLists;
-            console.log("Interests:", interests);
-            console.log("Is Array:", Array.isArray(interests));
-            // setIsHeartRed(true);
-        } else {
-            console.log("userData or userData.interestedList is not available yet");
-        }
-    };
+    // const checkInterests = () => {
+    //     console.log("Checking interests...");
+    //     if (userData) {
+    //         const interestedListCount: any = userData.interestedLists?.length;
+    //         const interests: any = userData.interestedLists;
+    //         const checkTohaveAnimals: any = interests?.filter((animal: any, idx: number)=>{
+    //             return animal.interested_id === animalNo
+    //         }) 
+    //         if(interestedListCount > 0 && checkTohaveAnimals.length === 1){
+    //             setIsHeartRed(true);
+    //         };
+    //         // setIsHeartRed(true);
+    //     } else {
+    //         console.log("userData or userData.interestedList is not available yet");
+    //     }
+    // };
 
-    checkInterests();
 
     const interestedHandler = () => {
         //api/adapt/[유기견 정보]
