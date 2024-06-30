@@ -47,6 +47,7 @@ export default function listDatail({ params }: { params: string }){
             console.error(err);
         }
     };
+    
     useEffect(() => {
         const executeFunctionsSequentially = async () => {
             await fetchUserProfileData();
@@ -98,25 +99,6 @@ export default function listDatail({ params }: { params: string }){
           return <p>사랑스러운 댕댕이</p>
         }
     };
-
-    
-    // const checkInterests = () => {
-    //     console.log("Checking interests...");
-    //     if (userData) {
-    //         const interestedListCount: any = userData.interestedLists?.length;
-    //         const interests: any = userData.interestedLists;
-    //         const checkTohaveAnimals: any = interests?.filter((animal: any, idx: number)=>{
-    //             return animal.interested_id === animalNo
-    //         }) 
-    //         if(interestedListCount > 0 && checkTohaveAnimals.length === 1){
-    //             setIsHeartRed(true);
-    //         };
-    //         // setIsHeartRed(true);
-    //     } else {
-    //         console.log("userData or userData.interestedList is not available yet");
-    //     }
-    // };
-
 
     const interestedHandler = () => {
         //api/adapt/[유기견 정보]
