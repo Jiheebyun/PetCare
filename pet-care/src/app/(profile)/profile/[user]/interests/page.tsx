@@ -11,7 +11,8 @@ import { useParams } from 'next/navigation'
 export default function Interests() {
     const [ isInputModal, setIsInputModal ] = useState(false);
     const [ inputTitle, setInputTitle ] = useState('');
-    const [ userData, setUserData ] = useState({});
+    const [ userData, setUserData ] = useState([]);
+    const [ userInterestedLists, setUserInterestedLists ] = useState([])
     const router = useRouter();
     // const userID = useParams<{ tag: string; item: string }>();
     const userID = 'userid'
@@ -48,13 +49,45 @@ export default function Interests() {
         }
     };
 
-    console.log(userData)
+    useEffect(() => {
+        const executeFunctionsSequentially = async () => {
+            await fetchUserProfileData();
+        };
+
+        executeFunctionsSequentially();
+    }, []);
+
+    useEffect(() => {
+        const checkInterests = () => {
+            console.log("Checking interests...");
+            if (userData) {
+                console.log(userData)
+                const interestedListCount: any = userData.interestedLists?.length;
+                const interests: any = userData?.interestedLists;
+                console.log(interestedListCount)
+                console.log(interests)
+                if(interestedListCount > 0){
+                    setUserInterestedLists(interests);
+                };
+                if(interestedListCount === 0){
+                    //   관심리스트가 비어있어요 !
+                };
+            } else {
+                console.log("userData or userData.interestedList is not available yet");
+            }
+        };
+        if (userData) {
+            checkInterests();
+        }
+    }, [userData]);
 
     //TODO 유저세션을 확인하여 로그인이 되어있는지 확인, 로그인이 되어있지 않으면 이페이지에 접근 x 
     //TODO db에서 아이디에 있는 관리심리스트 db에서 사용자 아이디에 해당하는 데이터를 호출하여 불러와야한다. 
     useEffect(()=>{
         fetchUserProfileData();
     },[])
+    
+     console.log(userInterestedLists)
 
     return (
         <>
@@ -62,6 +95,22 @@ export default function Interests() {
                 <h1>관심리스트</h1>
                 <div className={classes.listsContainer}>
                     <ul className={classes.lists}>
+                        { userInterestedLists.length === 0 ? 
+                            <h3> 관심 리스트가 비어있어요 !</h3>
+                            :
+                            userInterestedLists.map(( data: any, idx: number )=>{
+                                console.log(data)
+                                return (
+                                <li className={classes.list} key={idx}>
+                                    <div className={classes.listImgContainer}>
+                                        <h1> 이미지</h1>
+                                    </div>
+                                    <div className={classes.listInfoContainer}>
+                                        <span>{`${data.name}`}</span>
+                                    </div>
+                                </li>
+                                )
+                            })}
                         <li className={classes.list}>
                             <div className={classes.listImgContainer}>
                                 <h1> 이미지</h1>
