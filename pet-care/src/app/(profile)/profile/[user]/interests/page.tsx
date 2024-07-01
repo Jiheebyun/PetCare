@@ -11,7 +11,7 @@ import { useParams } from 'next/navigation'
 export default function Interests() {
     const [ isInputModal, setIsInputModal ] = useState(false);
     const [ inputTitle, setInputTitle ] = useState('');
-    const [ userData, setUserData ] = useState([]);
+    const [ userData, setUserData ]: any = useState([]);
     const [ userInterestedLists, setUserInterestedLists ] = useState([])
     const router = useRouter();
     // const userID = useParams<{ tag: string; item: string }>();
@@ -87,7 +87,7 @@ export default function Interests() {
         fetchUserProfileData();
     },[])
     
-     console.log(userInterestedLists)
+    console.log(userInterestedLists)
 
     return (
         <>
@@ -96,14 +96,18 @@ export default function Interests() {
                 <div className={classes.listsContainer}>
                     <ul className={classes.lists}>
                         { userInterestedLists.length === 0 ? 
-                            <h3> 관심 리스트가 비어있어요 !</h3>
+                            <h3 style={{margin: "200px"}}> 관심 리스트가 비어있어요 !</h3>
                             :
                             userInterestedLists.map(( data: any, idx: number )=>{
                                 console.log(data)
                                 return (
                                 <li className={classes.list} key={idx}>
                                     <div className={classes.listImgContainer}>
-                                        <h1> 이미지</h1>
+                                        <img 
+                                            className={classes.ImgStyle}
+                                            src={`https://images.dog.ceo/breeds/mastiff-tibetan/n02108551_4751.jpg`}
+                                            style={{ width: "100%", height: "150px"}}
+                                        ></img>
                                     </div>
                                     <div className={classes.listInfoContainer}>
                                         <span>{`${data.name}`}</span>
@@ -111,42 +115,6 @@ export default function Interests() {
                                 </li>
                                 )
                             })}
-                        <li className={classes.list}>
-                            <div className={classes.listImgContainer}>
-                                <h1> 이미지</h1>
-                            </div>
-                            <div className={classes.listInfoContainer}>
-                                <span>{"댕댕이이름"}</span>
-                            </div>
-                            
-                        </li>
-                        <li className={classes.list}>
-                            <div className={classes.listImgContainer}>
-                                <h1> 이미지</h1>
-                            </div>
-                            <div className={classes.listInfoContainer}>
-                                <span>{"댕댕이이름"}</span>
-                            </div>
-                            
-                        </li>
-                        <li className={classes.list}>
-                            <div className={classes.listImgContainer}>
-                                <h1> 이미지</h1>
-                            </div>
-                            <div className={classes.listInfoContainer}>
-                                <span>{"댕댕이이름"}</span>
-                            </div>
-                            
-                        </li>
-                        <li className={classes.list}>
-                            <div className={classes.listImgContainer}>
-                                <h1> 이미지</h1>
-                            </div>
-                            <div className={classes.listInfoContainer}>
-                                <span>{"댕댕이이름"}</span>
-                            </div>
-                            
-                        </li>
                     </ul>
                 </div>
             </div>
