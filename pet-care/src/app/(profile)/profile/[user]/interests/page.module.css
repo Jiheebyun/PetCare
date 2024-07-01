@@ -32,6 +32,12 @@
     background-color: #ac7575;
     border-radius: 10px;
 }
+.ImgStyle{
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 10px;
+}
 
 .listInfoContainer{
     margin-top: 10px;
