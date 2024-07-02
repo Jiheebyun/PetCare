@@ -8,10 +8,15 @@ import ImAGE from "next/image";
 import Link from "next/link";
 
 export default function AdaptionList( { lists } :any){
-    const {NM, AGE, SEXDSTN, ENTRNC_DATE, ANIMAL_NO, key } = lists;
+    const {NM, AGE, SEXDSTN, ENTRNC_DATE, ANIMAL_NO, key, intrcn_mvp_url } = lists;
 
-    
-    
+    const extractYoutubeVideoID = (url: string) => {
+        const regex = /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/;
+        const match: any= url.match(regex);
+        return match ? `https://img.youtube.com/vi/${match[1]}/maxresdefault.jpg` : `/img/dog.png`;
+    };
+
+
     return(
         <>
             <div className={classes.listWrapper}>
@@ -19,7 +24,7 @@ export default function AdaptionList( { lists } :any){
                     <Link href={`/adapt/${key}`}>
                         <div className={classes.petImgBox}>
                             <ImAGE 
-                                src={'/img/dog.png'} 
+                                src={ extractYoutubeVideoID(intrcn_mvp_url) } 
                                 width={256} 
                                 height={243} 
                                 alt="pet"
