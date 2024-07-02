@@ -27,6 +27,8 @@ export default function listDatail({ params }: { params: string }){
         return htmlString.replace(/<[^>]*>?/gm, ''); 
     };
 
+
+
     const extractLocationHandler = () =>{
         const example =  "무화(마포센터-임시보호중)";
         const firstIndex = example.indexOf('(');
