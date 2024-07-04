@@ -23,7 +23,7 @@ export default function boardDetail(props:any) {
         }
       };
 
-    const params = useSearchParams();
+    // const params = useSearchParams();
     const id =  props.params.id;
 
     // console.log("ID??:", id); // ok
@@ -34,7 +34,7 @@ export default function boardDetail(props:any) {
      if (id !== null) { 
         if(id != 12){
             const selectedPost = postDataJson.find((p: any) => p.id === parseInt(id));
-            console.log("selectedPost:"+JSON.stringify(selectedPost))
+            // console.log("selectedPost:"+JSON.stringify(selectedPost))
         
             if (selectedPost) {
                 return (
