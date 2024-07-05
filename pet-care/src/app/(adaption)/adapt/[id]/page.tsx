@@ -13,13 +13,18 @@ import DetailListIMG from "./_components/detailListIMG/DetailListIMG";
 import tempData from "../../../_components/ tempData.json";
 import { stringify } from "querystring";
 
-export default function listDatail({ params }: { params: string }){
+
+interface Params {
+    id: string;
+}
+
+export default function listDatail({ params }: { params: Params }){
     const [ userData, setUserData ]: any = useState([]);
     const listData = tempData.DATA[0];
     const listContentData = tempData.DATA[0].intrcn_cn;
     const userID = 'userid'
     // const animalNo = params; // 추후에 ANIMAL_NO를 넘겨줘야함
-    const animalNo = "23414";
+    const animalNo: any  = params.id;
     //https://mycodings.fly.dev/blog/2022-09-08-all-about-nextjs-image-component :: 이미지태그 
     const [ isHeartRed, setIsHeartRed ] = useState(false);
 
@@ -27,7 +32,8 @@ export default function listDatail({ params }: { params: string }){
         return htmlString.replace(/<[^>]*>?/gm, ''); 
     };
 
-
+    console.log(params)
+    console.log(animalNo)
 
     const extractLocationHandler = () =>{
         const example =  "무화(마포센터-임시보호중)";
