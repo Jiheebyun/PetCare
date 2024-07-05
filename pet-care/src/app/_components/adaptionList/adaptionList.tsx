@@ -21,7 +21,7 @@ export default function AdaptionList( { lists } :any){
         <>
             <div className={classes.listWrapper}>
                 <div className={classes.listImgContainer}>
-                    <Link href={`/adapt/${key}`}>
+                    <Link href={`/adapt/${ANIMAL_NO}`}>
                         <div className={classes.petImgBox}>
                             <ImAGE 
                                 src={ extractYoutubeVideoID(intrcn_mvp_url) } 
