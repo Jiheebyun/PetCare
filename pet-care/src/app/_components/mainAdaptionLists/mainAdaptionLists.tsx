@@ -52,7 +52,7 @@ export default function MainAdaptionLists (props: any) {
         <>
             <div className={classes.adaptionListsWrapper}>
                 {mockupData.map((el: Data, idx: number)=>{
-                    return <AdaptionList key = {idx} lists={{...el, key: idx}}></AdaptionList>
+                    return <AdaptionList key = {idx} list={{...el, key: idx}}></AdaptionList>
                 })}
             </div>
         </>

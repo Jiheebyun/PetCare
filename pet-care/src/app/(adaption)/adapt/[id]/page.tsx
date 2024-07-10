@@ -1,10 +1,10 @@
 
 "use client"
 
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useRouter } from "next/router";
-import { useSearchParams, useSelectedLayoutSegment } from "next/navigation";
+import { usePathname, useSearchParams, useSelectedLayoutSegment } from "next/navigation";
 
 import classes from "./page.module.css";
 import Image from "next/image";
@@ -20,11 +20,12 @@ interface Params {
 
 export default function listDatail({ params }: { params: Params }){
     const [ userData, setUserData ]: any = useState([]);
-    const listData = tempData.DATA[0];
+    const [ listData, setListData ]: any = useState({});
     const listContentData = tempData.DATA[0].intrcn_cn;
     const userID = 'userid'
     // const animalNo = params; // 추후에 ANIMAL_NO를 넘겨줘야함
     const animalNo: any  = params.id;
+    const searchParams = useSearchParams();
     //https://mycodings.fly.dev/blog/2022-09-08-all-about-nextjs-image-component :: 이미지태그 
     const [ isHeartRed, setIsHeartRed ] = useState(false);
 
@@ -34,7 +35,20 @@ export default function listDatail({ params }: { params: Params }){
 
     console.log(params)
     console.log(animalNo)
+    console.log(listData)
 
+    useEffect(() => {
+        const NM = searchParams.get("NM");
+        const AGE = searchParams.get("AGE");
+        const SEXDSTN = searchParams.get("SEXDSTN");
+        const ENTRNC_DATE = searchParams.get("ENTRNC_DATE");
+        const ANIMAL_NO = searchParams.get("ANIMAL_NO");
+        const key = searchParams.get("key");
+        const intrcn_mvp_url = searchParams.get("intrcn_mvp_url");
+    
+        setListData({ NM, AGE, SEXDSTN, ENTRNC_DATE, ANIMAL_NO, key, intrcn_mvp_url });
+      }, [searchParams]);
+    
     const extractLocationHandler = () =>{
         const example =  "무화(마포센터-임시보호중)";
         const firstIndex = example.indexOf('(');
