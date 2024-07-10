@@ -7,8 +7,8 @@ import classes from "./adaptionList.module.css";
 import ImAGE from "next/image";
 import Link from "next/link";
 
-export default function AdaptionList( { lists } :any){
-    const {NM, AGE, SEXDSTN, ENTRNC_DATE, ANIMAL_NO, key, intrcn_mvp_url } = lists;
+export default function AdaptionList( { list } :any){
+    const {NM, AGE, SEXDSTN, ENTRNC_DATE, ANIMAL_NO, key, intrcn_mvp_url } = list;
 
     const extractYoutubeVideoID = (url: string) => {
         const regex = /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/;
@@ -21,7 +21,7 @@ export default function AdaptionList( { lists } :any){
         <>
             <div className={classes.listWrapper}>
                 <div className={classes.listImgContainer}>
-                    <Link href={`/adapt/${ANIMAL_NO}`}>
+                    <Link href={{pathname:`/adapt/${ANIMAL_NO}`, query: list}} >
                         <div className={classes.petImgBox}>
                             <ImAGE 
                                 src={ extractYoutubeVideoID(intrcn_mvp_url) } 
