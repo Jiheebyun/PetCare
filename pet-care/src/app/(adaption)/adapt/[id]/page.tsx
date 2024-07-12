@@ -26,6 +26,7 @@ export default function listDatail({ params }: { params: Params }){
     // const animalNo = params; // 추후에 ANIMAL_NO를 넘겨줘야함
     const animalNo: any  = params.id;
     const searchParams = useSearchParams();
+    const list = searchParams.get('list');
     //https://mycodings.fly.dev/blog/2022-09-08-all-about-nextjs-image-component :: 이미지태그 
     const [ isHeartRed, setIsHeartRed ] = useState(false);
 
@@ -35,19 +36,9 @@ export default function listDatail({ params }: { params: Params }){
 
     console.log(params)
     console.log(animalNo)
-    console.log(listData)
+    console.log(list)
 
-    useEffect(() => {
-        const NM = searchParams.get("NM");
-        const AGE = searchParams.get("AGE");
-        const SEXDSTN = searchParams.get("SEXDSTN");
-        const ENTRNC_DATE = searchParams.get("ENTRNC_DATE");
-        const ANIMAL_NO = searchParams.get("ANIMAL_NO");
-        const key = searchParams.get("key");
-        const intrcn_mvp_url = searchParams.get("intrcn_mvp_url");
-    
-        setListData({ NM, AGE, SEXDSTN, ENTRNC_DATE, ANIMAL_NO, key, intrcn_mvp_url });
-      }, [searchParams]);
+
     
     const extractLocationHandler = () =>{
         const example =  "무화(마포센터-임시보호중)";
