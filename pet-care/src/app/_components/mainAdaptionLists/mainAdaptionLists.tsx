@@ -67,4 +67,4 @@ export default function MainAdaptionLists (props: any) {
 // getStaticProps 와  getServerSideProps, getInitialProps 차이 공부
 // nextjs14에서는 위에 있는 것들을 지원하지 않음 .. ufck..
 // 참고: https://stackoverflow.com/questions/75679649/cant-use-getstaticprop-in-next-js-13
-// nextJs 14 -> generateStaticParams
+// nextJs 14 -> generateStaticParams    
