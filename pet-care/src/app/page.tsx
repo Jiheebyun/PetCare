@@ -29,33 +29,36 @@ export default function Home() {
     const [ originalAdaptionData, setOriginalAdaptionData ] = useState<Data[]>([]);
     const [ isDogFilterOn, setIsDogFilterOn ] = useState(false);
     const [ isCatFilterOn, setIsCatFilterOn ] = useState(false);
-    const filteredDog = adaptionData?.filter(data => data?.SPCS === "DOG");
-    const filteredCat = adaptionData?.filter(data => data?.SPCS === "CAT");
+    const filteredDogList = adaptionData?.filter(data => data?.SPCS === "DOG");
+    const filteredCatList = adaptionData?.filter(data => data?.SPCS === "CAT");
 
-    // useEffect(() => {
-    //     async function fetchData() {
-    //         const data = await fetchAdaptionLists();
-    //         setAdaptionData(data);
-    //         setOriginalAdaptionData(data);
-    //     }
-    //     fetchData();
-    // }, []);
+    useEffect(() => {
+        fetchData();
+    }, []);
+
+    async function fetchData() {
+        const data = await fetchAdaptionLists();
+        setAdaptionData(data);
+        setOriginalAdaptionData(data);
+    }
+
 
     useEffect(()=>{
         if(isDogFilterOn === true){
-            setAdaptionData(filteredDog);
+            setAdaptionData(filteredDogList);
         };
         if(isCatFilterOn === true){
-            setAdaptionData(filteredCat);
+            setAdaptionData(filteredCatList);
         };
-        if(isCatFilterOn && isDogFilterOn){
-            return
+        if((isCatFilterOn && isDogFilterOn) && (!isCatFilterOn || !isDogFilterOn)){
+            fetchData();
         }
     }, [isCatFilterOn, isDogFilterOn])
     
-    
+    console.log(isDogFilterOn)
     console.log(adaptionData)
         
+    console.log(filteredDogList)
     //필터를 한 데이터가 존재하지 않으면 보여줄 페이지를 만들어야함
     return (
         <>
@@ -65,6 +68,10 @@ export default function Home() {
                     setIsDogFilterOn = {setIsDogFilterOn}
                     isCatFilterOn = {isCatFilterOn}
                     setIsCatFilterOn = {setIsCatFilterOn}
+                    adaptionData = {adaptionData}
+                    setAdaptionData = {setAdaptionData}
+                    filteredDogList = {filteredDogList}
+                    filteredCatList = {filteredCatList}
                 ></MainFilter>
             </div>
 

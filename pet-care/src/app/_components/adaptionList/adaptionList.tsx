@@ -16,8 +16,8 @@ export default function AdaptionList( { list } :any){
         return match ? `https://img.youtube.com/vi/${match[1]}/maxresdefault.jpg` : `/img/dog.png`;
     };
 //유기견 상세페이지에서 영상을 가져와야하기 때문에 아이디를 추출하여 따로 넣어줘야한다. 
-    console.log(ANIMAL_NO)
-    console.log(list)
+    // console.log(ANIMAL_NO)
+    // console.log(list)
     return(
         <>
             <div className={classes.listWrapper}>
