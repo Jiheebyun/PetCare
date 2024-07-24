@@ -6,14 +6,23 @@ import classes from "./MainlFilter.module.css";
 import Link from "next/link";
 
 export default function MainFilter (props: any) {
-    const { isDogFilterOn, setIsDogFilterOn, isCatFilterOn, setIsCatFilterOn } = props;
+    const { isDogFilterOn, 
+        setIsDogFilterOn, 
+        isCatFilterOn, 
+        setIsCatFilterOn, 
+        setAdaptionData, 
+        filteredDogList, 
+        filteredCatList
+    } = props;
+    
+
     
     const dogFilterHandler = () => {
-        setIsDogFilterOn(!isDogFilterOn)
+        setIsDogFilterOn(!isDogFilterOn);
     };
 
     const catFilterHandler = () => {
-        setIsCatFilterOn(!isCatFilterOn)
+        setIsCatFilterOn(!isCatFilterOn);
     };
 
     return (
