@@ -47,14 +47,21 @@ interface Root {
 export default function MainAdaptionLists (props: any) {
     const { adaptionLists } = props;
     const mockupData: Data[] = tempData.DATA;
+    console.log(adaptionLists)
 
     return(
         <>
+           {
+           
+            adaptionLists?.length !== 0 ?
             <div className={classes.adaptionListsWrapper}>
                 {mockupData.map((el: Data, idx: number)=>{
                     return <AdaptionList key = {idx} list={{...el, key: idx}}></AdaptionList>
                 })}
             </div>
+            :
+            <h1>Oops 데이터가 없어요 !</h1>    
+        }
         </>
     )
 };  
