@@ -6,7 +6,7 @@ export default  function cmtDetail(props:any) {
   const storadData = localStorage.getItem('recentCmt')
   if(storadData){
     const storadCmt = JSON.parse(storadData);
-    console.log('storadCmt'+storadCmt.id);
+    // console.log('storadCmt'+storadCmt.id);
     return(
       <>
         <div>
@@ -27,6 +27,11 @@ export default  function cmtDetail(props:any) {
         <div>
         cmt : {storadCmt.cmt}
         </div>
+        {storadCmt.file && (
+          <div>
+            file : {storadCmt.file}
+          </div>
+        )}
       </>
     )
   }
