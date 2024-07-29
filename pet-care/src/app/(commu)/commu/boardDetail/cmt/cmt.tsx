@@ -23,25 +23,85 @@ const postData:postDataType[] = postDataJson;
 export default function Cmt() {
 const router = useRouter();
 const [text, setText] = useState('');
+const [file, setFile] = useState<File | null>(null);
+
+
+
+const handleFileChange = (event:any) => {
+  if (event.target.files && event.target.files.length > 0) {
+    const selectedFile = event.target.files[0];
+    // console.log("Selected file: ", selectedFile);//ok
+    setFile(selectedFile); // 상태 업데이트 요청
+  }
+  else {
+    setFile(null);
+  }
+  console.log("file!: ", file);//비동기라 지금은 null이지만 하단에서 찍어보면 잘 나옴.
+};
 
 //msw가 사용할 데이터 api엔드포인트에 보내기
 const handleSubmit = async (event:any) => {
   event.preventDefault();
+  // console.log("왜안돼:");//ok
   try{ 
-    const id = 12;
-    const user = "test";
-    const date = "1분전";
-    const like = 0;
-    const cmt = 0;
-    const response = await axios.post('http://localhost:9090/api/cmtCreate', {id, user, date, like, cmt, text});
+    // const id = 12;
+    // const user = "test";
+    // const date = "1분전";
+    // const like = 0;
+    // const cmt = 0;
+
+    const formData = new FormData();
+
+    const data ={
+      id: 12,
+      user:"test",
+      date: "1분전",
+      like:0,
+      cmt:0,
+      text:text
+    }
+    console.log("1");//ok
+
+    // JSON 데이터를 문자열로 변환하여 FormData에 추가
+    // formData.append('json', JSON.stringify({data}));
+    
+    // Blob 객체에 data를 json으로 변환한뒤 담는다.
+    const blob = new Blob([JSON.stringify(data)], {
+      // JSON 타입 지정
+      type: 'application/json',
+    });
+    formData.append('json', blob);
+
+
+    // 파일이 있는 경우에만 추가
+    if (file) {
+      formData.append('file', file);
+      // console.log('file: '+ file);//ok
+    }
+      
+    // // FormData 객체의 내용을 출력
+    formData.forEach((value, key) => {
+      console.log(`${key}: ${value}`);//ok
+    });
+    //json: {"id":12,"user":"test","text":"ddddd","date":"1분전","like":0,"cmt":0}
+
+
+    // const response = await axios.post('http://localhost:9090/api/cmtCreate', {id, user, date, like, cmt, text, file});
+    const response = await axios.post('http://localhost:9090/api/cmtCreate', formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data'
+      }
+    });
+    console.log('response!: '+ response);//x
     if(response.status === 200){
+      console.log("왜안되냐")
       localStorage.setItem('recentCmt', JSON.stringify(response.data));
       router.push(`/commu/cmtDetail_text/${response.data.id}`);
       //데이터를 mongoDB에 추가하는 작업이 필요.
       console.log("response.data.id입니다.:"+response.data.id);//ok
     }
   } catch (error) {
-    console.log("error: ", error); //오류
+    console.log("error났다: ", error); //오류
   }
 }
 
@@ -70,6 +130,7 @@ const handleSubmit = async (event:any) => {
     setText(event.target.value);
   };
 
+  // console.log("file!: ", file); //ok
   return (
     <div className={styles.articleComments}>
       <h3>댓글 0</h3>
@@ -85,10 +146,10 @@ const handleSubmit = async (event:any) => {
                       <i className={styles.blind}>파일 첨부하기</i>
                       <CameraAltIcon/>
                     </label>
-                    <input id="inpfile" type="file" name="file" accept="image/gif, image/jpeg, image/png" />
+                    <input id="inpfile" type="file" name="file" accept="image/gif, image/jpeg, image/png" multiple onChange={handleFileChange} />
                   </span>
                   <div className={styles.txtara}>
-                    <textarea value={text} id="content" name="content"   onChange={handleInputChange} placeholder="댓글을 남겨주세요." />
+                    <textarea value={text} id="content" name="content" onChange={handleInputChange} placeholder="댓글을 남겨주세요." />
                   </div>
                   <div className={styles.fncUx}>
                     <div className={styles.hideItem}>
