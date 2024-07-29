@@ -1,17 +1,110 @@
 // Cmt.tsx
 "use client"
 import React, { useState,useEffect,useRef } from 'react';
+import axios from 'axios';
 import styles from './cmt.module.css';
 import CameraAltIcon from '@mui/icons-material/CameraAlt';
 import Link from 'next/link';
 import { useOnClickOutside } from "@/hooks/useOnClickOutside";
+import postDataJson from '../../../../_components/tempDataCmt.json';
+import {useRouter  } from 'next/navigation';
+
+interface postDataType {
+  id: number,
+  user: string,
+  text: string,
+  date: string,
+  like: number,
+  cmt: number,
+}
+
+const postData:postDataType[] = postDataJson;
 
 export default function Cmt() {
-  const [comments, setComments] = useState([
-    { id: 1, text: '첫 번째 댓글입니다!' },
-    { id: 2, text: '두 번째 댓글입니다!' }
-  ]);
-  //더보기 기능
+const router = useRouter();
+const [text, setText] = useState('');
+const [file, setFile] = useState<File | null>(null);
+
+
+
+const handleFileChange = (event:any) => {
+  if (event.target.files && event.target.files.length > 0) {
+    const selectedFile = event.target.files[0];
+    // console.log("Selected file: ", selectedFile);//ok
+    setFile(selectedFile); // 상태 업데이트 요청
+  }
+  else {
+    setFile(null);
+  }
+  console.log("file!: ", file);//비동기라 지금은 null이지만 하단에서 찍어보면 잘 나옴.
+};
+
+//msw가 사용할 데이터 api엔드포인트에 보내기
+const handleSubmit = async (event:any) => {
+  event.preventDefault();
+  // console.log("왜안돼:");//ok
+  try{ 
+    // const id = 12;
+    // const user = "test";
+    // const date = "1분전";
+    // const like = 0;
+    // const cmt = 0;
+
+    const formData = new FormData();
+
+    const data ={
+      id: 12,
+      user:"test",
+      date: "1분전",
+      like:0,
+      cmt:0,
+      text:text
+    }
+    console.log("1");//ok
+
+    // JSON 데이터를 문자열로 변환하여 FormData에 추가
+    // formData.append('json', JSON.stringify({data}));
+    
+    // Blob 객체에 data를 json으로 변환한뒤 담는다.
+    const blob = new Blob([JSON.stringify(data)], {
+      // JSON 타입 지정
+      type: 'application/json',
+    });
+    formData.append('json', blob);
+
+
+    // 파일이 있는 경우에만 추가
+    if (file) {
+      formData.append('file', file);
+      // console.log('file: '+ file);//ok
+    }
+      
+    // // FormData 객체의 내용을 출력
+    formData.forEach((value, key) => {
+      console.log(`${key}: ${value}`);//ok
+    });
+    //json: {"id":12,"user":"test","text":"ddddd","date":"1분전","like":0,"cmt":0}
+
+
+    // const response = await axios.post('http://localhost:9090/api/cmtCreate', {id, user, date, like, cmt, text, file});
+    const response = await axios.post('http://localhost:9090/api/cmtCreate', formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data'
+      }
+    });
+    console.log('response!: '+ response);//x
+    if(response.status === 200){
+      console.log("왜안되냐")
+      localStorage.setItem('recentCmt', JSON.stringify(response.data));
+      router.push(`/commu/cmtDetail_text/${response.data.id}`);
+      //데이터를 mongoDB에 추가하는 작업이 필요.
+      console.log("response.data.id입니다.:"+response.data.id);//ok
+    }
+  } catch (error) {
+    console.log("error났다: ", error); //오류
+  }
+}
+
   const [showReplyBox, setShowReplyBox] = useState(false);
   const replyBoxRef = useRef<HTMLDivElement>(null);
   useOnClickOutside(replyBoxRef, () => { setShowReplyBox(false)});
@@ -22,69 +115,41 @@ export default function Cmt() {
     setOpenReplyBoxId(openReplyBoxId === commentId ? null : commentId)
   };
 
-
-  // useEffect(() => {
-  // // const handleClickOutside = (event:MouseEvent) => {
-  //   function handleClickOutside(e: MouseEvent): void {
-  //     // console.log("event.target : "+event.target)
-  //     // console.log("replyBoxRef.current : "+replyBoxRef.current)
-  //     //아이콘 클릭시 : event.target : http://localhost:3000/commu/boardDetail/1
-  //     //외부영역 클릭시 : event.target : [object HTMLDivElement] / [object HTMLTextAreaElement] etc..
-
-  //     console.log("replyBoxRef.current:"+replyBoxRef.current)
-  //     //아이콘 클릭시 : replyBoxRef.current:http://localhost:3000/commu/boardDetail/1
-  //     //외부영역 클릭시 : replyBoxRef.current:http://localhost:3000/commu/boardDetail/1
-  //     // if (replyBoxRef.current && !replyBoxRef.current.contains(e.target as Node)) {
-       
-  //       if (replyBoxRef.current) {
-  //       setShowReplyBox(false);
-  //     }
-  //   };
-  //   document.addEventListener('mousedown', handleClickOutside);
-  //   return () => {
-  //     document.removeEventListener('mousedown', handleClickOutside);
-  //   };
-  // }, [replyBoxRef]); // 빈 의존성 배열을 사용하여 마운트 시에만 이벤트 리스너를 추가하도록 합니다.
-
-
-
-  const [comment, setComment] = useState('');
   const [isButtonDisabled, setIsButtonDisabled] = useState(true);
 
-   // 입력창에 텍스트가 변경될 때 호출될 함수
-   const handleInputChange = (event:any) => {
-    setComment(event.target.value);
-    console.log("comment"+comment);
-    if (comment.trim()!== '') {
+  useEffect(() => {
+    if (text.trim() !== '') {
       setIsButtonDisabled(false);
     } else {
       setIsButtonDisabled(true);
     }
+  }, [text]);
+
+   // 입력창에 텍스트가 변경될 때 호출될 함수
+   const handleInputChange = (event:any) => {
+    setText(event.target.value);
   };
 
+  // console.log("file!: ", file); //ok
   return (
     <div className={styles.articleComments}>
       <h3>댓글 0</h3>
+
       <div className={styles.writeArea}>
-        <div id="btn_add_comment" style={{ display: 'none' }}>
-          <div className={styles.replyArea}>
-            <button type="button" className={styles.btnReply} >댓글을 남겨주세요.</button>
-          </div>
-        </div>
         <div className={styles.form}>
           <div id="comment_apply" style={{ display: 'block' }}>
             <div className={styles.replyArea}>
-              <form id="comment_fo" name="comment_fo" encType="multipart/form-data">
+              <form onSubmit={handleSubmit} id="comment_fo" name="comment_fo" encType="multipart/form-data">
                 <div className={styles.replyIng}>
                   <span className={styles.attachFile}>
                     <label htmlFor="inpfile">
                       <i className={styles.blind}>파일 첨부하기</i>
                       <CameraAltIcon/>
                     </label>
-                    <input id="inpfile" type="file" name="file" accept="image/gif, image/jpeg, image/png" />
+                    <input id="inpfile" type="file" name="file" accept="image/gif, image/jpeg, image/png" multiple onChange={handleFileChange} />
                   </span>
                   <div className={styles.txtara}>
-                    <textarea id="content" name="content"  onChange={handleInputChange} placeholder="댓글을 남겨주세요." />
+                    <textarea value={text} id="content" name="content" onChange={handleInputChange} placeholder="댓글을 남겨주세요." />
                   </div>
                   <div className={styles.fncUx}>
                     <div className={styles.hideItem}>
@@ -97,7 +162,7 @@ export default function Cmt() {
                     </div>
                     <div className={styles.btnGroup}>
                       <button type="button" className={styles.btnCncl}>취소</button>
-                      <button type="button" disabled={isButtonDisabled} className={styles.btnPost}>등록</button>
+                      <button type="submit" disabled={isButtonDisabled} className={styles.btnPost}>등록</button>
                     </div>
                   </div>
                 </div>
@@ -109,23 +174,24 @@ export default function Cmt() {
 
       {/* 댓글리스트 */}
       <div className={styles.commentsList}>
-            {comments.map((comment) => (
+            {postData.map((comment) => (
                 <div key={comment.id.toString()} id={comment.id.toString()} className={`${styles.wrapComment} ${styles.commentArea}`}>
-                  {/* 왜 id는 number 타입이면 오류? */}
+                  {/* 왜 id는 number 타입이면 오류? --> id는 항상 string이어야한다.*/}
                     <p className={styles.name}>
-                        <Link href="/kr/company/LG%20HelloVision/"className={styles.point}>LG HelloVision
+                        <Link href="/kr/company/LG%20HelloVision/"className={styles.point}>
+                          {comment.user}
                         </Link>
                     </p>
                     <p className={styles.cmtTxt}>{comment.text}</p>
                     <div className={styles.wrapInfo}>
                         <span className={styles.date}>
-                            3일
+                            {comment.date}
                         </span> 
-                        <Link href="/like"className={styles.like}>6
-                         
+                        <Link href="/like"className={styles.like}>
+                          {comment.like}
                         </Link>
                         <Link href="/comments"className={styles.cmt}>
-                                6
+                          {comment.cmt}
                         </Link>
 
                         {/*  더보기 버튼 설명 */}
