@@ -60,18 +60,22 @@ const handleSubmit = async (event:any) => {
       cmt:0,
       text:text
     }
-    console.log("1");//ok
+    // console.log("1");//ok
 
     // JSON 데이터를 문자열로 변환하여 FormData에 추가
-    // formData.append('json', JSON.stringify({data}));
+    formData.append('json', JSON.stringify({data}));
     
     // Blob 객체에 data를 json으로 변환한뒤 담는다.
-    const blob = new Blob([JSON.stringify(data)], {
-      // JSON 타입 지정
-      type: 'application/json',
-    });
-    formData.append('json', blob);
+    // const blob = new Blob([JSON.stringify(data)], {
+    //   type: 'application/json',
+    // });
+    // formData.append('json', blob);
+    
+    // console.log("blob에 잘 담겼는지? ");//ok
+    // console.log("blob: "+JSON.stringify(blob));//{}
 
+    //FormData 객체는 내부적으로 특수한 형태로 데이터를 관리하고 있어, JSON.stringify()를 호출해도 데이터를 변환할 수 없고, 빈 객체 {}를 반환
+    // console.log("formData: "+JSON.stringify(formData));//{}
 
     // 파일이 있는 경우에만 추가
     if (file) {
@@ -81,7 +85,7 @@ const handleSubmit = async (event:any) => {
       
     // // FormData 객체의 내용을 출력
     formData.forEach((value, key) => {
-      console.log(`${key}: ${value}`);//ok
+      console.log("format+forEach: "+`${key}: ${value}`);
     });
     //json: {"id":12,"user":"test","text":"ddddd","date":"1분전","like":0,"cmt":0}
 

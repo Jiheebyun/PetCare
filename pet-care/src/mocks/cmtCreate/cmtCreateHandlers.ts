@@ -15,23 +15,41 @@ console.log("cmtCreateHandlers 실행!")
 
 export const cmtCreateHandlers = [
   http.post('http://localhost:9090/api/cmtCreate', async ({ request }) => {
-    console.error("??")//ok
+    // console.error("??")//ok
     try {
      // FormData 파싱
      const formData = await request.formData();
-     formData.forEach((value, key) => {
-      console.log(`FormData key: ${key}, value:`, value);
-    });
-    const jsonBlob = formData.get('json') as Blob;
-    const jsonText = await jsonBlob.text();
-    const data = JSON.parse(jsonText) as CmtCreateRequestBody;
-    console.error("data:", data);
-    
+    //  formData.forEach((value, key) => {
+      // console.log(`FormData key: ${key}, value:`, value);
+    // });
+    // const jsonBlob = formData.get('json') as Blob;
+    // const jsonText = await jsonBlob.text();
+    // const parsedFormData = JSON.parse(formData);
+    // const data = JSON.parse(jsonText) as CmtCreateRequestBody;
+    // const data = JSON.parse(parsedFormData.json) as CmtCreateRequestBody;
+    // console.error("data:", data);
+
+    const jsonString = formData.get('json') as string | null;
+     // null 체크
+     if (!jsonString) {
+      throw new Error('No JSON data provided');
+    }
+    const parsedData = JSON.parse(jsonString);
+    const data = parsedData.data as CmtCreateRequestBody;
+
+
     const file = formData.get('file') as File | null;
     console.log("file 파싱됨: ", file); // 파일 출력
 
       const { id, user, date, like, cmt, text } = data;
 
+
+
+
+
+
+
+      
     //  console.error("Raw formData:", formData);//ok
 
        // FormData에서 각 필드를 추출
