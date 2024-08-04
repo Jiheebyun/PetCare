@@ -15,10 +15,38 @@ console.log("cmtCreateHandlers 실행!")
 
 export const cmtCreateHandlers = [
   http.post('http://localhost:9090/api/cmtCreate', async ({ request }) => {
-    // console.error("??")//ok
+    
     try {
-     // FormData 파싱
-     const formData = await request.formData();
+    const formData = await request.formData();//요게 안되고 있음.
+    // const formData = await request.formData(); // 이 부분은 Node.js 환경에서는 사용할 수 없음
+    // req.body에서 텍스트 필드 데이터를 가져옵니다.
+
+    //Node.js 환경에서는 formidable, multer와 같은 미들웨어를 사용하여 multipart/form-data 요청을 처리
+    const jsonString = formData.get('json') as string | null;
+    if (!jsonString) {
+      throw new Error('No JSON data provided');
+    }
+    const parsedData = JSON.parse(jsonString) as CmtCreateRequestBody;
+    const { id} = parsedData;
+
+    console.error("??")//?
+    // const jsonString = formData.get('json') as string | null;
+    //  if (!jsonString) {
+    //   throw new Error('No JSON data provided');
+    // }
+    // const parsedData = JSON.parse(jsonString)as CmtCreateRequestBody;
+    // const file = formData.get('file') as File | null;
+    // const { id, user, date, like, cmt, text } = parsedData;
+    
+const idValue = formData.get('id');
+console.error("id:"+idValue)//x
+
+
+
+
+
+        // FormData 파싱
+    
     //  formData.forEach((value, key) => {
       // console.log(`FormData key: ${key}, value:`, value);
     // });
@@ -29,27 +57,9 @@ export const cmtCreateHandlers = [
     // const data = JSON.parse(parsedFormData.json) as CmtCreateRequestBody;
     // console.error("data:", data);
 
-    const jsonString = formData.get('json') as string | null;
-     // null 체크
-     if (!jsonString) {
-      throw new Error('No JSON data provided');
-    }
-    const parsedData = JSON.parse(jsonString);
-    const data = parsedData.data as CmtCreateRequestBody;
-
-
-    const file = formData.get('file') as File | null;
-    console.log("file 파싱됨: ", file); // 파일 출력
-
-      const { id, user, date, like, cmt, text } = data;
 
 
 
-
-
-
-
-      
     //  console.error("Raw formData:", formData);//ok
 
        // FormData에서 각 필드를 추출
@@ -76,9 +86,9 @@ export const cmtCreateHandlers = [
     // const { id, user, date, like, cmt, text } = data;
 
       return HttpResponse.json({ 
-        id, user, date, like, cmt, text
+        id
+        // id, user, date, like, cmt, text
         // , file 
-        // json: JSON.stringify({ id, user, date, like, cmt, text })
       }, {
         status: 200 // 응답 코드 설정
       });

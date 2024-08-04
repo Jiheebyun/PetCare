@@ -12,7 +12,7 @@ export default  function cmtDetail(props:any) {
         <div>
           id : {storadCmt.id}
         </div>
-        <div>
+        {/* <div>
         user : {storadCmt.user}
         </div>
         <div>
@@ -31,7 +31,7 @@ export default  function cmtDetail(props:any) {
           <div>
             file : {storadCmt.file}
           </div>
-        )}
+        )} */}
       </>
     )
   }

@@ -50,21 +50,12 @@ const handleSubmit = async (event:any) => {
     // const like = 0;
     // const cmt = 0;
 
-    const formData = new FormData();
-
-    const data ={
-      id: 12,
-      user:"test",
-      date: "1분전",
-      like:0,
-      cmt:0,
-      text:text
-    }
+  
     // console.log("1");//ok
 
     // JSON 데이터를 문자열로 변환하여 FormData에 추가
-    formData.append('json', JSON.stringify({data}));
-    
+    // formData.append('json', JSON.stringify({data}));
+  
     // Blob 객체에 data를 json으로 변환한뒤 담는다.
     // const blob = new Blob([JSON.stringify(data)], {
     //   type: 'application/json',
@@ -77,25 +68,36 @@ const handleSubmit = async (event:any) => {
     //FormData 객체는 내부적으로 특수한 형태로 데이터를 관리하고 있어, JSON.stringify()를 호출해도 데이터를 변환할 수 없고, 빈 객체 {}를 반환
     // console.log("formData: "+JSON.stringify(formData));//{}
 
+    const formData = new FormData();
+    // const data ={
+    //   id: 12,
+    //   user:"test",
+    //   date: "1분전",
+    //   like:0,
+    //   cmt:0,
+    //   text:text
+    // }
+    // formData.append('json', JSON.stringify(data));
+
+
+    formData.append('id', "12");
+
+    
     // 파일이 있는 경우에만 추가
-    if (file) {
-      formData.append('file', file);
-      // console.log('file: '+ file);//ok
-    }
-      
+    // if (file) {
+    //   formData.append('file', file);
+    // }
     // // FormData 객체의 내용을 출력
     formData.forEach((value, key) => {
-      console.log("format+forEach: "+`${key}: ${value}`);
+      console.log("format+forEach: "+`${key}: ${value}`);//json: {"id":12,"user":"test","text":"ddddd","date":"1분전","like":0,"cmt":0}
     });
-    //json: {"id":12,"user":"test","text":"ddddd","date":"1분전","like":0,"cmt":0}
-
-
+    
     // const response = await axios.post('http://localhost:9090/api/cmtCreate', {id, user, date, like, cmt, text, file});
     const response = await axios.post('http://localhost:9090/api/cmtCreate', formData, {
       headers: {
         'Content-Type': 'multipart/form-data'
       }
-    });
+    }) 
     console.log('response!: '+ response);//x
     if(response.status === 200){
       console.log("왜안되냐")
@@ -108,7 +110,6 @@ const handleSubmit = async (event:any) => {
     console.log("error났다: ", error); //오류
   }
 }
-
   const [showReplyBox, setShowReplyBox] = useState(false);
   const replyBoxRef = useRef<HTMLDivElement>(null);
   useOnClickOutside(replyBoxRef, () => { setShowReplyBox(false)});
@@ -120,7 +121,6 @@ const handleSubmit = async (event:any) => {
   };
 
   const [isButtonDisabled, setIsButtonDisabled] = useState(true);
-
   useEffect(() => {
     if (text.trim() !== '') {
       setIsButtonDisabled(false);
