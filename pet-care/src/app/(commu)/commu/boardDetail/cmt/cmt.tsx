@@ -28,15 +28,15 @@ const [file, setFile] = useState<File | null>(null);
 
 
 const handleFileChange = (event:any) => {
-  // if (event.target.files && event.target.files.length > 0) {
-  //   const selectedFile = event.target.files[0];
-  //   // console.log("Selected file: ", selectedFile);//ok
-  //   setFile(selectedFile); // 상태 업데이트 요청
-  // }
-  // else {
-  //   setFile(null);
-  // }
-  // console.log("file!: ", file);//비동기라 지금은 null이지만 하단에서 찍어보면 잘 나옴.
+  if (event.target.files && event.target.files.length > 0) {
+    const selectedFile = event.target.files[0];
+    // console.log("Selected file: ", selectedFile);//ok
+    setFile(selectedFile); // 상태 업데이트 요청
+  }
+  else {
+    setFile(null);
+  }
+  console.log("file!: ", file);//비동기라 지금은 null이지만 하단에서 찍어보면 잘 나옴.
 };
 
 //msw가 사용할 데이터 api엔드포인트에 보내기
@@ -69,13 +69,14 @@ const handleSubmit = async (event:any) => {
     // formData.append('json', JSON.stringify(data));
    
 
-    // 파일이 있는 경우에만 추가
-    // if (file) {
-    //   formData.append('file', file);
-    // }
+   
     // // FormData 객체의 내용을 출력
     const formData = new FormData();
     formData.append('id', "12");
+     // 파일이 있는 경우에만 추가
+    if (file) {
+      formData.append('file', file);
+    }
     formData.forEach((value, key) => {
       console.log("format+forEach: "+`${key}: ${value}`);//json: {"id":12,"user":"test","text":"ddddd","date":"1분전","like":0,"cmt":0}
     });

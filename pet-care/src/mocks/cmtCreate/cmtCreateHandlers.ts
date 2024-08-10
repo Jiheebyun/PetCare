@@ -32,12 +32,13 @@ export const cmtCreateHandlers = [
     // formData를 올바르게 타입 단언 (형식 확인)
     const formData = data as Record<string, any>; 
      const id = formData.id; //객체명이 id면 cmt파일로 id객체명으로 전송된다.
-  
+     const file = formData.file;
 
     console.error("??")//o
     console.error("id:"+id)//id:12
+    console.error("file:"+file)//id:12
     return HttpResponse.json({ 
-      id
+      id, file: file ? "File received" : "No file"
       // id, user, date, like, cmt, text
       // , file 
     }, {
