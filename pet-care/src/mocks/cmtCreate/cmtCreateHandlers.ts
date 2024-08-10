@@ -17,19 +17,54 @@ export const cmtCreateHandlers = [
   http.post('http://localhost:9090/api/cmtCreate', async ({ request }) => {
     
     try {
-    const formData = await request.formData();//요게 안되고 있음.
+      //request.formData() 메소드는 fetch API를 통해 전송된 데이터를 처리할 때 사용하는 메소드입니다. 하지만 axios를 통해 전송된 FormData는 fetch API와는 다른 방식으로 처리됩니다. axios를 사용한 경우, 서버에서 데이터를 다르게 처리해야 할 수 있습니다.
+      //request.formData()는 이 요청을 처리할 수 없을 가능성이 큽니다. 대신 request.json() 또는 다른 메소드를 사용해야 할 수도 있습니다.
+
+    // const formData = await request.formData();//즉, 요건 사용할수 없음; 왜지?
+    // const idValue = formData.get('id');
+
+    const data = await request.json();//json형태로 받아보니 try절이 실행되긴함(catch절 실행이 안됨)
+    
+    // if (!data) {
+    //     throw new Error('No JSON data provided');
+    //   }
+
+    // formData를 올바르게 타입 단언 (형식 확인)
+    const formData = data as Record<string, any>; 
+     const id = formData.id; //객체명이 id면 cmt파일로 id객체명으로 전송된다.
+  
+
+    console.error("??")//o
+    console.error("id:"+id)//id:12
+    return HttpResponse.json({ 
+      id
+      // id, user, date, like, cmt, text
+      // , file 
+    }, {
+      status: 200 // 응답 코드 설정
+    });
+    } catch (error) {
+    console.error("????")//ok
+    console.error("Error processing form data:", error);//Error processing form data: TypeError: Error: Unexpected end of form
+    //       return HttpResponse.json({ error: "Error processing form data" }, {
+    //         status: 500 
+    //       });
+    }
+    }),
+];
+
     // const formData = await request.formData(); // 이 부분은 Node.js 환경에서는 사용할 수 없음
     // req.body에서 텍스트 필드 데이터를 가져옵니다.
 
     //Node.js 환경에서는 formidable, multer와 같은 미들웨어를 사용하여 multipart/form-data 요청을 처리
-    const jsonString = formData.get('json') as string | null;
-    if (!jsonString) {
-      throw new Error('No JSON data provided');
-    }
-    const parsedData = JSON.parse(jsonString) as CmtCreateRequestBody;
-    const { id} = parsedData;
-
-    console.error("??")//?
+    // const jsonString = formData.get('json') as string | null;
+    
+    // if (!jsonString) {
+    //   throw new Error('No JSON data provided');
+    // }
+    // const parsedData = JSON.parse(jsonString) as CmtCreateRequestBody;
+    // const { id} = parsedData;
+ 
     // const jsonString = formData.get('json') as string | null;
     //  if (!jsonString) {
     //   throw new Error('No JSON data provided');
@@ -38,8 +73,7 @@ export const cmtCreateHandlers = [
     // const file = formData.get('file') as File | null;
     // const { id, user, date, like, cmt, text } = parsedData;
     
-const idValue = formData.get('id');
-console.error("id:"+idValue)//x
+
 
 
 
@@ -85,22 +119,7 @@ console.error("id:"+idValue)//x
     //  console.log("file 파싱됨: ", file); 
     // const { id, user, date, like, cmt, text } = data;
 
-      return HttpResponse.json({ 
-        id
-        // id, user, date, like, cmt, text
-        // , file 
-      }, {
-        status: 200 // 응답 코드 설정
-      });
-    } catch (error) {
-      console.error("????")//ok
-      console.error("Error processing form data:", error);
-//       return HttpResponse.json({ error: "Error processing form data" }, {
-//         status: 500 
-//       });
-    }
-  }),
-];
+
 
 
 

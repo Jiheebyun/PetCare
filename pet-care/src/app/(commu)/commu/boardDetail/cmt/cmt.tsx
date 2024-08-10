@@ -28,15 +28,15 @@ const [file, setFile] = useState<File | null>(null);
 
 
 const handleFileChange = (event:any) => {
-  if (event.target.files && event.target.files.length > 0) {
-    const selectedFile = event.target.files[0];
-    // console.log("Selected file: ", selectedFile);//ok
-    setFile(selectedFile); // 상태 업데이트 요청
-  }
-  else {
-    setFile(null);
-  }
-  console.log("file!: ", file);//비동기라 지금은 null이지만 하단에서 찍어보면 잘 나옴.
+  // if (event.target.files && event.target.files.length > 0) {
+  //   const selectedFile = event.target.files[0];
+  //   // console.log("Selected file: ", selectedFile);//ok
+  //   setFile(selectedFile); // 상태 업데이트 요청
+  // }
+  // else {
+  //   setFile(null);
+  // }
+  // console.log("file!: ", file);//비동기라 지금은 null이지만 하단에서 찍어보면 잘 나옴.
 };
 
 //msw가 사용할 데이터 api엔드포인트에 보내기
@@ -50,25 +50,14 @@ const handleSubmit = async (event:any) => {
     // const like = 0;
     // const cmt = 0;
 
-  
-    // console.log("1");//ok
 
     // JSON 데이터를 문자열로 변환하여 FormData에 추가
     // formData.append('json', JSON.stringify({data}));
   
-    // Blob 객체에 data를 json으로 변환한뒤 담는다.
-    // const blob = new Blob([JSON.stringify(data)], {
-    //   type: 'application/json',
-    // });
-    // formData.append('json', blob);
-    
-    // console.log("blob에 잘 담겼는지? ");//ok
-    // console.log("blob: "+JSON.stringify(blob));//{}
-
-    //FormData 객체는 내부적으로 특수한 형태로 데이터를 관리하고 있어, JSON.stringify()를 호출해도 데이터를 변환할 수 없고, 빈 객체 {}를 반환
+    //FormData 객체는 내부적으로 특수한 형태로 데이터를 관리하고 있어, JSON.stringify()를 호출해도 데이터를 변환할 수 없고, 빈 객체 {}를 반환.forEach로 찍어야함
     // console.log("formData: "+JSON.stringify(formData));//{}
 
-    const formData = new FormData();
+ 
     // const data ={
     //   id: 12,
     //   user:"test",
@@ -78,16 +67,15 @@ const handleSubmit = async (event:any) => {
     //   text:text
     // }
     // formData.append('json', JSON.stringify(data));
+   
 
-
-    formData.append('id', "12");
-
-    
     // 파일이 있는 경우에만 추가
     // if (file) {
     //   formData.append('file', file);
     // }
     // // FormData 객체의 내용을 출력
+    const formData = new FormData();
+    formData.append('id', "12");
     formData.forEach((value, key) => {
       console.log("format+forEach: "+`${key}: ${value}`);//json: {"id":12,"user":"test","text":"ddddd","date":"1분전","like":0,"cmt":0}
     });
@@ -95,7 +83,8 @@ const handleSubmit = async (event:any) => {
     // const response = await axios.post('http://localhost:9090/api/cmtCreate', {id, user, date, like, cmt, text, file});
     const response = await axios.post('http://localhost:9090/api/cmtCreate', formData, {
       headers: {
-        'Content-Type': 'multipart/form-data'
+        // 'Content-Type': 'multipart/form-data'
+        'Content-Type': 'application/json' //이렇게 하니까 됨..핸들러에서 json으로 받기때문.
       }
     }) 
     console.log('response!: '+ response);//x
